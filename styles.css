@@ -569,6 +569,45 @@ footer{padding:100px 0 50px;border-top:1px solid var(--line);position:relative;z
 .count-up.in{opacity:1}
 
 /* ============================================================
+   EDITORIAL IMAGE FRAMES — supporting imagery across all pages
+   Spec: image-system-spec.md (Nano Banana 2 generated assets/*.webp)
+   ============================================================ */
+.img-frame{
+  margin:0;display:flex;flex-direction:column;gap:0;
+  border-radius:var(--radius-lg);overflow:hidden;
+  background:linear-gradient(180deg,#ffffff,#fbfaf6);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-2), var(--inset-hi);
+  position:relative;
+}
+.img-frame img{
+  width:100%;height:auto;display:block;object-fit:cover;
+  object-position:center center;
+  filter:grayscale(8%) contrast(1.04);
+  transition:transform 1.2s cubic-bezier(.2,.8,.2,1);
+}
+.img-frame:hover img{transform:scale(1.02)}
+.img-frame figcaption{
+  padding:18px 28px 22px;
+  font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+  font-size:16px;line-height:1.5;letter-spacing:-.005em;
+  color:var(--text-2);
+  border-top:1px solid var(--line);
+  background:#fff;
+}
+/* Aspect ratio variants — applied to the inner image wrap if needed.
+   When no caption sits inside, the img can shape the frame directly.
+   With a caption, the frame stays free-flowing and the img carries the ratio. */
+.img-frame--hero img{aspect-ratio:16/9}
+.img-frame--portrait img{aspect-ratio:4/5}
+.img-frame--square img{aspect-ratio:1/1}
+.img-frame--wide img{aspect-ratio:21/9}
+
+/* Two-column split layout for image + copy */
+.img-split{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+@media (max-width:900px){.img-split{grid-template-columns:1fr;gap:40px}}
+
+/* ============================================================
    LEAD-MAGNET STRIP — promotes the Entity Quiz
    ============================================================ */
 .lead-magnet-section{padding:60px 0 30px}
@@ -636,4 +675,256 @@ footer{padding:100px 0 50px;border-top:1px solid var(--line);position:relative;z
     opacity:1!important;transform:none!important;transition:none!important;
   }
   .glow,.ambient::after{animation:none!important}
+}
+
+/* ============================================================
+   CARD BACKGROUND TEXTURES — luxe tonal depth
+   Applies a subtle warm-marble or dark-obsidian image behind every
+   major card. The image lives in a ::before pseudo-element so it
+   never affects content opacity. Blend modes integrate the texture
+   with the card's existing solid background.
+   ============================================================ */
+
+/* Light texture — for cream/ivory cards (the vast majority) */
+.card,
+.feat-card,
+.svc-box,
+.svc,
+.pay-card,
+.admin-card,
+.launch-card,
+.tier,
+.info-card,
+.testi,
+.res-card,
+.tool,
+.deliv,
+.val,
+.process-step,
+.process-line .pstep,
+.proof-card:not(.proof-card--accent),
+.bofu,
+.founder-strip,
+.editorial-frame,
+.portrait-card,
+.img-frame,
+.t-item,
+.timeline .tl-item,
+.tax-col,
+.compare-col,
+.cmp,
+.value,
+.stats-strip{
+  position:relative;
+  isolation:isolate;
+}
+.card::before,
+.feat-card::before,
+.svc-box::before,
+.svc::before,
+.pay-card::before,
+.admin-card::before,
+.launch-card::before,
+.tier::before,
+.info-card::before,
+.testi::before,
+.res-card::before,
+.tool::before,
+.deliv::before,
+.val::before,
+.process-step::before,
+.process-line .pstep::before,
+.proof-card:not(.proof-card--accent)::before,
+.bofu::before,
+.founder-strip::before,
+.editorial-frame::before,
+.portrait-card::before,
+.img-frame::before,
+.t-item::before,
+.timeline .tl-item::before,
+.tax-col::before,
+.compare-col::before,
+.cmp::before,
+.value::before,
+.stats-strip::before{
+  content:"";
+  position:absolute;inset:0;
+  background-image:url("assets/textures/card-texture-light.webp");
+  background-size:cover;background-position:center;
+  opacity:.38;
+  mix-blend-mode:soft-light;
+  border-radius:inherit;
+  pointer-events:none;
+  z-index:-1;
+}
+
+/* Dark texture — for the single dark accent card (Hero v4 proof-card--accent) */
+.proof-card--accent{
+  position:relative;
+  isolation:isolate;
+}
+.proof-card--accent::before{
+  content:"";
+  position:absolute;inset:0;
+  background-image:url("assets/textures/card-texture-dark.webp");
+  background-size:cover;background-position:center;
+  opacity:.55;
+  mix-blend-mode:overlay;
+  border-radius:inherit;
+  pointer-events:none;
+  z-index:-1;
+}
+
+/* Skip textures on phones for perf and visual cleanliness */
+@media (max-width:640px){
+  .card::before,.feat-card::before,.svc-box::before,.svc::before,
+  .pay-card::before,.admin-card::before,.launch-card::before,
+  .tier::before,.info-card::before,.testi::before,.res-card::before,
+  .tool::before,.deliv::before,.val::before,.process-step::before,
+  .process-line .pstep::before,.proof-card::before,.bofu::before,
+  .founder-strip::before,.editorial-frame::before,.portrait-card::before,
+  .img-frame::before,.t-item::before,.timeline .tl-item::before,
+  .tax-col::before,.compare-col::before,.cmp::before,.value::before,
+  .stats-strip::before,.proof-card--accent::before{
+    opacity:.22;
+  }
+}
+
+/* Graceful fallback if texture file missing — pseudo-element just disappears */
+@supports not (background-image: url("assets/textures/card-texture-light.webp")){
+  .card::before,.feat-card::before,.svc-box::before{display:none}
+}
+
+/* ============================================================
+   COMPREHENSIVE MOBILE OPTIMIZATION
+   Targets: iPhone (390px), Android phones (360-414px), small phones (320-380px)
+   Applies site-wide — every page that links styles.css
+   ============================================================ */
+
+/* Tighten section spacing on tablets */
+@media (max-width:900px){
+  section{padding:90px 0}
+  .wrap{padding:0 22px}
+  .wrap-narrow{padding:0 22px}
+}
+
+/* Phone breakpoint — main mobile experience */
+@media (max-width:640px){
+  /* Compact section padding */
+  section{padding:64px 0}
+  .wrap,.wrap-narrow{padding:0 18px}
+  .section-head{margin-bottom:36px}
+
+  /* Page heroes — pull in tight */
+  .page-hero{padding:120px 0 40px}
+  .page-hero h1{font-size:clamp(38px,9.5vw,52px);letter-spacing:-.025em;line-height:1.02}
+  .page-hero .lede{font-size:16px;line-height:1.55;margin-top:22px}
+  .page-hero .cta-row{margin-top:32px;flex-direction:column;align-items:stretch;gap:10px}
+  .page-hero .cta-row .btn{justify-content:center;width:100%}
+
+  /* Nav — slightly tighter */
+  .nav{top:10px;width:calc(100% - 20px);padding:7px 7px 7px 14px}
+  .brand-mark{width:30px;height:30px;border-radius:8px;font-size:12px}
+  .brand-name strong{font-size:13.5px}
+  .brand-name small{font-size:9.5px;letter-spacing:.14em}
+  .nav-cta{padding:9px 14px;font-size:12.5px}
+
+  /* Buttons — full width and proper touch targets */
+  .btn{padding:16px 22px;font-size:14.5px;min-height:48px}
+
+  /* Eyebrows tighter */
+  .eyebrow{font-size:10.5px;padding:6px 12px;letter-spacing:.14em}
+
+  /* H2 section headings shrink */
+  h2.section-h{font-size:clamp(28px,7.5vw,42px);letter-spacing:-.02em;line-height:1.04}
+
+  /* Lede paragraphs */
+  .lede{font-size:16px;line-height:1.55}
+
+  /* Card grids → single column with proper gaps */
+  .card-grid,.feat-grid,.svcs-grid,.svc-spotlight,.tier-grid,.process-grid,
+  .res-grid,.tools-grid,.admin-grid,.deliverables,.values-grid,
+  .editorial-grid,.testi-grid,.pay-grid,.pain-grid,.launch-grid{
+    grid-template-columns:1fr!important;gap:14px!important;
+  }
+  .svc-box{padding:32px 26px;min-height:auto}
+  .svc-box h3{font-size:24px;margin-bottom:12px}
+
+  /* Stats strip — 2 cols max on phone, smaller numbers */
+  .stats-strip{grid-template-columns:repeat(2,1fr)!important;padding:36px 24px;gap:24px}
+  .stat .num{font-size:clamp(34px,9vw,46px);margin-bottom:6px}
+  .stat .lbl{font-size:11px}
+
+  /* Tier cards padding tighten */
+  .tier{padding:32px 26px}
+  .tier-price{font-size:48px}
+
+  /* BOFU compact */
+  .bofu{padding:52px 24px;border-radius:24px}
+  .bofu h2{font-size:clamp(30px,8vw,42px);margin:16px 0 18px}
+  .bofu .lede{font-size:15.5px;margin-bottom:28px}
+  .bofu-cta{flex-direction:column;align-items:stretch}
+  .bofu-cta .btn{justify-content:center;width:100%}
+
+  /* Footer single column */
+  .foot-grid{grid-template-columns:1fr!important;gap:30px;margin-bottom:40px}
+  .foot-brand p{max-width:none}
+  .foot-bottom{flex-direction:column;align-items:flex-start;text-align:left}
+
+  /* Image frames — full width, no inset.
+     On mobile, ultra-wide 21:9 becomes a thin strip and "hero" ratios
+     can clip subjects. Use friendlier ratios and anchor object-position
+     to where subjects sit in our generated assets (left-of-center). */
+  .img-frame{border-radius:16px}
+  .img-frame figcaption{padding:14px 18px;font-size:14px}
+  .img-frame--wide img{aspect-ratio:4/3;object-position:30% center}
+  .img-frame--hero img{aspect-ratio:4/3;object-position:30% center}
+  .img-frame--portrait img{aspect-ratio:4/5;object-position:center top}
+  .img-frame--square img{aspect-ratio:1/1;object-position:30% center}
+  .img-split{grid-template-columns:1fr!important;gap:32px!important}
+
+  /* FAQ */
+  .faq-q{padding:18px 20px;font-size:15px}
+  .faq-q .ico{width:28px;height:28px;font-size:16px;margin-left:12px}
+  .faq-item.open .faq-a{padding:0 20px 18px;font-size:14.5px}
+
+  /* Process / timeline numbers smaller */
+  .process-step{padding:30px 22px}
+  .process-line .pnum,.process-line .pstep{padding:28px 22px}
+  .process-line .pnum{font-size:44px;margin-bottom:18px}
+
+  /* Founder strip / founder portrait — proper stack */
+  .founder-strip,.founder-editorial{padding:32px 24px;gap:32px}
+  .founder-initials{font-size:140px}
+}
+
+/* Smallest phones (iPhone SE, very narrow Androids) */
+@media (max-width:400px){
+  .wrap,.wrap-narrow{padding:0 14px}
+  .nav{padding:6px 6px 6px 12px;top:8px}
+  section{padding:52px 0}
+  h2.section-h{font-size:clamp(26px,8.5vw,36px)}
+  .page-hero h1{font-size:clamp(34px,10vw,46px)}
+  .lede,.page-hero .lede{font-size:15px}
+  .btn{font-size:14px;padding:14px 20px}
+  .eyebrow{font-size:10px;letter-spacing:.13em}
+  .bofu{padding:42px 20px}
+  .bofu h2{font-size:clamp(26px,8.5vw,36px)}
+  .stats-strip{padding:28px 18px;gap:18px}
+  .stat .num{font-size:clamp(28px,9vw,38px)}
+  .stat .lbl{font-size:10.5px}
+  .foot-grid{gap:24px}
+}
+
+/* Prevent horizontal scroll caused by any rogue absolutely-positioned element */
+@media (max-width:900px){
+  body{overflow-x:hidden}
+  .ambient,.glow{pointer-events:none}
+}
+
+/* Throttle heavy animations on small screens for perf */
+@media (max-width:640px){
+  .glow{animation-duration:30s!important;filter:blur(80px)!important}
+  .marquee-track{animation-duration:24s}
+  .editorial-frame,.floating-card,.floating-chip,.portrait-card,.proof-card{animation:none!important}
 }
