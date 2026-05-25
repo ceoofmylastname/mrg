@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tax Resources | MRG Accounting Service</title>
+<meta name="description" content="Curated tax resources, important deadlines, IRS forms, and free calculators — bookmarked and ready when you need them." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .res-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+  @media (max-width:780px){.res-grid{grid-template-columns:1fr}}
+  .res-card{
+    padding:42px 36px;border-radius:var(--radius-lg);
+    background:linear-gradient(180deg,#ffffff,#fbfaf6);
+    border:1px solid var(--line-strong);transition:all .4s ease;
+  }
+  .res-card:hover{transform:translateY(-4px);border-color:var(--line-bright)}
+  .res-no{font-family:'Instrument Serif',serif;font-style:italic;color:var(--accent);font-size:14px;margin-bottom:18px;display:block}
+  .res-card h3{font-size:24px;margin-bottom:16px;letter-spacing:-.02em;font-weight:600}
+  .res-card h3 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
+  .res-card > p{color:var(--text-2);font-size:14.5px;line-height:1.65;margin-bottom:22px}
+  .res-links{list-style:none;padding-top:18px;border-top:1px solid var(--line)}
+  .res-links li{padding:14px 0;border-bottom:1px solid var(--line)}
+  .res-links li:last-child{border-bottom:none}
+  .res-links a{display:flex;justify-content:space-between;align-items:center;gap:12px;color:var(--text);transition:all .25s ease;font-size:14px;font-weight:500;letter-spacing:-.005em}
+  .res-links a:hover{color:var(--accent);padding-left:6px}
+  .res-links a .arr{font-family:'Instrument Serif',serif;font-style:italic;color:var(--text-3);transition:transform .25s ease}
+  .res-links a:hover .arr{transform:translateX(4px);color:var(--accent)}
+
+  /* Deadlines table */
+  .deadlines{
+    padding:50px;border-radius:var(--radius-lg);
+    background:linear-gradient(180deg,#ffffff,#fbfaf6);
+    border:1px solid var(--line-strong);
+  }
+  @media (max-width:780px){.deadlines{padding:32px 24px}}
+  .dl-row{display:grid;grid-template-columns:120px 1fr;gap:30px;padding:24px 0;border-top:1px solid var(--line);align-items:start}
+  .dl-row:first-of-type{border-top:none;padding-top:0}
+  @media (max-width:600px){.dl-row{grid-template-columns:1fr;gap:8px}}
+  .dl-date{font-family:'Instrument Serif',serif;font-style:italic;font-size:32px;font-weight:400;color:var(--accent);line-height:1;letter-spacing:-.025em}
+  .dl-info strong{display:block;font-size:16.5px;font-weight:600;margin-bottom:6px;letter-spacing:-.01em}
+  .dl-info span{color:var(--text-2);font-size:14.5px;line-height:1.65}
+
+  /* Tools grid */
+  .tools-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  @media (max-width:780px){.tools-grid{grid-template-columns:1fr}}
+  .tool{
+    padding:32px 30px;border-radius:var(--radius);
+    background:linear-gradient(180deg,#ffffff,#fbfaf6);
+    border:1px solid var(--line-strong);transition:all .3s ease;
+    display:flex;flex-direction:column;gap:12px;
+  }
+  .tool:hover{transform:translateY(-4px);border-color:var(--line-bright)}
+  .tool .tn{font-family:'Instrument Serif',serif;font-style:italic;color:var(--accent);font-size:14px}
+  .tool h4{font-size:19px;font-weight:600;letter-spacing:-.015em}
+  .tool p{font-size:13.5px;color:var(--text-2);line-height:1.6;margin-bottom:8px}
+  .tool a{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--ink);border-bottom:1px solid var(--line-bright);padding-bottom:4px;align-self:flex-start;transition:all .25s ease}
+  .tool a:hover{border-color:var(--accent);color:var(--accent)}
+</style>
+</head>
+<body>
+
+<div class="ambient"><div class="glow glow-1"></div><div class="glow glow-2"></div><div class="glow glow-3"></div></div>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="brand"><div class="brand-mark">M</div><div class="brand-name"><strong>MRG Accounting</strong><small>Service</small></div></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="founder.html">Founder</a>
+    <a href="bookkeeping.html">Bookkeeping</a>
+    <a href="taxes.html">Taxes</a>
+    <a href="payroll.html">Payroll</a>
+    <a href="business-consultant.html">Consultant</a>
+    <a href="administrative.html">Admin</a>
+  </div>
+  <a href="contact.html" class="nav-cta">Book a Call</a>
+  <button class="menu-btn" id="menuBtn" aria-label="Menu"><span></span></button>
+</nav>
+
+<div class="drawer" id="drawer">
+  <button class="drawer-close" id="drawerClose" aria-label="Close">✕</button>
+  <a href="index.html">Home</a><a href="founder.html">Meet the Founder</a><a href="bookkeeping.html">Bookkeeping</a><a href="taxes.html">Taxes</a><a href="resources-taxes.html">Resources Taxes</a><a href="payroll.html">Payroll</a><a href="business-consultant.html">Business Consultant</a><a href="administrative.html">Administrative</a><a href="contact.html">Contact Us</a>
+</div>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="wrap reveal">
+    <span class="eyebrow"><span class="dot"></span>Resources · Tools · Deadlines</span>
+    <h1>Tax resources <em>worth bookmarking.</em></h1>
+    <p class="lede">Official IRS forms, important due dates, withholding estimators, self-employment calculators, and mileage trackers — all in one place. Free, current, and exactly what you need when you need it.</p>
+  </div>
+</section>
+
+<!-- IRS FORMS / PUBLICATIONS -->
+<section style="padding-top:50px">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="line"></span>IRS forms &amp; publications</span>
+      <h2 class="section-h mt-md">Official forms.<br/><em class="kicker">Direct from the source.</em></h2>
+    </div>
+
+    <div class="res-grid reveal-stagger">
+      <div class="res-card">
+        <span class="res-no">№ 01</span>
+        <h3><em>Federal</em> forms &amp; tools</h3>
+        <p>The most-used IRS forms and tools every taxpayer needs. Bookmarked, verified, and ready to use.</p>
+        <ul class="res-links">
+          <li><a href="https://www.irs.gov/pub/irs-pdf/fw4.pdf" target="_blank" rel="noopener">W-4 — Employee's Withholding Certificate<span class="arr">↗</span></a></li>
+          <li><a href="https://www.irs.gov/pub/irs-pdf/fw9.pdf" target="_blank" rel="noopener">W-9 — Request for Taxpayer Identification<span class="arr">↗</span></a></li>
+          <li><a href="https://www.irs.gov/wheres-my-refund" target="_blank" rel="noopener">Where's My Refund?<span class="arr">↗</span></a></li>
+          <li><a href="https://www.irs.gov/businesses/small-businesses-self-employed/tax-calendar" target="_blank" rel="noopener">IRS Tax Calendar — Important Due Dates<span class="arr">↗</span></a></li>
+        </ul>
+      </div>
+
+      <div class="res-card">
+        <span class="res-no">№ 02</span>
+        <h3><em>California</em> state resources</h3>
+        <p>State-specific forms and look-up tools for California residents and businesses.</p>
+        <ul class="res-links">
+          <li><a href="https://www.ftb.ca.gov/forms/index.html" target="_blank" rel="noopener">California Franchise Tax Board — Forms<span class="arr">↗</span></a></li>
+          <li><a href="https://maps.cdtfa.ca.gov/withtac" target="_blank" rel="noopener">California Sales Tax Lookup Tool<span class="arr">↗</span></a></li>
+          <li><a href="https://www.ftb.ca.gov/help/contact/contact-us.html" target="_blank" rel="noopener">FTB Contact &amp; Help<span class="arr">↗</span></a></li>
+          <li><a href="https://www.edd.ca.gov/payroll_taxes/" target="_blank" rel="noopener">CA Employment Development (Payroll Taxes)<span class="arr">↗</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPORTANT DEADLINES -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="line"></span>Important deadlines</span>
+      <h2 class="section-h mt-md">Mark these <em class="kicker">on the calendar.</em></h2>
+    </div>
+
+    <div class="deadlines reveal">
+      <div class="dl-row">
+        <div class="dl-date">Jan 31</div>
+        <div class="dl-info">
+          <strong>W-2 &amp; 1099 Distribution Deadline</strong>
+          <span>Employers must send W-2 forms to employees and 1099 forms to contractors by this date. Also the deadline to file these forms with the IRS/SSA in most cases.</span>
+        </div>
+      </div>
+      <div class="dl-row">
+        <div class="dl-date">Mar 15</div>
+        <div class="dl-info">
+          <strong>Partnership &amp; S-Corp Returns Due</strong>
+          <span>Form 1065 (Partnerships) and Form 1120-S (S-Corporations) must be filed or extensions requested.</span>
+        </div>
+      </div>
+      <div class="dl-row">
+        <div class="dl-date">Apr 15</div>
+        <div class="dl-info">
+          <strong>Individual &amp; C-Corp Filing Deadline</strong>
+          <span>Individual income tax returns (Form 1040) and C-Corporation returns (Form 1120) are due — unless extended. Q1 estimated payments also due.</span>
+        </div>
+      </div>
+      <div class="dl-row">
+        <div class="dl-date">Jun 15</div>
+        <div class="dl-info">
+          <strong>Q2 Estimated Tax Payments</strong>
+          <span>Second quarter estimated tax payments due for individuals and businesses making quarterly payments.</span>
+        </div>
+      </div>
+      <div class="dl-row">
+        <div class="dl-date">Sep 15</div>
+        <div class="dl-info">
+          <strong>Q3 Estimates &amp; Partnership/S-Corp Extensions</strong>
+          <span>Third quarter estimated payments due. Extended partnership and S-Corp returns must be filed.</span>
+        </div>
+      </div>
+      <div class="dl-row">
+        <div class="dl-date">Oct 15</div>
+        <div class="dl-info">
+          <strong>Extended Individual Returns Due</strong>
+          <span>Final deadline for individuals who filed an extension in April. C-Corp extended returns also due.</span>
+        </div>
+      </div>
+      <div class="dl-row">
+        <div class="dl-date">Jan 15</div>
+        <div class="dl-info">
+          <strong>Q4 Estimated Tax Payments</strong>
+          <span>Fourth quarter estimated payments for the prior tax year. Closing the year cleanly so April isn't a surprise.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TAX TOOLS & CALCULATORS -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="line"></span>Tools &amp; calculators</span>
+      <h2 class="section-h mt-md">Free tools, <em class="kicker">straight from the IRS.</em></h2>
+      <p class="lede">Estimate withholding, calculate self-employment tax, look up sales tax, and track mileage deductions — using the official tools we trust.</p>
+    </div>
+
+    <div class="tools-grid reveal-stagger">
+      <div class="tool">
+        <span class="tn">№ 01</span>
+        <h4>IRS Withholding Estimator</h4>
+        <p>Check whether your current paycheck withholding is on track for the year. Adjust your W-4 before April surprises hit.</p>
+        <a href="https://www.irs.gov/individuals/tax-withholding-estimator" target="_blank" rel="noopener">Open tool ↗</a>
+      </div>
+      <div class="tool">
+        <span class="tn">№ 02</span>
+        <h4>Self-Employment Tax Calculator</h4>
+        <p>The IRS Self-Employed Individuals Tax Center — calculators, schedules, and worksheets for SE tax and estimated payments.</p>
+        <a href="https://www.irs.gov/businesses/small-businesses-self-employed/self-employed-individuals-tax-center" target="_blank" rel="noopener">Open tool ↗</a>
+      </div>
+      <div class="tool">
+        <span class="tn">№ 03</span>
+        <h4>California Sales Tax Lookup</h4>
+        <p>Find the correct sales tax rate for any California address — essential for accurate invoicing and compliance.</p>
+        <a href="https://maps.cdtfa.ca.gov/withtac" target="_blank" rel="noopener">Open tool ↗</a>
+      </div>
+      <div class="tool">
+        <span class="tn">№ 04</span>
+        <h4>Mileage &amp; Vehicle Deduction Guide</h4>
+        <p>IRS Publication 463 — the definitive guide to travel, gift, and car expense deductions for business owners.</p>
+        <a href="https://www.irs.gov/pub/irs-pdf/p463.pdf" target="_blank" rel="noopener">Open guide ↗</a>
+      </div>
+      <div class="tool">
+        <span class="tn">№ 05</span>
+        <h4>EIN Application (Online)</h4>
+        <p>Apply for your Employer Identification Number directly through the IRS — free and instant for most entity types.</p>
+        <a href="https://www.irs.gov/businesses/small-businesses-self-employed/apply-for-an-employer-identification-number-ein-online" target="_blank" rel="noopener">Apply ↗</a>
+      </div>
+      <div class="tool">
+        <span class="tn">№ 06</span>
+        <h4>IRS Small Business Tax Center</h4>
+        <p>The IRS hub for small business owners — forms, publications, due dates, and topic guides in one place.</p>
+        <a href="https://www.irs.gov/businesses/small-businesses-self-employed" target="_blank" rel="noopener">Open center ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOFU -->
+<section>
+  <div class="wrap reveal">
+    <div class="bofu">
+      <div class="bofu-inner">
+        <span class="eyebrow"><span class="dot"></span>Need help interpreting all this?</span>
+        <h2>Resources are great. <em>Strategy</em> is better.</h2>
+        <p class="lede">Bookmarks and calculators only get you so far. If you want a partner who'll actually plan your tax position, book a free consultation with Maya — and stop trying to figure it out alone.</p>
+        <div class="bofu-cta">
+          <a href="contact.html" class="btn btn-primary">Schedule a Consultation <span class="arrow">→</span></a>
+          <a href="taxes.html" class="btn btn-outline">Explore Tax Services</a>
+        </div>
+        <div class="bofu-line"><span class="ico">✦</span>Year-round strategy beats once-a-year filing.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand"><div class="brand" style="font-size:17px"><div class="brand-mark">M</div><div class="brand-name"><strong>MRG Accounting</strong><small>Service</small></div></div><p>Bookkeeping, taxes, payroll, business consulting, and administrative solutions for entrepreneurs and small business owners. Founded 2018 · San Diego, CA.</p></div>
+      <div class="foot-col"><h5>Services</h5><a href="bookkeeping.html">Bookkeeping</a><a href="taxes.html">Taxes</a><a href="payroll.html">Payroll</a><a href="business-consultant.html">Business Consultant</a><a href="administrative.html">Administrative</a></div>
+      <div class="foot-col"><h5>Resources</h5><a href="resources-taxes.html">Tax Resources</a><a href="founder.html">Meet the Founder</a><a href="contact.html">Contact</a></div>
+      <div class="foot-col"><h5>Connect</h5>
+        <a href="mailto:hello@mrgacct.com" style="padding:7px 0;display:block">hello@mrgacct.com</a>
+        <a href="tel:+16194547001" style="padding:7px 0;display:block">+1 (619) 454-7001</a>
+        <div style="font-size:13px;color:var(--text-3);padding:7px 0">San Diego, CA</div>
+        <div class="socials">
+          <a href="https://www.facebook.com/mayagraves" target="_blank" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.093 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.563V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg></a>
+          <a href="https://www.instagram.com/mrgacct143" target="_blank" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg></a>
+          <a href="https://www.linkedin.com/mayagraves" target="_blank" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 1 1 8.3 6.5a1.78 1.78 0 0 1-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0 0 13 14.19a.66.66 0 0 0 0 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 0 1 2.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom"><div>© 2026 MRG Accounting Service · All rights reserved.</div><div>Where numbers meet strategy.</div></div>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{if(window.scrollY>20)nav.classList.add('scrolled');else nav.classList.remove('scrolled')});
+const drawer=document.getElementById('drawer');document.getElementById('menuBtn').addEventListener('click',()=>drawer.classList.add('open'));document.getElementById('drawerClose').addEventListener('click',()=>drawer.classList.remove('open'));drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>drawer.classList.remove('open')));
+const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:0.12,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.reveal, .reveal-stagger').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

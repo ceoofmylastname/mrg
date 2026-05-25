@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>QuickBooks Payroll Services | MRG Accounting Service</title>
+<meta name="description" content="Your payroll partner — powered by QuickBooks Payroll. Setup, processing, direct deposit, tax filings, W-2s, and 1099s. Compliant. Accurate. Stress-free." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .lead-block{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+  @media (max-width:900px){.lead-block{grid-template-columns:1fr;gap:50px}}
+  .lead-block h2{font-size:clamp(34px,4.8vw,52px);font-weight:600;letter-spacing:-.03em;line-height:1.05;margin-bottom:24px}
+  .lead-block h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
+  .lead-block p{color:var(--text-2);font-size:16.5px;line-height:1.75;margin-bottom:18px}
+  .lead-block .firm{color:var(--ink);font-weight:600}
+
+  .editorial-visual{
+    aspect-ratio:5/6;border-radius:var(--radius-lg);
+    background:linear-gradient(180deg,#ffffff,#fbfaf6);
+    border:1px solid var(--line-strong);position:relative;overflow:hidden;
+    padding:50px 40px;display:flex;flex-direction:column;justify-content:space-between;
+  }
+  .editorial-visual::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 30% 30%,rgba(255,209,160,.45),transparent 60%)}
+  .ev-stamp{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-3);font-weight:600;position:relative;z-index:1}
+  .ev-big{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:clamp(62px,8vw,108px);line-height:.95;letter-spacing:-.035em;color:var(--ink);position:relative;z-index:1}
+  .ev-meta{position:relative;z-index:1;display:flex;flex-direction:column;gap:14px}
+  .ev-row{display:flex;justify-content:space-between;padding:14px 0;border-top:1px solid var(--line);font-size:13.5px;color:var(--text-2)}
+  .ev-row strong{color:var(--ink);font-weight:600}
+
+  /* Services */
+  .pay-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media (max-width:900px){.pay-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:560px){.pay-grid{grid-template-columns:1fr}}
+  .pay-card{
+    padding:36px 30px;border-radius:var(--radius);
+    background:linear-gradient(180deg,#ffffff,#fbfaf6);
+    border:1px solid var(--line-strong);transition:all .3s ease;
+    display:flex;flex-direction:column;gap:14px;
+  }
+  .pay-card:hover{transform:translateY(-5px);border-color:var(--line-bright)}
+  .pay-num{font-family:'Instrument Serif',serif;font-style:italic;color:var(--accent);font-size:14px}
+  .pay-card h3{font-size:19px;letter-spacing:-.015em;font-weight:600}
+  .pay-card p{font-size:14px;color:var(--text-2);line-height:1.65}
+
+  /* Timeline */
+  .timeline{max-width:780px;margin:0 auto;position:relative}
+  .timeline::before{content:"";position:absolute;left:28px;top:30px;bottom:30px;width:1px;background:linear-gradient(180deg,var(--accent),var(--line-bright),var(--accent))}
+  .tl-item{display:flex;gap:32px;align-items:flex-start;padding:24px 0;position:relative;z-index:1}
+  .tl-circ{flex-shrink:0;width:60px;text-align:center;font-family:'Instrument Serif',serif;font-style:italic;font-size:24px;font-weight:400;letter-spacing:-.02em;line-height:1;padding:14px 0;border-radius:50%;background:var(--black);border:1px solid var(--accent);color:var(--accent)}
+  .tl-body{padding-top:8px;flex:1}
+  .tl-body h4{font-size:18px;margin-bottom:8px;font-weight:600;letter-spacing:-.015em}
+  .tl-body p{font-size:14.5px;color:var(--text-2);line-height:1.65}
+
+  /* Sample summary */
+  .sample{
+    padding:48px;border-radius:var(--radius-lg);
+    background:linear-gradient(180deg,#ffffff,#fbfaf6);
+    border:1px solid var(--line-strong);
+  }
+  .sample-title{font-size:12px;text-transform:uppercase;letter-spacing:.2em;color:var(--text-3);font-weight:600;margin-bottom:24px}
+  .sample-row{display:flex;justify-content:space-between;padding:16px 0;border-top:1px solid var(--line);font-size:15px}
+  .sample-row span:last-child{font-weight:600;color:var(--ink);font-family:'Instrument Serif',serif;font-style:italic;font-size:18px}
+  .sample-row.final span:last-child{color:var(--accent)}
+  .sample-status{margin-top:24px;padding:14px 18px;border-radius:14px;background:#ffffff;border:1px solid var(--line-strong);display:flex;justify-content:space-between;align-items:center;font-size:13px}
+  .sample-status .pill{padding:5px 12px;border-radius:999px;background:#1e9e60;color:#fff;font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;box-shadow:0 4px 14px -4px rgba(30,158,96,.45)}
+</style>
+</head>
+<body>
+
+<div class="ambient"><div class="glow glow-1"></div><div class="glow glow-2"></div><div class="glow glow-3"></div></div>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="brand"><div class="brand-mark">M</div><div class="brand-name"><strong>MRG Accounting</strong><small>Service</small></div></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="founder.html">Founder</a>
+    <a href="bookkeeping.html">Bookkeeping</a>
+    <a href="taxes.html">Taxes</a>
+    <a href="payroll.html" class="active">Payroll</a>
+    <a href="business-consultant.html">Consultant</a>
+    <a href="administrative.html">Admin</a>
+  </div>
+  <a href="contact.html" class="nav-cta">Book a Call</a>
+  <button class="menu-btn" id="menuBtn" aria-label="Menu"><span></span></button>
+</nav>
+
+<div class="drawer" id="drawer">
+  <button class="drawer-close" id="drawerClose" aria-label="Close">✕</button>
+  <a href="index.html">Home</a><a href="founder.html">Meet the Founder</a><a href="bookkeeping.html">Bookkeeping</a><a href="taxes.html">Taxes</a><a href="resources-taxes.html">Resources Taxes</a><a href="payroll.html">Payroll</a><a href="business-consultant.html">Business Consultant</a><a href="administrative.html">Administrative</a><a href="contact.html">Contact Us</a>
+</div>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="wrap reveal">
+    <span class="eyebrow"><span class="dot"></span>QuickBooks Payroll · Powered by Expertise</span>
+    <h1>Your payroll partner. <em>Powered by QuickBooks. Backed by expertise.</em></h1>
+    <p class="lede">We make payroll simple, accurate, and stress-free. From setup and processing to direct deposit and tax filings, we handle the details so you can focus on running your business with confidence.</p>
+    <div class="cta-row">
+      <a href="contact.html" class="btn btn-primary">Start Payroll Setup <span class="arrow">→</span></a>
+      <a href="#services" class="btn btn-outline">See What's Included</a>
+    </div>
+  </div>
+</section>
+
+<!-- LEAD -->
+<section style="padding-top:40px">
+  <div class="wrap">
+    <div class="lead-block reveal">
+      <div>
+        <span class="eyebrow"><span class="line"></span>QuickBooks Payroll Solutions</span>
+        <h2 class="mt-md">Payroll that runs <em>on time, every time.</em></h2>
+        <p>At <span class="firm">MRG Accounting Service</span>, we make payroll simple, accurate, and stress-free. We specialize in providing payroll solutions tailored to small and growing businesses, using QuickBooks Payroll to ensure your employees are paid on time and your tax filings are always compliant.</p>
+        <p>From setup to processing to reporting, we handle the details so you can focus on running your business with confidence — not chasing payroll deadlines on a Sunday night.</p>
+      </div>
+      <div class="editorial-visual">
+        <div class="ev-stamp">№ 03 · Always compliant</div>
+        <div class="ev-big">On<br/>time.<br/><em>Every</em><br/>time.</div>
+        <div class="ev-meta">
+          <div class="ev-row"><span>Platform</span><strong>QuickBooks Payroll</strong></div>
+          <div class="ev-row"><span>Schedules</span><strong>Weekly · Biweekly · Monthly</strong></div>
+          <div class="ev-row"><span>Filings</span><strong>Federal &amp; State, automated</strong></div>
+          <div class="ev-row"><span>Year-end</span><strong>W-2s &amp; 1099s included</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAYROLL SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="line"></span>Payroll services</span>
+      <h2 class="section-h mt-md">We take care of <em class="kicker">the details.</em></h2>
+      <p class="lede">So you can focus on your business — not the IRS, not the state agency, not the next pay run.</p>
+    </div>
+
+    <div class="pay-grid reveal-stagger">
+      <div class="pay-card">
+        <span class="pay-num">№ 01</span>
+        <h3>QuickBooks Payroll Setup &amp; Optimization</h3>
+        <p>Fresh setup, migration from another platform, or repair of an existing file. Configured correctly so every future pay run is clean.</p>
+      </div>
+      <div class="pay-card">
+        <span class="pay-num">№ 02</span>
+        <h3>Weekly, Biweekly, or Monthly Processing</h3>
+        <p>Whatever cadence fits your business — payroll runs on the schedule that works for your team and cash flow.</p>
+      </div>
+      <div class="pay-card">
+        <span class="pay-num">№ 03</span>
+        <h3>Direct Deposit for Employees</h3>
+        <p>Funds hit on the dot. Paper checks available if you need them. Pay stubs accessible to your team digitally.</p>
+      </div>
+      <div class="pay-card">
+        <span class="pay-num">№ 04</span>
+        <h3>Federal &amp; State Tax Filings</h3>
+        <p>941s, 940s, state withholding, SUI, FUTA — calculated, deposited, and filed automatically. No missed deadlines, no IRS love letters.</p>
+      </div>
+      <div class="pay-card">
+        <span class="pay-num">№ 05</span>
+        <h3>Year-End W-2s &amp; 1099s</h3>
+        <p>Year-end forms prepared, filed with the SSA and IRS, and delivered to your employees and contractors on time.</p>
+      </div>
+      <div class="pay-card">
+        <span class="pay-num">№ 06</span>
+        <h3>Compliance Monitoring</h3>
+        <p>Tax tables stay current. Multi-state employees handled correctly. Notices intercepted and resolved before they become problems.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section>
+  <div class="wrap-narrow">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="line"></span>How it works</span>
+      <h2 class="section-h mt-md">From setup to <em class="kicker">first paycheck.</em></h2>
+    </div>
+
+    <div class="timeline reveal-stagger">
+      <div class="tl-item">
+        <div class="tl-circ">i.</div>
+        <div class="tl-body">
+          <h4>Setup Call (Day 1)</h4>
+          <p>We gather employee info, pay rates, schedules, benefits, and state requirements. You hand over what you have — we ask the right questions to fill in the rest.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-circ">ii.</div>
+        <div class="tl-body">
+          <h4>System Configuration (Day 1–3)</h4>
+          <p>QuickBooks Payroll configured. EIN and state withholding accounts confirmed. Direct deposit verified. Tax tables loaded for every state you operate in.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-circ">iii.</div>
+        <div class="tl-body">
+          <h4>First Run (Day 5–7)</h4>
+          <p>Test run reviewed with you. Once approved, your team gets paid on schedule — every cycle going forward.</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-circ">iv.</div>
+        <div class="tl-body">
+          <h4>Ongoing Management</h4>
+          <p>You submit hours (or we pull them automatically). We process, file, deposit, and confirm. You get a summary every run. That's it.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SAMPLE SUMMARY -->
+<section>
+  <div class="wrap">
+    <div class="lead-block reveal">
+      <div>
+        <span class="eyebrow"><span class="line"></span>What you'll see</span>
+        <h2 class="mt-md">A clean payroll <em>summary,</em> every run.</h2>
+        <p>After every payroll run, you receive a clear summary showing exactly what was paid, what was withheld, and what was filed. No spreadsheets to decipher, no surprise tax bills, no end-of-quarter scrambles.</p>
+        <p>Everything is logged, archived, and accessible through your secure client portal whenever you need it.</p>
+      </div>
+      <div class="sample">
+        <div class="sample-title">Sample Payroll Summary · 14 Employees</div>
+        <div class="sample-row"><span>Total Gross Pay</span><span>$48,920</span></div>
+        <div class="sample-row"><span>Federal Withholding</span><span>$8,124</span></div>
+        <div class="sample-row"><span>State Withholding</span><span>$2,103</span></div>
+        <div class="sample-row"><span>FICA &amp; Medicare</span><span>$3,742</span></div>
+        <div class="sample-row final"><span>Net Direct Deposits</span><span>$34,951</span></div>
+        <div class="sample-status">
+          <span>All filings submitted to federal &amp; state</span>
+          <span class="pill">✓ Complete</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section style="padding-top:0">
+  <div class="wrap reveal">
+    <div class="stats-strip">
+      <div class="stat"><span class="num">100%</span><span class="lbl">On-time payroll record</span></div>
+      <div class="stat"><span class="num">50</span><span class="lbl">States supported</span></div>
+      <div class="stat"><span class="num">QB</span><span class="lbl">QuickBooks ProAdvisor</span></div>
+      <div class="stat"><span class="num">0</span><span class="lbl">Missed filings, ever</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOFU -->
+<section>
+  <div class="wrap reveal">
+    <div class="bofu">
+      <div class="bofu-inner">
+        <span class="eyebrow"><span class="dot"></span>Free payroll setup consult</span>
+        <h2>Done wrestling <em>payroll software?</em></h2>
+        <p class="lede">Tell us how many employees, what states, and what platform you're on. We'll quote you a flat monthly fee and migrate everything over. Most clients are running cleaner in under two weeks.</p>
+        <div class="bofu-cta">
+          <a href="contact.html" class="btn btn-primary">Get a Free Quote <span class="arrow">→</span></a>
+          <a href="contact.html" class="btn btn-outline">Talk to Maya</a>
+        </div>
+        <div class="bofu-line"><span class="ico">✦</span>We handle the migration. Zero interruption.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand"><div class="brand" style="font-size:17px"><div class="brand-mark">M</div><div class="brand-name"><strong>MRG Accounting</strong><small>Service</small></div></div><p>Bookkeeping, taxes, payroll, business consulting, and administrative solutions for entrepreneurs and small business owners. Founded 2018 · San Diego, CA.</p></div>
+      <div class="foot-col"><h5>Services</h5><a href="bookkeeping.html">Bookkeeping</a><a href="taxes.html">Taxes</a><a href="payroll.html">Payroll</a><a href="business-consultant.html">Business Consultant</a><a href="administrative.html">Administrative</a></div>
+      <div class="foot-col"><h5>Resources</h5><a href="resources-taxes.html">Tax Resources</a><a href="founder.html">Meet the Founder</a><a href="contact.html">Contact</a></div>
+      <div class="foot-col"><h5>Connect</h5>
+        <a href="mailto:hello@mrgacct.com" style="padding:7px 0;display:block">hello@mrgacct.com</a>
+        <a href="tel:+16194547001" style="padding:7px 0;display:block">+1 (619) 454-7001</a>
+        <div style="font-size:13px;color:var(--text-3);padding:7px 0">San Diego, CA</div>
+        <div class="socials">
+          <a href="https://www.facebook.com/mayagraves" target="_blank" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.093 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.563V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg></a>
+          <a href="https://www.instagram.com/mrgacct143" target="_blank" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg></a>
+          <a href="https://www.linkedin.com/mayagraves" target="_blank" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 1 1 8.3 6.5a1.78 1.78 0 0 1-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0 0 13 14.19a.66.66 0 0 0 0 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 0 1 2.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom"><div>© 2026 MRG Accounting Service · All rights reserved.</div><div>Where numbers meet strategy.</div></div>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{if(window.scrollY>20)nav.classList.add('scrolled');else nav.classList.remove('scrolled')});
+const drawer=document.getElementById('drawer');document.getElementById('menuBtn').addEventListener('click',()=>drawer.classList.add('open'));document.getElementById('drawerClose').addEventListener('click',()=>drawer.classList.remove('open'));drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>drawer.classList.remove('open')));
+const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:0.12,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.reveal, .reveal-stagger').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

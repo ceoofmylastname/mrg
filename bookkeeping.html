@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bookkeeping Services | MRG Accounting Service</title>
+<meta name="description" content="Expert accounting services for your small business. Monthly bookkeeping, bank reconciliation, A/P and A/R, financial reporting, and clean-up services in San Diego and nationwide." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .lead-block{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+  @media (max-width:900px){.lead-block{grid-template-columns:1fr;gap:50px}}
+  .lead-block h2{font-size:clamp(34px,4.8vw,52px);font-weight:600;letter-spacing:-.03em;line-height:1.05;margin-bottom:24px}
+  .lead-block h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
+  .lead-block p{color:var(--text-2);font-size:16.5px;line-height:1.75;margin-bottom:18px}
+  .lead-block .firm{color:var(--ink);font-weight:600}
+
+  .editorial-visual{
+    aspect-ratio:5/6;border-radius:var(--radius-lg);
+    background:linear-gradient(180deg,#ffffff,#fbfaf6);
+    border:1px solid var(--line-strong);position:relative;overflow:hidden;
+    padding:50px 40px;display:flex;flex-direction:column;justify-content:space-between;
+  }
+  .editorial-visual::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse at 30% 30%,rgba(255,209,160,.45),transparent 60%);
+  }
+  .ev-stamp{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-3);font-weight:600;position:relative;z-index:1}
+  .ev-big{
+    font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+    font-size:clamp(62px,8vw,108px);line-height:.95;letter-spacing:-.035em;
+    color:var(--ink);position:relative;z-index:1;
+  }
+  .ev-meta{position:relative;z-index:1;display:flex;flex-direction:column;gap:14px}
+  .ev-row{display:flex;justify-content:space-between;padding:14px 0;border-top:1px solid var(--line);font-size:13.5px;color:var(--text-2)}
+  .ev-row strong{color:var(--ink);font-weight:600}
+
+  /* Services grid */
+  .svcs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  @media (max-width:780px){.svcs-grid{grid-template-columns:1fr}}
+  .svc{
+    padding:40px 36px;border-radius:var(--radius-lg);
+    background:linear-gradient(180deg,#ffffff,#fbfaf6);
+    border:1px solid var(--line-strong);transition:all .4s ease;
+    position:relative;overflow:hidden;
+  }
+  .svc:hover{transform:translateY(-5px);border-color:var(--line-bright);background:linear-gradient(180deg,#ffffff,#fbf8f0)}
+  .svc-no{font-family:'Instrument Serif',serif;font-style:italic;color:var(--accent);font-size:14px;margin-bottom:24px;display:block}
+  .svc h3{font-size:24px;margin-bottom:12px;letter-spacing:-.02em;font-weight:600}
+  .svc h3 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
+  .svc > p{color:var(--text-2);font-size:14.5px;line-height:1.7;margin-bottom:20px}
+  .svc-bullets{list-style:none;padding-top:18px;border-top:1px solid var(--line)}
+  .svc-bullets li{display:flex;gap:10px;font-size:14px;color:var(--text-2);padding:8px 0;line-height:1.55}
+  .svc-bullets li::before{content:"";width:14px;height:1px;background:var(--accent);margin-top:11px;flex-shrink:0}
+
+  /* Compare */
+  .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media (max-width:780px){.compare-grid{grid-template-columns:1fr}}
+  .cmp{
+    padding:36px;border-radius:var(--radius-lg);
+    background:linear-gradient(180deg,#ffffff,#fbfaf6);
+    border:1px solid var(--line-strong);
+  }
+  .cmp h4{font-size:18px;margin-bottom:18px;letter-spacing:-.015em;font-weight:600;display:flex;align-items:center;gap:10px}
+  .cmp .pill{font-size:10.5px;font-weight:700;letter-spacing:.15em;padding:4px 10px;border-radius:999px;text-transform:uppercase}
+  .cmp.bad .pill{background:#ffffff;border:1px solid var(--line-strong);color:var(--text-3)}
+  .cmp.good .pill{background:#1e9e60;color:#fff;box-shadow:0 4px 14px -4px rgba(30,158,96,.45)}
+  .cmp ul{list-style:none}
+  .cmp ul li{display:flex;align-items:flex-start;gap:12px;padding:10px 0;font-size:14.5px;color:var(--text-2);line-height:1.55}
+  .cmp.bad ul li::before{content:"–";color:var(--text-4);font-weight:700;font-size:18px;line-height:1}
+  .cmp.good ul li::before{content:"✓";color:var(--accent);font-weight:700;font-size:14px;line-height:1.5}
+</style>
+</head>
+<body>
+
+<div class="ambient"><div class="glow glow-1"></div><div class="glow glow-2"></div><div class="glow glow-3"></div></div>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="brand"><div class="brand-mark">M</div><div class="brand-name"><strong>MRG Accounting</strong><small>Service</small></div></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="founder.html">Founder</a>
+    <a href="bookkeeping.html" class="active">Bookkeeping</a>
+    <a href="taxes.html">Taxes</a>
+    <a href="payroll.html">Payroll</a>
+    <a href="business-consultant.html">Consultant</a>
+    <a href="administrative.html">Admin</a>
+  </div>
+  <a href="contact.html" class="nav-cta">Book a Call</a>
+  <button class="menu-btn" id="menuBtn" aria-label="Menu"><span></span></button>
+</nav>
+
+<div class="drawer" id="drawer">
+  <button class="drawer-close" id="drawerClose" aria-label="Close">✕</button>
+  <a href="index.html">Home</a><a href="founder.html">Meet the Founder</a><a href="bookkeeping.html">Bookkeeping</a><a href="taxes.html">Taxes</a><a href="resources-taxes.html">Resources Taxes</a><a href="payroll.html">Payroll</a><a href="business-consultant.html">Business Consultant</a><a href="administrative.html">Administrative</a><a href="contact.html">Contact Us</a>
+</div>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="wrap reveal">
+    <span class="eyebrow"><span class="dot"></span>Bookkeeping · Expert Accounting Services</span>
+    <h1>Books that give you <em>peace of mind</em> and clear financial visibility.</h1>
+    <p class="lede">Running a business is challenging enough — keeping your books in order shouldn't add to the stress. We provide reliable, accurate, audit-ready bookkeeping that keeps you compliant, prevents costly mistakes, and gives you the insight to make confident decisions.</p>
+    <div class="cta-row">
+      <a href="contact.html" class="btn btn-primary">Get a Free Bookkeeping Review <span class="arrow">→</span></a>
+      <a href="#services" class="btn btn-outline">See What's Included</a>
+    </div>
+  </div>
+</section>
+
+<!-- WELCOME / INTRO -->
+<section style="padding-top:40px">
+  <div class="wrap">
+    <div class="lead-block reveal">
+      <div>
+        <span class="eyebrow"><span class="line"></span>Welcome to MRG</span>
+        <h2 class="mt-md">Accurate books are <em>the foundation</em> of every smart decision.</h2>
+        <p>Running a business is challenging enough — keeping your books in order shouldn't add to the stress. At <span class="firm">MRG Accounting Service</span>, we provide reliable bookkeeping solutions that give you peace of mind and clear financial visibility.</p>
+        <p>Accurate bookkeeping keeps your business compliant, helps you avoid costly mistakes, and provides the insights you need to make confident decisions. With MRG, you'll always know where your money is going and how your business is performing.</p>
+      </div>
+      <div class="editorial-visual">
+        <div class="ev-stamp">№ 01 · The discipline</div>
+        <div class="ev-big">Clean<br/>books.<br/><em>Clear</em><br/>mind.</div>
+        <div class="ev-meta">
+          <div class="ev-row"><span>Reconciliation</span><strong>Monthly</strong></div>
+          <div class="ev-row"><span>Reports</span><strong>P&amp;L · BS · Cash Flow</strong></div>
+          <div class="ev-row"><span>Software</span><strong>QuickBooks</strong></div>
+          <div class="ev-row"><span>Turnaround</span><strong>10 business days</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE OFFER -->
+<section id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="line"></span>What we offer</span>
+      <h2 class="section-h mt-md">Every piece of the <em class="kicker">bookkeeping puzzle.</em></h2>
+      <p class="lede">From monthly reconciliations to year-end clean-up, we handle the full scope so your records are accurate, compliant, and decision-ready.</p>
+    </div>
+
+    <div class="svcs-grid reveal-stagger">
+      <div class="svc">
+        <span class="svc-no">№ 01</span>
+        <h3>Monthly <em>Bookkeeping</em></h3>
+        <p>Organized, up-to-date financial records every single month. Every transaction categorized correctly so your books reflect reality — not guesswork. You'll always know what's coming in, going out, and what it means.</p>
+        <ul class="svc-bullets">
+          <li>Categorization of every transaction across all accounts</li>
+          <li>Monthly closing within 10 business days of month-end</li>
+          <li>Custom chart of accounts tailored to your business</li>
+          <li>Secure digital document storage and audit trail</li>
+        </ul>
+      </div>
+
+      <div class="svc">
+        <span class="svc-no">№ 02</span>
+        <h3>Bank &amp; Credit Card <em>Reconciliation</em></h3>
+        <p>Every bank account, credit card, and merchant account reconciled to the dollar — every month. Catch discrepancies early before they snowball into expensive surprises or audit risks.</p>
+        <ul class="svc-bullets">
+          <li>Multi-account reconciliation across business and credit</li>
+          <li>Discrepancy investigation and resolution</li>
+          <li>Merchant account and processor reconciliation</li>
+          <li>Documented reconciliation reports for your records</li>
+        </ul>
+      </div>
+
+      <div class="svc">
+        <span class="svc-no">№ 03</span>
+        <h3>Accounts Payable &amp; <em>Receivable</em></h3>
+        <p>Stay on top of every bill that's due and every dollar you're owed. We manage the cycle so vendors get paid on time, customers are invoiced promptly, and your cash flow stays healthy.</p>
+        <ul class="svc-bullets">
+          <li>Vendor bill tracking, approval, and payment scheduling</li>
+          <li>Customer invoicing, follow-ups, and aging reports</li>
+          <li>Cash flow visibility across receivables and payables</li>
+          <li>1099 contractor tracking and year-end preparation</li>
+        </ul>
+      </div>
+
+      <div class="svc">
+        <span class="svc-no">№ 04</span>
+        <h3>Financial <em>Reporting</em></h3>
+        <p>Easy-to-read financial statements that actually help you understand your business health. No jargon, no confusion — just clarity on what's working, what isn't, and where the opportunities are.</p>
+        <ul class="svc-bullets">
+          <li>Monthly Profit &amp; Loss, Balance Sheet, Cash Flow</li>
+          <li>Custom KPI dashboards built around your business</li>
+          <li>Comparative analysis (month-over-month, year-over-year)</li>
+          <li>Plain-English explanations of what the numbers mean</li>
+        </ul>
+      </div>
+
+      <div class="svc">
+        <span class="svc-no">№ 05</span>
+        <h3>Clean-Up &amp; <em>Catch-Up</em></h3>
+        <p>Books behind? It happens. We specialize in getting messy or neglected records back on track — no judgment, just results. Once clean, we'll keep you on a monthly system so it never happens again.</p>
+        <ul class="svc-bullets">
+          <li>Multi-year catch-up bookkeeping and rebuilds</li>
+          <li>QuickBooks file cleanup and chart of accounts repair</li>
+          <li>Historical reconciliation and missing transaction recovery</li>
+          <li>Ongoing monthly system to prevent future backlogs</li>
+        </ul>
+      </div>
+
+      <div class="svc">
+        <span class="svc-no">№ 06</span>
+        <h3>QuickBooks <em>Setup &amp; Training</em></h3>
+        <p>Whether you're starting fresh or rescuing a broken file, we handle the technical side. Proper setup now saves thousands in cleanup costs later — and gives your team the tools to stay organized.</p>
+        <ul class="svc-bullets">
+          <li>QuickBooks Online setup and migration from other systems</li>
+          <li>Custom chart of accounts and class tracking</li>
+          <li>Integration with banks, payroll, and POS systems</li>
+          <li>Optional training for your team or in-house bookkeeper</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="line"></span>The transformation</span>
+      <h2 class="section-h mt-md">From financial fog<br/>to <em class="kicker">complete clarity.</em></h2>
+    </div>
+
+    <div class="compare-grid reveal">
+      <div class="cmp bad">
+        <h4>Before MRG <span class="pill">Common reality</span></h4>
+        <ul>
+          <li>Books months (or years) behind, no clear picture</li>
+          <li>Mystery transactions and "miscellaneous" eating deductions</li>
+          <li>No idea what your actual profit margin is</li>
+          <li>Constant stress about audits, mistakes, or missed bills</li>
+          <li>CPA charges premium fees to make sense of messy records</li>
+          <li>Bank loan applications declined for sketchy financials</li>
+        </ul>
+      </div>
+      <div class="cmp good">
+        <h4>With MRG <span class="pill">Where you belong</span></h4>
+        <ul>
+          <li>Books closed within 10 business days of every month-end</li>
+          <li>Every transaction categorized for maximum legal deductions</li>
+          <li>Clear visibility into margins, cash flow, and KPIs</li>
+          <li>Confidence that audits become formalities — not crises</li>
+          <li>Year-round tax planning, not seasonal scrambling</li>
+          <li>Clean financials that win loans and impress investors</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section style="padding-top:0">
+  <div class="wrap reveal">
+    <div class="stats-strip">
+      <div class="stat"><span class="num">22+</span><span class="lbl">Years of expertise</span></div>
+      <div class="stat"><span class="num">10 days</span><span class="lbl">Monthly close turnaround</span></div>
+      <div class="stat"><span class="num">100%</span><span class="lbl">Reconciliation accuracy</span></div>
+      <div class="stat"><span class="num">1:1</span><span class="lbl">Direct access to Maya</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOFU -->
+<section>
+  <div class="wrap reveal">
+    <div class="bofu">
+      <div class="bofu-inner">
+        <span class="eyebrow"><span class="dot"></span>Free bookkeeping review</span>
+        <h2>Let us look at your <em>current books.</em></h2>
+        <p class="lede">Send us your QuickBooks file or summary. We'll spend 30 minutes finding what's working, what's broken, and what we'd fix first. Free, confidential, and honest.</p>
+        <div class="bofu-cta">
+          <a href="contact.html" class="btn btn-primary">Book Your Free Review <span class="arrow">→</span></a>
+          <a href="contact.html" class="btn btn-outline">Send a Message</a>
+        </div>
+        <div class="bofu-line"><span class="ico">✦</span>No pressure. No upsell. Real feedback.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand"><div class="brand" style="font-size:17px"><div class="brand-mark">M</div><div class="brand-name"><strong>MRG Accounting</strong><small>Service</small></div></div><p>Bookkeeping, taxes, payroll, business consulting, and administrative solutions for entrepreneurs and small business owners. Founded 2018 · San Diego, CA.</p></div>
+      <div class="foot-col"><h5>Services</h5><a href="bookkeeping.html">Bookkeeping</a><a href="taxes.html">Taxes</a><a href="payroll.html">Payroll</a><a href="business-consultant.html">Business Consultant</a><a href="administrative.html">Administrative</a></div>
+      <div class="foot-col"><h5>Resources</h5><a href="resources-taxes.html">Tax Resources</a><a href="founder.html">Meet the Founder</a><a href="contact.html">Contact</a></div>
+      <div class="foot-col"><h5>Connect</h5>
+        <a href="mailto:hello@mrgacct.com" style="padding:7px 0;display:block">hello@mrgacct.com</a>
+        <a href="tel:+16194547001" style="padding:7px 0;display:block">+1 (619) 454-7001</a>
+        <div style="font-size:13px;color:var(--text-3);padding:7px 0">San Diego, CA</div>
+        <div class="socials">
+          <a href="https://www.facebook.com/mayagraves" target="_blank" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.093 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.563V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg></a>
+          <a href="https://www.instagram.com/mrgacct143" target="_blank" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg></a>
+          <a href="https://www.linkedin.com/mayagraves" target="_blank" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 1 1 8.3 6.5a1.78 1.78 0 0 1-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0 0 13 14.19a.66.66 0 0 0 0 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 0 1 2.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom"><div>© 2026 MRG Accounting Service · All rights reserved.</div><div>Where numbers meet strategy.</div></div>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{if(window.scrollY>20)nav.classList.add('scrolled');else nav.classList.remove('scrolled')});
+const drawer=document.getElementById('drawer');document.getElementById('menuBtn').addEventListener('click',()=>drawer.classList.add('open'));document.getElementById('drawerClose').addEventListener('click',()=>drawer.classList.remove('open'));drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>drawer.classList.remove('open')));
+const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:0.12,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.reveal, .reveal-stagger').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

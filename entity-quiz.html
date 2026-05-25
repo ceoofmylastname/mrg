@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>LLC, S-Corp, or C-Corp? — Free Entity Quiz | MRG Accounting Service</title>
+<meta name="description" content="A free 2-minute quiz built by a 22-year CPA. Get your personalized entity recommendation — Sole Prop, LLC, S-Corp, or C-Corp — with the actual tax math behind it." />
+<meta property="og:title" content="Should you be an LLC, S-Corp, or C-Corp?" />
+<meta property="og:description" content="A 2-minute quiz from a CPA. Personalized recommendation + tax math behind it." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<style>
+/* ============================================================
+   ENTITY QUIZ — page-specific styles
+   ============================================================ */
+.quiz-main{padding:160px 0 100px;min-height:calc(100vh - 80px);position:relative}
+@media (max-width:780px){.quiz-main{padding:130px 0 60px}}
+
+/* Screen system */
+.screen{display:none}
+.screen.active{display:block;animation:screenIn .55s cubic-bezier(.2,.8,.2,1) both}
+@keyframes screenIn{
+  from{opacity:0;transform:translateY(24px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ----- LANDING ----- */
+.landing-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:80px;align-items:center}
+@media (max-width:1000px){.landing-grid{grid-template-columns:1fr;gap:50px}}
+.landing-grid h1{margin:32px 0 0}
+.landing-grid .lede{margin:32px 0 0;font-size:19px;max-width:600px}
+.landing-grid .btn{margin-top:40px}
+
+.trust-strip{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  margin-top:48px;padding-top:32px;
+  border-top:1px solid var(--line);
+}
+@media (max-width:600px){.trust-strip{grid-template-columns:repeat(2,1fr);gap:24px}}
+.trust-strip > div{display:flex;flex-direction:column;gap:4px}
+.trust-strip strong{
+  font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+  font-size:28px;line-height:1;letter-spacing:-.02em;color:var(--ink);
+}
+.trust-strip span{font-size:11px;color:var(--text-3);text-transform:uppercase;letter-spacing:.16em;font-weight:600}
+
+/* Landing preview mockup card */
+.landing-visual{position:relative;height:620px}
+.preview-frame{
+  position:absolute;top:0;right:0;width:100%;
+  border-radius:var(--radius-lg);
+  background:linear-gradient(160deg,#ffffff 0%,#fbfaf6 100%);
+  border:1px solid var(--hairline-white);
+  outline:1px solid var(--line);
+  aspect-ratio:4/5;overflow:hidden;
+  box-shadow:var(--shadow-2), var(--inset-hi);
+  padding:50px 42px;display:flex;flex-direction:column;gap:18px;
+  animation:floatGentle 9s ease-in-out infinite;
+}
+.preview-frame::before{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(60% 50% at 20% 0%, var(--spot-cream), transparent 60%),
+    radial-gradient(50% 50% at 100% 100%, var(--spot-rose), transparent 60%);
+  opacity:.5;filter:blur(20px);pointer-events:none;
+}
+.preview-frame > *{position:relative;z-index:1}
+@keyframes floatGentle{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.preview-stamp{
+  align-self:flex-start;display:inline-flex;align-items:center;gap:8px;
+  padding:6px 12px;border-radius:999px;
+  background:rgba(255,255,255,.8);border:1px solid var(--line-strong);
+  font-size:10.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--text-2);
+}
+.preview-label{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--text-3);font-weight:600;margin-top:8px}
+.preview-h{
+  font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+  font-size:clamp(54px,7vw,84px);line-height:.92;letter-spacing:-.03em;color:var(--ink);
+}
+.preview-meta{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:18px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.preview-meta div{font-size:12.5px;color:var(--text-2)}
+.preview-meta div strong{display:block;color:var(--ink);font-weight:600;font-size:14px;margin-bottom:4px;letter-spacing:-.005em}
+.preview-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:auto}
+.preview-list li{display:flex;align-items:flex-start;gap:12px;font-size:13.5px;color:var(--text-2);line-height:1.5}
+.preview-list li::before{content:"";flex-shrink:0;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-top:7px;box-shadow:0 0 0 3px rgba(181,137,58,.15)}
+
+.preview-chip{
+  position:absolute;top:30px;right:-28px;
+  display:inline-flex;align-items:center;gap:10px;
+  padding:12px 18px;border-radius:999px;background:#fff;
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-1), var(--inset-hi);
+  font-size:12px;font-weight:600;color:var(--ink);letter-spacing:-.005em;
+  animation:floatGentle 8s ease-in-out infinite;animation-delay:-2s;
+  z-index:3;
+}
+.preview-chip .pulse{width:8px;height:8px;border-radius:50%;background:#1e9e60;box-shadow:0 0 0 4px rgba(30,158,96,.18);animation:pulseDot 2s ease-in-out infinite}
+@keyframes pulseDot{0%,100%{box-shadow:0 0 0 4px rgba(30,158,96,.18)}50%{box-shadow:0 0 0 8px rgba(30,158,96,.08)}}
+@media (max-width:1000px){.landing-visual{height:560px;max-width:460px;margin:0 auto}.preview-chip{right:0}}
+
+/* ----- QUIZ ----- */
+.quiz-shell{position:relative}
+.progress{
+  position:relative;height:6px;border-radius:999px;
+  background:rgba(15,15,20,.06);
+  margin-bottom:48px;overflow:hidden;
+  box-shadow:inset 0 1px 2px rgba(15,15,20,.05);
+}
+.progress-bar{
+  position:absolute;inset:0 auto 0 0;width:20%;height:100%;border-radius:999px;
+  background:linear-gradient(90deg,var(--accent) 0%,#d4a85a 100%);
+  transition:width .55s cubic-bezier(.2,.8,.2,1);
+  box-shadow:0 0 12px rgba(181,137,58,.45);
+}
+.progress-meta{display:flex;justify-content:space-between;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-3);font-weight:600;margin-bottom:18px}
+
+.q-content{position:relative;min-height:520px}
+.q-card{
+  padding:56px 48px;border-radius:var(--radius-xl);
+  background:linear-gradient(180deg,#ffffff,#fbfaf6);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-2), var(--inset-hi);
+  position:relative;overflow:hidden;
+  animation:qIn .35s cubic-bezier(.2,.8,.2,1) both;
+}
+@media (max-width:780px){.q-card{padding:36px 24px;border-radius:var(--radius-lg)}}
+.q-card.leaving{animation:qOut .2s ease both}
+.q-card::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(80% 60% at 50% 0%, var(--spot-cream), transparent 60%);
+  opacity:.45;pointer-events:none;
+}
+.q-card > *{position:relative;z-index:1}
+@keyframes qIn{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+@keyframes qOut{
+  to{opacity:0;transform:translateY(-20px)}
+}
+.q-num{
+  font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+  font-size:42px;color:var(--accent);line-height:1;letter-spacing:-.03em;
+  display:block;margin-bottom:18px;
+}
+.q-title{
+  font-size:clamp(28px,3.6vw,42px);font-weight:600;line-height:1.1;
+  letter-spacing:-.025em;color:var(--ink);margin-bottom:14px;
+}
+.q-title em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--accent-2)}
+.q-helper{color:var(--text-2);font-size:15px;line-height:1.6;margin-bottom:36px;max-width:600px}
+
+.opts{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:36px}
+@media (max-width:780px){.opts{grid-template-columns:1fr}}
+.opts.opts-3{grid-template-columns:repeat(3,1fr)}
+@media (max-width:900px){.opts.opts-3{grid-template-columns:1fr}}
+
+.opt{
+  display:flex;flex-direction:column;align-items:flex-start;text-align:left;
+  padding:24px 26px;border-radius:18px;
+  background:#fff;border:1px solid var(--line-strong);
+  transition:transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s ease, border-color .15s ease, background .15s ease;
+  position:relative;overflow:hidden;
+  box-shadow:var(--shadow-soft), var(--inset-hi);
+  cursor:pointer;width:100%;
+}
+.opt:hover{transform:translateY(-3px) scale(1.015);border-color:var(--line-bright);box-shadow:var(--shadow-1), var(--inset-hi), 0 0 0 4px rgba(181,137,58,.06)}
+.opt-letter{
+  font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+  font-size:18px;color:var(--accent);letter-spacing:0;margin-bottom:10px;
+}
+.opt-title{font-size:16.5px;font-weight:600;letter-spacing:-.01em;color:var(--ink);margin-bottom:6px;line-height:1.3}
+.opt-desc{font-size:13.5px;color:var(--text-2);line-height:1.5;font-weight:400}
+
+/* Selected — instant snap */
+.opt.selected{
+  background:var(--ink);border-color:var(--ink);transform:translateY(-3px);
+  box-shadow:0 14px 32px -12px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.06);
+}
+.opt.selected .opt-letter{color:var(--accent)}
+.opt.selected .opt-title{color:#fff}
+.opt.selected .opt-desc{color:rgba(255,255,255,.65)}
+
+.q-nav{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.btn-back{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:14px 22px;border-radius:999px;
+  background:#fff;border:1px solid var(--line-strong);
+  color:var(--text-2);font-size:13.5px;font-weight:600;letter-spacing:-.005em;
+  transition:all .25s ease;
+  box-shadow:var(--shadow-soft), var(--inset-hi);
+}
+.btn-back:hover:not(:disabled){background:#fff;color:var(--ink);box-shadow:var(--shadow-1), var(--inset-hi);transform:translateY(-2px)}
+.btn-back:disabled{opacity:.4;cursor:not-allowed}
+.q-step-text{font-size:12px;color:var(--text-3);letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+
+/* ----- CALCULATING ----- */
+.calc-wrap{min-height:520px;display:flex;align-items:center;justify-content:center}
+.calc-display{
+  text-align:center;padding:60px 30px;border-radius:var(--radius-xl);
+  background:linear-gradient(180deg,#ffffff,#fbfaf6);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-2), var(--inset-hi);
+  max-width:560px;width:100%;position:relative;overflow:hidden;
+}
+.calc-display::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(60% 60% at 50% 30%, var(--spot-cream), transparent 70%);
+  opacity:.55;pointer-events:none;
+}
+.calc-display > *{position:relative;z-index:1}
+.calc-num{
+  font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+  font-size:120px;line-height:1;letter-spacing:-.04em;
+  background:linear-gradient(180deg,var(--ink),var(--accent));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  margin-bottom:18px;display:block;
+}
+.calc-text{font-size:18px;color:var(--text-2);font-weight:500;letter-spacing:-.005em}
+.calc-display.flash .calc-num,.calc-display.flash .calc-text{animation:calcPulse .5s ease both}
+@keyframes calcPulse{
+  0%{opacity:0;transform:translateY(12px)}
+  100%{opacity:1;transform:translateY(0)}
+}
+.calc-dots{display:inline-flex;gap:6px;margin-top:18px}
+.calc-dots span{width:8px;height:8px;border-radius:50%;background:var(--accent);opacity:.4;animation:dot 1.2s ease-in-out infinite}
+.calc-dots span:nth-child(2){animation-delay:.15s}
+.calc-dots span:nth-child(3){animation-delay:.30s}
+@keyframes dot{0%,100%{opacity:.3;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)}}
+
+/* ----- EMAIL GATE ----- */
+.email-card{
+  max-width:560px;margin:0 auto;
+  padding:56px 48px;border-radius:var(--radius-xl);
+  background:linear-gradient(180deg,#ffffff,#fbfaf6);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-2), var(--inset-hi);
+  position:relative;overflow:hidden;
+}
+.email-card::before{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(60% 50% at 0% 0%, var(--spot-peach), transparent 60%),
+    radial-gradient(60% 50% at 100% 100%, var(--spot-rose), transparent 60%);
+  opacity:.4;pointer-events:none;
+}
+.email-card > *{position:relative;z-index:1}
+@media (max-width:780px){.email-card{padding:40px 28px}}
+.email-card .eyebrow{margin-bottom:24px}
+.email-card h2{font-size:clamp(32px,4vw,46px);font-weight:600;letter-spacing:-.025em;line-height:1.05;margin-bottom:18px;color:var(--ink)}
+.email-card h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--accent-2)}
+.email-card .lede{font-size:16px;margin-bottom:32px}
+
+.lead-form .field{margin-bottom:18px}
+.lead-form label{display:block;font-size:11.5px;font-weight:600;color:var(--text-3);margin-bottom:8px;letter-spacing:.12em;text-transform:uppercase}
+.lead-form input{
+  width:100%;padding:16px 18px;border-radius:14px;
+  background:#fff;border:1px solid var(--line-strong);
+  color:var(--ink);font-family:inherit;font-size:15.5px;letter-spacing:-.005em;
+  transition:all .2s ease;
+  box-shadow:var(--shadow-soft), var(--inset-hi);
+}
+.lead-form input:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 4px rgba(15,15,20,.06), var(--inset-hi)}
+.lead-form input.invalid,.lead-form select.invalid{border-color:#c64545}
+.lead-form .field-err{display:none;color:#c64545;font-size:12.5px;margin-top:6px;font-weight:500}
+.lead-form .field-err.show{display:block}
+.lead-form select{
+  width:100%;padding:16px 18px;border-radius:14px;
+  background:#fff;border:1px solid var(--line-strong);
+  color:var(--ink);font-family:inherit;font-size:15.5px;letter-spacing:-.005em;
+  transition:all .2s ease;cursor:pointer;
+  box-shadow:var(--shadow-soft), var(--inset-hi);
+  appearance:none;-webkit-appearance:none;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%230b0b0d' stroke-width='2'><polyline points='6 9 12 15 18 9'/></svg>");
+  background-repeat:no-repeat;background-position:right 18px center;padding-right:46px;
+}
+.lead-form select:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 4px rgba(15,15,20,.06), var(--inset-hi)}
+.field-hint{font-size:12px;color:var(--text-3);margin-top:6px;font-style:italic;line-height:1.5}
+.lead-form button[type=submit]{width:100%;justify-content:center;margin-top:8px}
+.lead-form button[type=submit]:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
+.lead-fine{font-size:12.5px;color:var(--text-3);line-height:1.6;margin-top:18px;text-align:center}
+
+/* ----- RESULT ----- */
+.result-content{display:flex;flex-direction:column;gap:32px;max-width:1080px;margin:0 auto}
+
+.result-hero{
+  padding:80px 70px;border-radius:var(--radius-xl);
+  background:linear-gradient(160deg,#ffffff 0%,#fbf8f0 100%);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-2), var(--inset-hi);
+  text-align:center;position:relative;overflow:hidden;
+  transform:scale(.95);opacity:0;
+  animation:resultIn .55s cubic-bezier(.2,.8,.2,1) .15s both;
+}
+@keyframes resultIn{to{transform:scale(1);opacity:1}}
+.result-hero::before{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(60% 50% at 50% 0%, var(--spot-cream), transparent 65%),
+    radial-gradient(40% 40% at 0% 100%, var(--spot-rose), transparent 60%),
+    radial-gradient(40% 40% at 100% 100%, var(--spot-peach), transparent 60%);
+  opacity:.45;pointer-events:none;
+}
+.result-hero > *{position:relative;z-index:1}
+@media (max-width:780px){.result-hero{padding:50px 28px}}
+.result-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:8px 16px;border-radius:999px;
+  background:#fff;border:1px solid var(--line-strong);
+  font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--text-2);
+  margin-bottom:32px;
+  box-shadow:var(--shadow-soft), var(--inset-hi);
+}
+.result-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px rgba(181,137,58,.6)}
+.result-prelude{font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-3);font-weight:600;margin-bottom:14px}
+.result-name{
+  font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+  font-size:clamp(64px,9vw,130px);line-height:.92;letter-spacing:-.04em;
+  background:linear-gradient(180deg,var(--ink) 0%,#5a4220 55%, var(--accent) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  margin-bottom:28px;
+}
+.result-summary{font-size:18px;color:var(--text-2);max-width:680px;margin:0 auto;line-height:1.55}
+.result-summary strong{color:var(--ink);font-weight:600}
+
+/* Reasoning block */
+.reasoning-block{
+  padding:48px 56px;border-radius:var(--radius-lg);
+  background:#fff;border:1px solid var(--line);
+  box-shadow:var(--shadow-1), var(--inset-hi);
+  position:relative;
+}
+@media (max-width:780px){.reasoning-block{padding:36px 28px}}
+.reasoning-eyebrow{font-size:11.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent-2);margin-bottom:18px;display:block}
+.reasoning-text{
+  font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+  font-size:clamp(22px,2.6vw,30px);line-height:1.4;letter-spacing:-.01em;color:var(--ink);
+}
+
+/* Breakdown */
+.section-header{
+  display:flex;align-items:baseline;justify-content:space-between;gap:18px;
+  padding-top:18px;border-top:1px solid var(--line);margin-bottom:8px;
+}
+.section-header h3{font-size:clamp(26px,3.4vw,38px);font-weight:600;letter-spacing:-.025em;color:var(--ink)}
+.section-header h3 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--accent-2)}
+.section-header .h-num{font-family:'Instrument Serif',serif;font-style:italic;color:var(--accent);font-size:18px}
+
+.breakdown{
+  padding:48px 56px;border-radius:var(--radius-lg);
+  background:#fff;border:1px solid var(--line);
+  box-shadow:var(--shadow-1), var(--inset-hi);
+}
+@media (max-width:780px){.breakdown{padding:36px 24px}}
+.bd-list{list-style:none;display:flex;flex-direction:column;gap:0;margin-top:20px}
+.bd-list li{
+  display:grid;grid-template-columns:200px 1fr;gap:30px;
+  padding:22px 0;border-top:1px solid var(--line);
+}
+.bd-list li:first-child{border-top:none}
+@media (max-width:780px){.bd-list li{grid-template-columns:1fr;gap:6px}}
+.bd-label{
+  font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+  font-size:18px;color:var(--accent-2);line-height:1.3;
+}
+.bd-text{font-size:15.5px;color:var(--text-2);line-height:1.7}
+.bd-text strong{color:var(--ink);font-weight:600}
+
+/* Tax math */
+.math-card{
+  padding:48px 56px;border-radius:var(--radius-lg);
+  background:linear-gradient(180deg,#ffffff,#fbf8f0);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-1), var(--inset-hi);
+  position:relative;overflow:hidden;
+}
+.math-card::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(60% 60% at 100% 0%, var(--spot-cream), transparent 65%);
+  opacity:.45;pointer-events:none;
+}
+.math-card > *{position:relative;z-index:1}
+@media (max-width:780px){.math-card{padding:36px 24px}}
+.math-card h3{font-size:clamp(26px,3.4vw,36px);font-weight:600;letter-spacing:-.025em;color:var(--ink);margin-bottom:14px}
+.math-card h3 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--accent-2)}
+.math-intro{font-size:15.5px;color:var(--text-2);line-height:1.6;margin-bottom:28px;max-width:640px}
+
+.math-table{
+  width:100%;border-collapse:separate;border-spacing:0;
+  border-radius:18px;overflow:hidden;
+  background:#fff;border:1px solid var(--line);
+  box-shadow:var(--shadow-soft);
+  margin-bottom:24px;
+}
+.math-table thead{background:linear-gradient(180deg,#fbfaf6,#f1ede4)}
+.math-table th,.math-table td{
+  padding:16px 22px;text-align:left;
+  font-size:14.5px;color:var(--text);
+  border-bottom:1px solid var(--line);
+}
+.math-table th{font-weight:700;letter-spacing:-.005em;color:var(--ink);font-size:13px;text-transform:uppercase;letter-spacing:.06em}
+.math-table tbody tr:last-child td{border-bottom:none}
+.math-table tbody tr:last-child{background:linear-gradient(90deg,rgba(181,137,58,.08),rgba(181,137,58,.03))}
+.math-table tbody tr:last-child td{font-weight:700;color:var(--ink);font-size:15.5px}
+.math-table td.num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+.math-table td.col{font-weight:500}
+@media (max-width:600px){.math-table th,.math-table td{padding:12px 14px;font-size:13px}}
+
+.math-callout{
+  margin-top:18px;padding:22px 26px;border-radius:14px;
+  background:rgba(181,137,58,.08);border:1px solid rgba(181,137,58,.22);
+  font-size:15px;color:var(--ink);line-height:1.6;
+}
+.math-callout strong{font-weight:700;color:var(--accent-2)}
+
+/* Next steps */
+.next-steps{
+  padding:48px 56px;border-radius:var(--radius-lg);
+  background:#fff;border:1px solid var(--line);
+  box-shadow:var(--shadow-1), var(--inset-hi);
+}
+@media (max-width:780px){.next-steps{padding:36px 24px}}
+.ns-list{list-style:none;display:flex;flex-direction:column;gap:18px;margin-top:24px}
+.ns-list li{
+  display:grid;grid-template-columns:64px 1fr;gap:22px;align-items:start;
+  padding:24px 26px;border-radius:18px;background:linear-gradient(180deg,#fbfaf6,#f6f4ef);
+  border:1px solid var(--line);
+}
+.ns-list .ns-num{
+  font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+  font-size:48px;color:var(--accent);line-height:1;letter-spacing:-.03em;
+}
+.ns-list .ns-text{font-size:15.5px;color:var(--text-2);line-height:1.65}
+.ns-list .ns-text strong{display:block;color:var(--ink);font-size:17px;font-weight:600;margin-bottom:4px;letter-spacing:-.01em}
+
+/* Maya note */
+.maya-note{
+  padding:56px;border-radius:var(--radius-lg);
+  background:linear-gradient(135deg,#ffffff 0%,#fbf8f0 100%);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-1), var(--inset-hi);
+  position:relative;overflow:hidden;
+}
+.maya-note::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(60% 60% at 0% 100%, var(--spot-peach), transparent 60%);
+  opacity:.35;pointer-events:none;
+}
+.maya-note > *{position:relative;z-index:1}
+@media (max-width:780px){.maya-note{padding:36px 24px}}
+.maya-eyebrow{font-size:11.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-2);margin-bottom:18px;display:block}
+.maya-body{
+  font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+  font-size:clamp(20px,2.4vw,26px);line-height:1.5;letter-spacing:-.01em;color:var(--ink);
+}
+.maya-body p{margin-bottom:18px}
+.maya-sign{
+  margin-top:24px;font-family:'Inter',sans-serif;font-style:normal;
+  font-size:13.5px;letter-spacing:.04em;color:var(--text-2);font-weight:500;
+}
+.maya-sign strong{color:var(--ink);font-weight:700;display:block;font-size:15px;margin-bottom:2px}
+
+/* Result CTA */
+.result-ctas{
+  padding:60px;border-radius:var(--radius-lg);
+  background:linear-gradient(135deg,#15151a 0%,#0b0b0d 50%,#1a1a1f 100%);
+  border:1px solid rgba(255,255,255,.08);
+  text-align:center;position:relative;overflow:hidden;
+  box-shadow:var(--shadow-2);
+}
+.result-ctas::before{
+  content:"";position:absolute;inset:-30%;
+  background:
+    radial-gradient(ellipse at 25% 20%,rgba(181,137,58,.25) 0%,transparent 50%),
+    radial-gradient(ellipse at 75% 80%,rgba(200,216,255,.12) 0%,transparent 50%);
+  animation:pulseSlow 8s ease-in-out infinite;
+}
+@keyframes pulseSlow{0%,100%{transform:scale(1);opacity:.7}50%{transform:scale(1.1);opacity:1}}
+.result-ctas > *{position:relative;z-index:1}
+@media (max-width:780px){.result-ctas{padding:40px 24px}}
+.result-ctas h3{font-size:clamp(28px,3.8vw,40px);font-weight:600;letter-spacing:-.025em;color:#fff;margin-bottom:14px;line-height:1.05}
+.result-ctas h3 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--accent)}
+.result-ctas p{font-size:15.5px;color:rgba(255,255,255,.72);margin-bottom:32px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.6}
+.result-ctas .btn-primary{background:#fff;color:var(--ink);box-shadow:0 12px 30px -10px rgba(0,0,0,.5)}
+.result-ctas .btn-primary:hover{box-shadow:0 22px 44px -10px rgba(0,0,0,.6)}
+
+/* Share strip */
+.share-strip{
+  padding:44px 48px;border-radius:var(--radius-lg);
+  background:#fff;border:1px solid var(--line);
+  box-shadow:var(--shadow-1), var(--inset-hi);
+  display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;
+}
+@media (max-width:780px){.share-strip{grid-template-columns:1fr;padding:32px 24px}}
+.share-text strong{display:block;font-size:18px;font-weight:600;color:var(--ink);margin-bottom:4px;letter-spacing:-.015em}
+.share-text strong em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--accent-2)}
+.share-text span{font-size:14px;color:var(--text-2);line-height:1.55}
+.share-btns{display:flex;gap:10px;flex-wrap:wrap}
+.share-btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:14px 20px;border-radius:14px;
+  background:#fff;border:1px solid var(--line-strong);
+  color:var(--ink);font-size:13.5px;font-weight:600;letter-spacing:-.005em;
+  transition:all .22s ease;cursor:pointer;
+  box-shadow:var(--shadow-soft), var(--inset-hi);
+  position:relative;
+}
+.share-btn:hover{transform:translateY(-2px) scale(1.02);box-shadow:var(--shadow-1), var(--inset-hi);border-color:var(--ink)}
+.share-btn svg{width:16px;height:16px}
+.share-btn.copied{background:var(--ink);color:#fff;border-color:var(--ink)}
+.share-btn.copied .share-label::after{content:" — Copied!";color:var(--accent)}
+
+/* ============================================================
+   PRINT — keep only result page
+   ============================================================ */
+@media print{
+  .nav,.drawer,.menu-btn,.ambient,body::before,footer{display:none!important}
+  body{background:#fff!important}
+  .quiz-main{padding:0!important}
+  .screen{display:none!important}
+  #screen-result{display:block!important}
+  #screen-result.active{animation:none!important;opacity:1!important;transform:none!important}
+  .result-hero,.reasoning-block,.breakdown,.math-card,.next-steps,.maya-note{
+    background:#fff!important;color:#000!important;
+    box-shadow:none!important;border:1px solid #ddd!important;
+    page-break-inside:avoid;
+  }
+  .result-hero::before,.reasoning-block::before,.math-card::before,.maya-note::before{display:none!important}
+  .result-name{background:none!important;-webkit-text-fill-color:#0b0b0d!important;color:#0b0b0d!important}
+  .result-ctas,.share-strip{display:none!important}
+  a{color:#0b0b0d!important;text-decoration:none}
+}
+</style>
+</head>
+<body>
+
+<div class="ambient">
+  <div class="glow glow-1"></div><div class="glow glow-2"></div><div class="glow glow-3"></div>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="index.html" class="brand">
+    <div class="brand-mark">M</div>
+    <div class="brand-name"><strong>MRG Accounting</strong><small>Service</small></div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="founder.html">Founder</a>
+    <a href="bookkeeping.html">Bookkeeping</a>
+    <a href="taxes.html">Taxes</a>
+    <a href="payroll.html">Payroll</a>
+    <a href="business-consultant.html">Consultant</a>
+    <a href="administrative.html">Admin</a>
+  </div>
+  <a href="contact.html" class="nav-cta">Book a Call</a>
+  <button class="menu-btn" id="menuBtn" aria-label="Menu"><span></span></button>
+</nav>
+
+<div class="drawer" id="drawer">
+  <button class="drawer-close" id="drawerClose" aria-label="Close">✕</button>
+  <a href="index.html">Home</a>
+  <a href="founder.html">Meet the Founder</a>
+  <a href="bookkeeping.html">Bookkeeping</a>
+  <a href="taxes.html">Taxes</a>
+  <a href="resources-taxes.html">Resources Taxes</a>
+  <a href="payroll.html">Payroll</a>
+  <a href="business-consultant.html">Business Consultant</a>
+  <a href="administrative.html">Administrative</a>
+  <a href="contact.html">Contact Us</a>
+</div>
+
+<main class="quiz-main">
+
+  <!-- ====================== SCREEN 1: LANDING ====================== -->
+  <section id="screen-landing" class="screen active">
+    <div class="wrap">
+      <div class="landing-grid">
+        <div class="reveal-left in">
+          <span class="eyebrow"><span class="dot"></span>Free Tool · 5 Questions · 2 Minutes</span>
+          <h1 class="display">Should you be an<br/><em>LLC, S-Corp, or C-Corp?</em></h1>
+          <p class="lede">Choose wrong and you'll overpay taxes for years — or worse, expose your personal assets when the business hits a problem. This 2-minute quiz tells you the entity structure that actually fits your situation, plus the tax math behind why.</p>
+          <button class="btn btn-primary" id="start-quiz">Start the Quiz <span class="arrow">→</span></button>
+          <div class="trust-strip">
+            <div><strong>5</strong><span>Questions</span></div>
+            <div><strong>~2 min</strong><span>To finish</span></div>
+            <div><strong>22-yr</strong><span>CPA-built</span></div>
+            <div><strong>Tailored</strong><span>Personalized</span></div>
+          </div>
+        </div>
+
+        <div class="reveal-right in landing-visual">
+          <div class="preview-frame">
+            <div class="preview-stamp"><span class="dot" style="width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px rgba(181,137,58,.6)"></span>Sample Result</div>
+            <div class="preview-label">Your recommendation</div>
+            <div class="preview-h">S-Corporation</div>
+            <div class="preview-meta">
+              <div><strong>Profit</strong>$150K</div>
+              <div><strong>Savings</strong>~$12K / yr</div>
+            </div>
+            <ul class="preview-list">
+              <li>Pay yourself a reasonable salary on W-2</li>
+              <li>Distributions skip self-employment tax</li>
+              <li>Keep your full liability shield</li>
+              <li>Tax math, broken down line-by-line</li>
+            </ul>
+          </div>
+          <div class="preview-chip"><span class="pulse"></span>Built by 22-yr CPA</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== SCREEN 2: QUIZ ====================== -->
+  <section id="screen-quiz" class="screen">
+    <div class="wrap-narrow quiz-shell">
+      <div class="progress-meta">
+        <span id="progress-label">Question 1 of 5</span>
+        <span>The Entity Quiz</span>
+      </div>
+      <div class="progress"><div class="progress-bar" id="progress-bar"></div></div>
+      <div class="q-content" id="q-content"></div>
+    </div>
+  </section>
+
+  <!-- ====================== SCREEN 3: CALCULATING ====================== -->
+  <section id="screen-calculating" class="screen">
+    <div class="wrap-narrow calc-wrap">
+      <div class="calc-display" id="calc-display">
+        <span class="calc-num">i.</span>
+        <div class="calc-text">Analyzing your answers&hellip;</div>
+        <div class="calc-dots"><span></span><span></span><span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== SCREEN 4: EMAIL GATE ====================== -->
+  <section id="screen-email" class="screen">
+    <div class="wrap-narrow">
+      <div class="email-card">
+        <span class="eyebrow"><span class="dot"></span>Ready</span>
+        <h2>Your recommendation is <em>ready.</em></h2>
+        <p class="lede">Where should we send your detailed report? You'll also unlock a printable PDF version + Maya's full breakdown of the tax math behind your result.</p>
+        <form id="lead-form" class="lead-form" novalidate>
+          <div class="field">
+            <label for="lead-firstname">First name</label>
+            <input type="text" id="lead-firstname" name="firstName" autocomplete="given-name" required />
+          </div>
+          <div class="field">
+            <label for="lead-email">Email</label>
+            <input type="email" id="lead-email" name="email" autocomplete="email" required />
+            <div class="field-err" id="email-err">Enter a valid email address.</div>
+          </div>
+          <div class="field">
+            <label for="state-select">What state will you form the business in?</label>
+            <select id="state-select" name="state" required>
+              <option value="">Select your state&hellip;</option>
+            </select>
+            <div class="field-hint">Most owners file in their home state. If you're planning to form in Delaware or another state for strategic reasons, pick that one.</div>
+          </div>
+          <input type="hidden" id="lead-entity" name="entity" />
+          <button type="submit" class="btn btn-primary" id="lead-submit" disabled>Reveal My Recommendation <span class="arrow">→</span></button>
+          <p class="lead-fine">We respect your inbox. No spam, no daily emails. You'll get your result, a short follow-up with bonus resources, and that's it unless you opt in for more.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================== SCREEN 5: RESULT ====================== -->
+  <section id="screen-result" class="screen">
+    <div class="wrap">
+      <div class="result-content" id="result-content"></div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="brand" style="font-size:17px">
+          <div class="brand-mark">M</div>
+          <div class="brand-name"><strong>MRG Accounting</strong><small>Service</small></div>
+        </div>
+        <p>Bookkeeping, taxes, payroll, business consulting, and administrative solutions for entrepreneurs and small business owners. Founded 2018 · Headquartered in San Diego, CA.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Services</h5>
+        <a href="bookkeeping.html">Bookkeeping</a>
+        <a href="taxes.html">Taxes</a>
+        <a href="payroll.html">Payroll</a>
+        <a href="business-consultant.html">Business Consultant</a>
+        <a href="administrative.html">Administrative</a>
+      </div>
+      <div class="foot-col">
+        <h5>Resources</h5>
+        <a href="resources-taxes.html">Tax Resources</a>
+        <a href="entity-quiz.html">Entity Quiz</a>
+        <a href="founder.html">Meet the Founder</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="foot-col">
+        <h5>Connect</h5>
+        <a href="mailto:hello@mrgacct.com" style="padding:7px 0;display:block">hello@mrgacct.com</a>
+        <a href="tel:+16194547001" style="padding:7px 0;display:block">+1 (619) 454-7001</a>
+        <div style="font-size:13px;color:var(--text-3);padding:7px 0">San Diego, CA</div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>© 2026 MRG Accounting Service · All rights reserved.</div>
+      <div>Where numbers meet strategy.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   ENTITY QUIZ — vanilla JS, no dependencies (canvas-confetti via CDN)
+   ============================================================ */
+
+// ---------- Nav + drawer ----------
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => { if (window.scrollY > 20) nav.classList.add('scrolled'); else nav.classList.remove('scrolled'); });
+const drawer = document.getElementById('drawer');
+document.getElementById('menuBtn').addEventListener('click', () => drawer.classList.add('open'));
+document.getElementById('drawerClose').addEventListener('click', () => drawer.classList.remove('open'));
+drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => drawer.classList.remove('open')));
+
+// Cursor spotlight follow
+const ambient = document.querySelector('.ambient');
+if (ambient) {
+  let raf = null;
+  window.addEventListener('pointermove', (e) => {
+    if (raf) return;
+    raf = requestAnimationFrame(() => {
+      ambient.style.setProperty('--sx', (e.clientX / window.innerWidth * 100).toFixed(1) + '%');
+      ambient.style.setProperty('--sy', (e.clientY / window.innerHeight * 100).toFixed(1) + '%');
+      raf = null;
+    });
+  }, { passive: true });
+}
+
+// ---------- State ----------
+const state = {
+  screen: 'landing',
+  questionIndex: 0,
+  answers: { q1: null, q2: null, q3: null, q4: null, q5: null },
+  recommendation: null,
+  lead: { firstName: '', email: '', state: '' }
+};
+
+// ---------- US states (50 + DC + PR) ----------
+const US_STATES = [
+  ['AL','Alabama'],['AK','Alaska'],['AZ','Arizona'],['AR','Arkansas'],['CA','California'],
+  ['CO','Colorado'],['CT','Connecticut'],['DE','Delaware'],['DC','District of Columbia'],
+  ['FL','Florida'],['GA','Georgia'],['HI','Hawaii'],['ID','Idaho'],['IL','Illinois'],
+  ['IN','Indiana'],['IA','Iowa'],['KS','Kansas'],['KY','Kentucky'],['LA','Louisiana'],
+  ['ME','Maine'],['MD','Maryland'],['MA','Massachusetts'],['MI','Michigan'],['MN','Minnesota'],
+  ['MS','Mississippi'],['MO','Missouri'],['MT','Montana'],['NE','Nebraska'],['NV','Nevada'],
+  ['NH','New Hampshire'],['NJ','New Jersey'],['NM','New Mexico'],['NY','New York'],
+  ['NC','North Carolina'],['ND','North Dakota'],['OH','Ohio'],['OK','Oklahoma'],['OR','Oregon'],
+  ['PA','Pennsylvania'],['PR','Puerto Rico'],['RI','Rhode Island'],['SC','South Carolina'],
+  ['SD','South Dakota'],['TN','Tennessee'],['TX','Texas'],['UT','Utah'],['VT','Vermont'],
+  ['VA','Virginia'],['WA','Washington'],['WV','West Virginia'],['WI','Wisconsin'],['WY','Wyoming']
+];
+(function populateStates(){
+  const sel = document.getElementById('state-select');
+  if (!sel) return;
+  US_STATES.forEach(([code, name]) => {
+    const o = document.createElement('option');
+    o.value = code; o.textContent = name;
+    sel.appendChild(o);
+  });
+})();
+
+// ---------- Questions ----------
+const questions = [
+  {
+    id: 'q1',
+    title: 'How many people will own this business?',
+    helper: 'Owners with equity, not employees.',
+    options: [
+      { letter: 'A', title: 'Just me', desc: 'Solo founder, sole control' },
+      { letter: 'B', title: 'Me + one partner', desc: 'Two co-founders splitting equity' },
+      { letter: 'C', title: 'Three or more owners', desc: 'Multi-owner group or partnership' },
+      { letter: 'D', title: 'Just me, but I plan to give employees equity or be acquired', desc: 'Solo now, structured for growth' }
+    ]
+  },
+  {
+    id: 'q2',
+    title: "What's the expected annual profit?",
+    helper: 'Profit = revenue minus business expenses. Best estimate is fine.',
+    options: [
+      { letter: 'A', title: 'Under $40,000', desc: 'Side income or early stage' },
+      { letter: 'B', title: '$40,000 – $80,000', desc: 'Established small business' },
+      { letter: 'C', title: '$80,000 – $250,000', desc: 'Strong profit, real money on the table' },
+      { letter: 'D', title: '$250,000+', desc: 'High-profit operator' }
+    ]
+  },
+  {
+    id: 'q3',
+    title: 'What are your growth plans over the next 3–5 years?',
+    helper: 'Be honest. Aspirations matter for picking the right structure today.',
+    options: [
+      { letter: 'A', title: 'Keep it lean and profitable', desc: 'Solo or small team, no big growth plans' },
+      { letter: 'B', title: 'Grow steadily, hire a few people', desc: 'Organic growth, reinvest profits modestly' },
+      { letter: 'C', title: 'Scale aggressively across markets or states', desc: 'Hire fast, expand fast' },
+      { letter: 'D', title: 'Raise venture capital or outside investors', desc: 'Equity rounds, institutional money' }
+    ]
+  },
+  {
+    id: 'q4',
+    title: 'How important is protecting your personal assets?',
+    helper: 'Your home, savings, personal property — separated from the business legally.',
+    options: [
+      { letter: 'A', title: "Critical — I don't want personal exposure", desc: 'Liability shield is non-negotiable' },
+      { letter: 'B', title: 'Important but not urgent', desc: 'Want protection, willing to phase it in' },
+      { letter: 'C', title: 'Not a major concern right now', desc: 'Low-risk industry, comfortable with personal exposure' }
+    ]
+  },
+  {
+    id: 'q5',
+    title: 'How do you plan to take money out of the business?',
+    helper: "This determines how you'll be taxed on what you earn.",
+    options: [
+      { letter: 'A', title: 'All profits flow to me as personal income', desc: 'Simple pass-through, year-end taxes' },
+      { letter: 'B', title: 'Reasonable salary + distributions on top', desc: 'Salary on W-2, additional draws as distributions' },
+      { letter: 'C', title: 'Reinvest most profits back into growth', desc: 'Profits stay inside the business to fund expansion' },
+      { letter: 'D', title: 'Mix of salary, equity grants, and dividends', desc: 'Complex compensation including stock-based' }
+    ]
+  }
+];
+
+// ---------- Decision Logic — DETERMINISTIC RULE CASCADE ----------
+// IMPORTANT: Same answer combination ALWAYS produces the same result.
+// First rule that matches wins. The cascade is the single source of truth.
+function recommendEntity(a) {
+  // RULE 1 — Venture capital plans force C-Corp (VCs require it for stock issuance & 83(b) elections)
+  if (a.q3 === 'D') return 'C-Corp';
+  // RULE 2 — Solo founder structuring for equity grants / acquisition → C-Corp
+  if (a.q1 === 'D') return 'C-Corp';
+  // RULE 3 — Mixed compensation including equity grants → C-Corp
+  if (a.q5 === 'D') return 'C-Corp';
+  // RULE 4 — Aggressive scaling + high profit + reinvesting → C-Corp
+  if (a.q3 === 'C' && (a.q2 === 'C' || a.q2 === 'D') && a.q5 === 'C') return 'C-Corp';
+  // RULE 5 — Sole Proprietorship: solo, low profit, no protection concern, simple pass-through
+  if (a.q1 === 'A' && a.q2 === 'A' && a.q4 === 'C' && a.q5 === 'A') return 'Sole Proprietorship';
+  // RULE 6 — S-Corp: profit ≥ $80K AND owner wants salary + distributions structure
+  if ((a.q2 === 'C' || a.q2 === 'D') && a.q5 === 'B') return 'S-Corp';
+  // RULE 7 — S-Corp: profit $40K-$80K AND wants salary+distributions AND wants protection
+  if (a.q2 === 'B' && a.q5 === 'B' && (a.q4 === 'A' || a.q4 === 'B')) return 'S-Corp';
+  // RULE 8 — DEFAULT — LLC is the right answer for most small business owners
+  // (covers pass-through taxation + liability protection + flexibility)
+  return 'LLC';
+}
+
+// ---------- Screen routing ----------
+function goTo(name) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  const target = document.getElementById('screen-' + name);
+  target.classList.add('active');
+  state.screen = name;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ---------- Render question ----------
+const qContent = document.getElementById('q-content');
+const progressBar = document.getElementById('progress-bar');
+const progressLabel = document.getElementById('progress-label');
+
+function renderQuestion(idx) {
+  const q = questions[idx];
+  const num = String(idx + 1).padStart(2, '0');
+  const isWide = q.options.length === 4;
+  const selectedLetter = state.answers[q.id];
+  const html = `
+    <div class="q-card" id="active-q">
+      <span class="q-num">${num}.</span>
+      <h2 class="q-title">${q.title}</h2>
+      <p class="q-helper">${q.helper}</p>
+      <div class="opts ${isWide ? '' : 'opts-3'}">
+        ${q.options.map(o => `
+          <button class="opt ${selectedLetter === o.letter ? 'selected' : ''}" data-letter="${o.letter}" type="button">
+            <span class="opt-letter">${o.letter}.</span>
+            <span class="opt-title">${o.title}</span>
+            <span class="opt-desc">${o.desc}</span>
+          </button>
+        `).join('')}
+      </div>
+      <div class="q-nav">
+        <button class="btn-back" id="btn-back" ${idx === 0 ? 'disabled' : ''}>← Back</button>
+        <span class="q-step-text">${num} / 05</span>
+      </div>
+    </div>
+  `;
+  qContent.innerHTML = html;
+  // Progress
+  progressBar.style.width = ((idx + 1) / questions.length * 100) + '%';
+  progressLabel.textContent = `Question ${idx + 1} of ${questions.length}`;
+  // Wire options
+  qContent.querySelectorAll('.opt').forEach(btn => {
+    btn.addEventListener('click', () => selectOption(btn.dataset.letter));
+  });
+  document.getElementById('btn-back').addEventListener('click', goBack);
+}
+
+function selectOption(letter) {
+  const q = questions[state.questionIndex];
+  state.answers[q.id] = letter;
+  // Visual snap
+  qContent.querySelectorAll('.opt').forEach(o => o.classList.toggle('selected', o.dataset.letter === letter));
+  // Auto-advance after 300ms
+  setTimeout(() => advance(), 320);
+}
+
+function advance() {
+  if (state.questionIndex < questions.length - 1) {
+    transitionQuestion(state.questionIndex + 1);
+  } else {
+    // Last question answered → calculate
+    state.recommendation = recommendEntity(state.answers);
+    document.getElementById('lead-entity').value = state.recommendation;
+    goTo('calculating');
+    runCalculating();
+  }
+}
+
+function goBack() {
+  if (state.questionIndex > 0) {
+    transitionQuestion(state.questionIndex - 1);
+  }
+}
+
+function transitionQuestion(nextIdx) {
+  const card = document.getElementById('active-q');
+  if (card) {
+    card.classList.add('leaving');
+    setTimeout(() => {
+      state.questionIndex = nextIdx;
+      renderQuestion(nextIdx);
+    }, 200);
+  } else {
+    state.questionIndex = nextIdx;
+    renderQuestion(nextIdx);
+  }
+}
+
+// ---------- Start the quiz ----------
+document.getElementById('start-quiz').addEventListener('click', () => {
+  goTo('quiz');
+  state.questionIndex = 0;
+  renderQuestion(0);
+});
+
+// ---------- Calculating ----------
+const calcMessages = [
+  { num: 'i.', text: 'Analyzing your answers…' },
+  { num: 'ii.', text: 'Cross-referencing tax code…' },
+  { num: 'iii.', text: 'Building your recommendation.' }
+];
+function runCalculating() {
+  const target = document.getElementById('calc-display');
+  let i = 0;
+  function showStep() {
+    if (i >= calcMessages.length) {
+      setTimeout(() => goTo('email'), 350);
+      return;
+    }
+    const m = calcMessages[i];
+    target.innerHTML = `
+      <span class="calc-num">${m.num}</span>
+      <div class="calc-text">${m.text}</div>
+      <div class="calc-dots"><span></span><span></span><span></span></div>
+    `;
+    target.classList.remove('flash'); void target.offsetWidth; target.classList.add('flash');
+    i++;
+    setTimeout(showStep, 800);
+  }
+  showStep();
+}
+
+// ---------- Email gate ----------
+const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+const firstNameEl = document.getElementById('lead-firstname');
+const emailEl = document.getElementById('lead-email');
+const stateEl = document.getElementById('state-select');
+const emailErr = document.getElementById('email-err');
+const submitBtn = document.getElementById('lead-submit');
+const leadForm = document.getElementById('lead-form');
+
+function validateLeadForm() {
+  const okName = firstNameEl.value.trim().length > 0;
+  const okEmail = emailRe.test(emailEl.value.trim());
+  const okState = stateEl.value.trim().length > 0;
+  submitBtn.disabled = !(okName && okEmail && okState);
+  return okName && okEmail && okState;
+}
+firstNameEl.addEventListener('input', validateLeadForm);
+emailEl.addEventListener('input', () => {
+  emailEl.classList.remove('invalid');
+  emailErr.classList.remove('show');
+  validateLeadForm();
+});
+emailEl.addEventListener('blur', () => {
+  if (emailEl.value.trim() && !emailRe.test(emailEl.value.trim())) {
+    emailEl.classList.add('invalid');
+    emailErr.classList.add('show');
+  }
+});
+stateEl.addEventListener('change', validateLeadForm);
+
+leadForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  if (!validateLeadForm()) return;
+  state.lead.firstName = firstNameEl.value.trim();
+  state.lead.email = emailEl.value.trim();
+  state.lead.state = stateEl.value.trim();
+
+  // TODO: Wire to backend. Suggested:
+  // fetch('/api/lead', {
+  //   method: 'POST',
+  //   headers: { 'Content-Type': 'application/json' },
+  //   body: JSON.stringify({
+  //     firstName: state.lead.firstName,
+  //     email: state.lead.email,
+  //     state: state.lead.state,
+  //     entity: state.recommendation,
+  //     answers: state.answers
+  //   })
+  // });
+
+  renderResult();
+  goTo('result');
+  setTimeout(fireConfetti, 350);
+});
+
+// ---------- Confetti ----------
+function fireConfetti() {
+  if (typeof confetti !== 'function') return;
+  const colors = ['#ffffff', '#fff1d6', '#b5893a', '#e8d9b4', '#fbfaf6'];
+  // Burst 1 — bottom-center wide
+  confetti({
+    particleCount: 130, spread: 80, startVelocity: 50,
+    origin: { y: 0.85, x: 0.5 }, colors, ticks: 260, scalar: 1.05
+  });
+  // Burst 2 — left + right, 400ms later
+  setTimeout(() => {
+    confetti({ particleCount: 80, spread: 100, startVelocity: 55, origin: { y: 0.85, x: 0.2 }, colors, ticks: 260 });
+    confetti({ particleCount: 80, spread: 100, startVelocity: 55, origin: { y: 0.85, x: 0.8 }, colors, ticks: 260 });
+  }, 400);
+}
+
+// ============================================================
+//   RESULT PAGE — entity content templates
+// ============================================================
+
+const profitLabel = {
+  A: 'Under $40K',
+  B: '$40K–$80K',
+  C: '$80K–$250K',
+  D: '$250K+'
+};
+const profitRange = { A: 'under $40K', B: '$40K to $80K', C: '$80K to $250K', D: '$250K+' };
+const profitValue = { A: 30000, B: 60000, C: 150000, D: 300000 };
+
+const growthLabel = {
+  A: 'keeping it lean and profitable',
+  B: 'steady, organic growth',
+  C: 'aggressive multi-market scaling',
+  D: 'raising venture capital'
+};
+const ownershipLabel = {
+  A: 'solo ownership',
+  B: 'a two-partner structure',
+  C: 'a multi-owner group',
+  D: 'a solo-but-growth-structured ownership'
+};
+const protectionLabel = {
+  A: 'critical personal-asset protection',
+  B: 'important but flexible asset protection',
+  C: 'comfort with personal exposure'
+};
+
+// ---------- Entity content ----------
+const entityData = {
+  'Sole Proprietorship': {
+    tagline: 'The simplest possible structure. Zero separation between you and the business.',
+    reasoning: (a) => `You're operating ${ownershipLabel[a.q1]} with profit ${profitRange[a.q2]} and ${protectionLabel[a.q4]} — meaning the legal and tax complexity of a formal entity is not yet earning its keep. You also indicated you want profits to flow straight to your personal return, which is exactly how a Sole Proprietorship works by default. At this stage, the simplicity of a Schedule C filing matches your operation. <strong>Worth knowing:</strong> the moment your profit climbs or risk increases, forming an LLC takes about a week and gives you a liability shield for under $300 a year.`,
+    breakdown: [
+      ['What it is', "The simplest possible business structure. Legally, there's no separation between you and the business — you <strong>are</strong> the business."],
+      ['Tax treatment', 'All profit flows to your personal Form 1040 via Schedule C. You pay regular federal/state income tax <strong>plus</strong> self-employment tax (15.3% on the first $168,600 of net earnings).'],
+      ['Liability', 'None. Your personal assets — home, savings, car — are fully exposed if the business is sued or owes money it cannot pay.'],
+      ['Best for', 'Side income, very low-risk industries, or testing a business idea before committing to formal structure.'],
+      ['Watch outs', 'No protection if sued. Harder to build business credit. Looks less professional to enterprise clients. No flexibility to elect S-Corp taxation later without first forming an LLC or corp.'],
+      ['Setup time', 'Instant. If you have earned business income, you already are one in the eyes of the IRS.'],
+      ['Annual cost to maintain', '$0 to $200 (just a DBA filing in some states)']
+    ]
+  },
+
+  'LLC': {
+    tagline: 'The flexible default. Liability protection + simplicity for most owners.',
+    reasoning: (a) => `You're running ${ownershipLabel[a.q1]} with profit ${profitRange[a.q2]} and ${growthLabel[a.q3]} on the horizon — exactly the situation an LLC was designed for. You also want ${protectionLabel[a.q4].toLowerCase()}, which an LLC delivers through a clean legal separation between you and the business. Critically, an LLC keeps your taxes simple (pass-through to your personal return) <strong>and</strong> leaves the door open to elect S-Corp taxation later, the moment profits justify it. For 80% of small business owners, this is the right answer.`,
+    breakdown: [
+      ['What it is', 'A flexible legal entity that creates a clean separation between your business and your personal assets, without locking you into corporate-level tax complexity.'],
+      ['Tax treatment', 'By default, single-member LLCs are taxed like sole props (Schedule C); multi-member LLCs are taxed like partnerships (Form 1065). You can elect S-Corp taxation later via Form 2553 — that flexibility is the LLC\'s superpower.'],
+      ['Liability', 'Strong protection — <strong>if maintained properly.</strong> Keep a separate business bank account, sign contracts in the LLC\'s name, and document major decisions. Mix personal and business funds and you can "pierce the corporate veil," losing protection.'],
+      ['Best for', 'Most small businesses. The default answer when there is no compelling reason to choose otherwise.'],
+      ['Watch outs', 'You must respect the corporate veil. Most states charge an annual filing fee (California\'s is famously $800/year). Some states require a registered agent ($100–$300/year).'],
+      ['Setup time', '1 to 4 weeks depending on state processing time.'],
+      ['Annual cost to maintain', '$50 to $800+ depending on your state\'s franchise/filing fees.']
+    ]
+  },
+
+  'S-Corp': {
+    tagline: 'The tax saver. Pay yourself smart on profits above a reasonable salary.',
+    reasoning: (a) => `You're earning ${profitRange[a.q2]} in profit, which is the range where S-Corp tax savings start to dramatically outweigh the additional paperwork. You also indicated you'd prefer to take a reasonable salary plus distributions, which is exactly how S-Corps unlock self-employment tax savings on the profits above your salary. With your interest in ${growthLabel[a.q3]} and ${protectionLabel[a.q4].toLowerCase()}, an S-Corp gives you the liability shield of a formal entity with the pass-through taxation of a partnership — the best of both, when the numbers support the added complexity.`,
+    breakdown: [
+      ['What it is', 'An S-Corp is not a separate entity type — it\'s a <strong>tax election</strong> made by an LLC or corporation. You still file the underlying entity, then file Form 2553 to be taxed as an S-Corp.'],
+      ['Tax treatment', 'You pay yourself a "reasonable salary" subject to payroll tax (FICA: 15.3%). Remaining profits are taken as <strong>distributions</strong>, which are NOT subject to self-employment tax. That gap is where the savings come from.'],
+      ['Liability', 'Identical to your underlying entity (LLC or corp). The S-Corp election only changes how the IRS taxes you, not your legal structure.'],
+      ['Best for', 'Profitable businesses earning $50K+ in net income where the owner is actively working in the business and wants to legally reduce self-employment tax exposure.'],
+      ['Watch outs', 'You must run actual payroll (W-2 yourself), file Form 1120-S annually, and your "reasonable salary" must be defensible against IRS scrutiny. Administrative complexity is real but predictable.'],
+      ['Setup time', 'File Form 2553 — effective for the current tax year if filed within 75 days of formation or the start of the tax year.'],
+      ['Annual cost to maintain', '$1,500 to $3,500 (payroll service, 1120-S preparation, additional accounting).'],
+      ['Why this matters', 'On $100K of profit, the SE tax savings typically come to $5K–$8K per year — easily more than the added admin cost. On $200K+, savings can exceed $15K annually.']
+    ]
+  },
+
+  'C-Corp': {
+    tagline: 'The growth vehicle. Built for raising capital, issuing equity, and scaling.',
+    reasoning: (a) => `Your answers point to ${growthLabel[a.q3]} and a compensation model that includes equity, dividends, or institutional capital — and that combination only really works inside a C-Corp. VCs and most institutional investors will not invest in an LLC or S-Corp; they require a C-Corp (almost always Delaware) for the share classes, preferred stock, and 83(b) elections their model requires. Yes, you'll face double taxation on distributed profits, but at your growth profile, you'll either be reinvesting heavily or raising capital — and in either case, the tax math is dominated by the cost of <strong>not</strong> being able to raise. C-Corp is the only viable structure for what you're building.`,
+    breakdown: [
+      ['What it is', 'A fully separate legal entity that pays its own taxes and exists independently of its owners. The default structure for venture-backed startups and large enterprises.'],
+      ['Tax treatment', 'Corporate income tax at 21% federal (flat). Dividends distributed to shareholders are taxed <strong>again</strong> at the personal level (qualified dividend rates) — this is the famous "double taxation."'],
+      ['Liability', 'Strongest protection of any entity type. The corporate veil is well-established in case law for properly maintained C-Corps.'],
+      ['Best for', 'Businesses raising venture capital, planning multiple classes of stock, granting equity to employees, reinvesting profits heavily, or building toward an acquisition or IPO.'],
+      ['Watch outs', 'Double taxation on distributed profits. More complex compliance (board minutes, annual meetings, separate tax return on Form 1120). Requires more rigorous record-keeping.'],
+      ['Setup time', '2 to 6 weeks. Delaware is the gold standard for incorporation if you plan to raise capital, even if you operate elsewhere.'],
+      ['Annual cost to maintain', '$2,000 to $10,000+ (corporate compliance, tax prep, registered agent, Delaware franchise tax).'],
+      ['Why this matters', 'VCs and institutional investors require C-Corp structure. Equity compensation plans (ISOs, RSUs) require it. If you\'re building to raise or sell, this is the only structure that will actually work — every other answer creates rework later.']
+    ]
+  }
+};
+
+// ---------- Tax math by entity + profit ----------
+function fmt(n) { return '$' + n.toLocaleString('en-US'); }
+
+function buildMath(entity, profitKey) {
+  const profit = profitValue[profitKey];
+  if (entity === 'S-Corp') {
+    // Reasonable salary at 40% of profit, capped to make sense
+    const salary = Math.max(20000, Math.round(profit * 0.4 / 1000) * 1000);
+    const distributions = profit - salary;
+    const seBase = Math.min(profit, 168600) * 0.9235;
+    const seTax = Math.round(seBase * 0.153);
+    const fica = Math.round(Math.min(salary, 168600) * 0.153);
+    const savings = seTax - fica;
+    return `
+      <h3>The math for you, on ${fmt(profit)} of <em>profit</em>.</h3>
+      <p class="math-intro">Approximate self-employment / payroll tax comparison. Figures use simplified 2024 FICA rules and assume a defensible salary of roughly 40% of profit. Your CPA will tune this to your facts.</p>
+      <table class="math-table">
+        <thead><tr><th class="col">Line item</th><th class="num">LLC (default)</th><th class="num">S-Corp election</th></tr></thead>
+        <tbody>
+          <tr><td class="col">Net profit</td><td class="num">${fmt(profit)}</td><td class="num">${fmt(profit)}</td></tr>
+          <tr><td class="col">Reasonable salary (W-2)</td><td class="num">—</td><td class="num">${fmt(salary)}</td></tr>
+          <tr><td class="col">Distributions</td><td class="num">—</td><td class="num">${fmt(distributions)}</td></tr>
+          <tr><td class="col">SE tax (15.3% on 92.35%)</td><td class="num">${fmt(seTax)}</td><td class="num">${fmt(fica)}</td></tr>
+          <tr><td class="col">Annual SE tax savings</td><td class="num">—</td><td class="num">${fmt(savings)}</td></tr>
+        </tbody>
+      </table>
+      <div class="math-callout">Over five years, that's roughly <strong>${fmt(savings * 5)}</strong> kept in your pocket instead of sent to the IRS — and that's before factoring in the proactive tax planning we'd layer on top.</div>
+    `;
+  }
+  if (entity === 'C-Corp') {
+    const corpTax = Math.round(profit * 0.21);
+    const distributable = profit - corpTax;
+    const divTax = Math.round(distributable * 0.15);
+    const totalC = corpTax + divTax;
+    const totalLLC = Math.round(profit * 0.30); // rough effective rate at this profit
+    return `
+      <h3>The math for you, on ${fmt(profit)} of <em>profit</em>.</h3>
+      <p class="math-intro">A C-Corp is rarely the cheapest tax structure if you plan to distribute all profits. Your situation calls for it because of capital, equity, or reinvestment — not tax savings. Here's the honest comparison.</p>
+      <table class="math-table">
+        <thead><tr><th class="col">Line item</th><th class="num">LLC / S-Corp</th><th class="num">C-Corp (all distributed)</th></tr></thead>
+        <tbody>
+          <tr><td class="col">Net profit</td><td class="num">${fmt(profit)}</td><td class="num">${fmt(profit)}</td></tr>
+          <tr><td class="col">Corporate tax (21%)</td><td class="num">—</td><td class="num">${fmt(corpTax)}</td></tr>
+          <tr><td class="col">Distributed to owner</td><td class="num">${fmt(profit)}</td><td class="num">${fmt(distributable)}</td></tr>
+          <tr><td class="col">Personal tax (est.)</td><td class="num">${fmt(totalLLC)}</td><td class="num">${fmt(divTax)} (qualified div)</td></tr>
+          <tr><td class="col">Total tax burden</td><td class="num">${fmt(totalLLC)}</td><td class="num">${fmt(totalC)}</td></tr>
+        </tbody>
+      </table>
+      <div class="math-callout">The C-Corp <strong>only</strong> wins when you reinvest profits inside the company (no dividend layer triggered) or when raising capital makes the equity story worth the tax inefficiency. For your trajectory — equity, dividends, or capital — it's the right call <em>despite</em> the math, not because of it.</div>
+    `;
+  }
+  if (entity === 'LLC') {
+    const seBase = Math.min(profit, 168600) * 0.9235;
+    const seTax = Math.round(seBase * 0.153);
+    const fedEst = Math.round(profit * 0.18);
+    const total = seTax + fedEst;
+    const llcFee = profit > 100000 ? 800 : 300;
+    return `
+      <h3>The math for you, on ${fmt(profit)} of <em>profit</em>.</h3>
+      <p class="math-intro">As an LLC, you keep things simple: pass-through taxation plus liability protection for the cost of a state filing. Approximate federal tax estimate below.</p>
+      <table class="math-table">
+        <thead><tr><th class="col">Line item</th><th class="num">Amount</th></tr></thead>
+        <tbody>
+          <tr><td class="col">Net profit (Schedule C / partnership)</td><td class="num">${fmt(profit)}</td></tr>
+          <tr><td class="col">Self-employment tax (15.3%)</td><td class="num">${fmt(seTax)}</td></tr>
+          <tr><td class="col">Federal income tax (est.)</td><td class="num">${fmt(fedEst)}</td></tr>
+          <tr><td class="col">State LLC fees (typical)</td><td class="num">${fmt(llcFee)}</td></tr>
+          <tr><td class="col">Total tax + fees</td><td class="num">${fmt(total + llcFee)}</td></tr>
+        </tbody>
+      </table>
+      <div class="math-callout">If your profit grows past <strong>$80K</strong>, electing S-Corp taxation on top of this LLC typically saves another <strong>$5K–$15K per year</strong> in self-employment tax. We'll flag it the moment the numbers justify it.</div>
+    `;
+  }
+  // Sole Proprietorship
+  const seBase = Math.min(profit, 168600) * 0.9235;
+  const seTax = Math.round(seBase * 0.153);
+  const fedEst = Math.round(profit * 0.16);
+  const total = seTax + fedEst;
+  return `
+    <h3>The math for you, on ${fmt(profit)} of <em>profit</em>.</h3>
+    <p class="math-intro">As a Sole Proprietor, every dollar of profit hits your personal return and is subject to self-employment tax. Approximate breakdown below.</p>
+    <table class="math-table">
+      <thead><tr><th class="col">Line item</th><th class="num">Amount</th></tr></thead>
+      <tbody>
+        <tr><td class="col">Net profit (Schedule C)</td><td class="num">${fmt(profit)}</td></tr>
+        <tr><td class="col">Self-employment tax (15.3%)</td><td class="num">${fmt(seTax)}</td></tr>
+        <tr><td class="col">Federal income tax (est.)</td><td class="num">${fmt(fedEst)}</td></tr>
+        <tr><td class="col">Total tax burden</td><td class="num">${fmt(total)}</td></tr>
+      </tbody>
+    </table>
+    <div class="math-callout">An LLC adds <strong>roughly $300/year</strong> in state fees but gives you a real liability shield. When profit crosses <strong>$50K</strong>, an S-Corp election on top can start saving several thousand more.</div>
+  `;
+}
+
+// ---------- Render result page ----------
+function renderResult() {
+  const entity = state.recommendation;
+  const data = entityData[entity];
+  const a = state.answers;
+  const firstName = state.lead.firstName || 'there';
+  const profitStr = profitLabel[a.q2];
+
+  const breakdownHtml = data.breakdown.map(([label, text]) => `
+    <li><div class="bd-label">${label}</div><div class="bd-text">${text}</div></li>
+  `).join('');
+
+  const html = `
+    <div class="result-hero">
+      <span class="result-eyebrow"><span class="dot"></span>Your recommendation</span>
+      <div class="result-prelude">${firstName}, your recommended structure is</div>
+      <div class="result-name">${entity}</div>
+      <p class="result-summary">${data.tagline}</p>
+    </div>
+
+    <div class="reasoning-block">
+      <span class="reasoning-eyebrow">Why this is right for you</span>
+      <div class="reasoning-text">${data.reasoning(a)}</div>
+    </div>
+
+    <div class="section-header"><h3>The <em>full breakdown</em></h3><span class="h-num">§ 01</span></div>
+    <div class="breakdown">
+      <ul class="bd-list">${breakdownHtml}</ul>
+    </div>
+
+    <div class="section-header"><h3>The <em>tax math</em></h3><span class="h-num">§ 02</span></div>
+    <div class="math-card">
+      ${buildMath(entity, a.q2)}
+    </div>
+
+    <div class="section-header"><h3>Your <em>next steps</em></h3><span class="h-num">§ 03</span></div>
+    <div class="next-steps">
+      <ul class="ns-list">
+        <li>
+          <span class="ns-num">i.</span>
+          <div class="ns-text"><strong>Schedule a free consultation with Maya.</strong>30 minutes, no pressure. We'll walk through your specific situation, confirm the entity decision, and map the setup timeline.</div>
+        </li>
+        <li>
+          <span class="ns-num">ii.</span>
+          <div class="ns-text"><strong>Bookmark the Resources page.</strong>IRS forms, deadline calendar, withholding estimators, and self-employment calculators you'll reach for all year.</div>
+        </li>
+        <li>
+          <span class="ns-num">iii.</span>
+          <div class="ns-text"><strong>Forward this quiz to two business owners you know.</strong>They'll thank you for it — and you'll save them from picking the wrong structure.</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="maya-note">
+      <span class="maya-eyebrow">A note from Maya</span>
+      <div class="maya-body">
+        <p>Entity selection is one of the most important early decisions you'll make as a founder. The right structure compounds in your favor for years. The wrong one quietly costs you tens of thousands.</p>
+        <p>If you want to talk through your specific situation — including the parts a quiz can't capture — I'm one click away.</p>
+        <div class="maya-sign"><strong>— Maya Graves</strong>Founder &amp; Lead Strategist, MRG Accounting Service</div>
+      </div>
+    </div>
+
+    <div class="result-ctas">
+      <h3>Ready to put this into <em>motion?</em></h3>
+      <p>Book a free 30-minute consultation. We'll confirm your entity decision, map the setup, and identify any immediate tax opportunities on the table.</p>
+      <a href="contact.html#consult" class="btn btn-primary">Book My Free Consultation <span class="arrow">→</span></a>
+    </div>
+
+    <div class="share-strip">
+      <div class="share-text">
+        <strong>Know someone starting a <em>business?</em></strong>
+        <span>Forward this quiz. They'll thank you — and you'll save them from picking the wrong structure.</span>
+      </div>
+      <div class="share-btns">
+        <a class="share-btn" id="share-copy" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+          <span class="share-label">Copy link</span>
+        </a>
+        <a class="share-btn" id="share-email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          <span class="share-label">Email</span>
+        </a>
+        <a class="share-btn" id="share-sms">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+          <span class="share-label">Text</span>
+        </a>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('result-content').innerHTML = html;
+  wireShareButtons();
+}
+
+function wireShareButtons() {
+  const url = window.location.href;
+  const subject = 'This entity quiz is worth 2 minutes';
+  const body = `I just took this LLC vs S-Corp vs C-Corp quiz from a CPA in San Diego — it's the clearest breakdown I've seen. Worth the 2 minutes if you're starting or restructuring a business. ${url}`;
+  const sms = `LLC vs S-Corp vs C-Corp quiz from a CPA — really clear: ${url}`;
+  document.getElementById('share-email').href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  document.getElementById('share-sms').href = `sms:?&body=${encodeURIComponent(sms)}`;
+  const copyBtn = document.getElementById('share-copy');
+  copyBtn.addEventListener('click', async (e) => {
+    e.preventDefault();
+    try { await navigator.clipboard.writeText(url); }
+    catch { /* clipboard blocked — silently fail */ }
+    copyBtn.classList.add('copied');
+    setTimeout(() => copyBtn.classList.remove('copied'), 1800);
+  });
+}
+
+// ---------- Counter animation (for trust strip on landing) ----------
+const counterIO = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      counterIO.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.18 });
+document.querySelectorAll('.reveal-left, .reveal-right').forEach(el => counterIO.observe(el));
+</script>
+
+</body>
+</html>

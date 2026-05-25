@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Business Consultant &amp; Launch Services | MRG Accounting Service</title>
+<meta name="description" content="Business launch services — entity selection, business registration, EIN/Tax ID, licenses, permits, compliance, and strategic financial setup. Built for founders who want to start the right way." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .lead-block{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+  @media (max-width:900px){.lead-block{grid-template-columns:1fr;gap:50px}}
+  .lead-block h2{font-size:clamp(34px,4.8vw,52px);font-weight:600;letter-spacing:-.03em;line-height:1.05;margin-bottom:24px}
+  .lead-block h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
+  .lead-block p{color:var(--text-2);font-size:16.5px;line-height:1.75;margin-bottom:18px}
+  .lead-block .firm{color:var(--ink);font-weight:600}
+
+  .editorial-visual{aspect-ratio:5/6;border-radius:var(--radius-lg);background:linear-gradient(180deg,#ffffff,#fbfaf6);border:1px solid var(--line-strong);position:relative;overflow:hidden;padding:50px 40px;display:flex;flex-direction:column;justify-content:space-between}
+  .editorial-visual::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 30% 30%,rgba(255,209,160,.45),transparent 60%)}
+  .ev-stamp{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-3);font-weight:600;position:relative;z-index:1}
+  .ev-big{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:clamp(62px,8vw,108px);line-height:.95;letter-spacing:-.035em;color:var(--ink);position:relative;z-index:1}
+  .ev-meta{position:relative;z-index:1;display:flex;flex-direction:column;gap:14px}
+  .ev-row{display:flex;justify-content:space-between;padding:14px 0;border-top:1px solid var(--line);font-size:13.5px;color:var(--text-2)}
+  .ev-row strong{color:var(--ink);font-weight:600}
+
+  /* Services large editorial */
+  .launch-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  @media (max-width:780px){.launch-grid{grid-template-columns:1fr}}
+  .launch-card{
+    padding:44px 38px;border-radius:var(--radius-lg);
+    background:linear-gradient(180deg,#ffffff,#fbfaf6);
+    border:1px solid var(--line-strong);transition:all .4s ease;
+    position:relative;overflow:hidden;
+  }
+  .launch-card:hover{transform:translateY(-5px);border-color:var(--line-bright);background:linear-gradient(180deg,#ffffff,#fbf8f0)}
+  .launch-num{font-family:'Instrument Serif',serif;font-style:italic;color:var(--accent);font-size:48px;line-height:1;letter-spacing:-.03em;margin-bottom:24px;display:block;font-weight:400}
+  .launch-card h3{font-size:24px;margin-bottom:12px;letter-spacing:-.02em;font-weight:600}
+  .launch-card h3 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
+  .launch-card p{color:var(--text-2);font-size:15px;line-height:1.7}
+
+  /* Process */
+  .process-line{display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative;border-radius:var(--radius-xl);overflow:hidden;background:linear-gradient(180deg,#ffffff,#fbfaf6);border:1px solid var(--line-strong)}
+  @media (max-width:900px){.process-line{grid-template-columns:1fr}}
+  .process-line .pstep{padding:50px 40px;border-right:1px solid var(--line-strong);position:relative;transition:background .35s ease}
+  @media (max-width:900px){.process-line .pstep{border-right:none;border-bottom:1px solid var(--line-strong)}}
+  .process-line .pstep:last-child{border-right:none;border-bottom:none}
+  .process-line .pstep:hover{background:rgba(255,255,255,.55)}
+  .process-line .pnum{font-family:'Instrument Serif',serif;font-style:italic;font-size:60px;color:var(--accent);line-height:1;letter-spacing:-.03em;margin-bottom:24px;display:block}
+  .process-line h3{font-size:22px;margin-bottom:10px;letter-spacing:-.02em;font-weight:600}
+  .process-line p{font-size:14.5px;color:var(--text-2);line-height:1.65}
+</style>
+</head>
+<body>
+
+<div class="ambient"><div class="glow glow-1"></div><div class="glow glow-2"></div><div class="glow glow-3"></div></div>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="brand"><div class="brand-mark">M</div><div class="brand-name"><strong>MRG Accounting</strong><small>Service</small></div></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="founder.html">Founder</a>
+    <a href="bookkeeping.html">Bookkeeping</a>
+    <a href="taxes.html">Taxes</a>
+    <a href="payroll.html">Payroll</a>
+    <a href="business-consultant.html" class="active">Consultant</a>
+    <a href="administrative.html">Admin</a>
+  </div>
+  <a href="contact.html" class="nav-cta">Book a Call</a>
+  <button class="menu-btn" id="menuBtn" aria-label="Menu"><span></span></button>
+</nav>
+
+<div class="drawer" id="drawer">
+  <button class="drawer-close" id="drawerClose" aria-label="Close">✕</button>
+  <a href="index.html">Home</a><a href="founder.html">Meet the Founder</a><a href="bookkeeping.html">Bookkeeping</a><a href="taxes.html">Taxes</a><a href="resources-taxes.html">Resources Taxes</a><a href="payroll.html">Payroll</a><a href="business-consultant.html">Business Consultant</a><a href="administrative.html">Administrative</a><a href="contact.html">Contact Us</a>
+</div>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="wrap reveal">
+    <span class="eyebrow"><span class="dot"></span>Business Launch Services · Consulting</span>
+    <h1>Start your business <em>the right way.</em></h1>
+    <p class="lede">Starting a business is exciting — but it can also feel overwhelming. We make the process simple by guiding you through every step of setting up the right way, so you can build on a strong financial and legal foundation from day one.</p>
+    <div class="cta-row">
+      <a href="contact.html" class="btn btn-primary">Launch with MRG <span class="arrow">→</span></a>
+      <a href="#services" class="btn btn-outline">See What's Included</a>
+    </div>
+  </div>
+</section>
+
+<!-- LEAD INTRO -->
+<section style="padding-top:40px">
+  <div class="wrap">
+    <div class="lead-block reveal">
+      <div>
+        <span class="eyebrow"><span class="line"></span>Why trust MRG with your business formation</span>
+        <h2 class="mt-md">The way you form your business <em>impacts everything.</em></h2>
+        <p>The way your business is formed impacts your taxes, your liability, and your ability to grow. By working with <span class="firm">MRG Accounting Service</span>, you gain peace of mind knowing your business is built on a strong financial and legal foundation.</p>
+        <p>From choosing the best structure to ensuring compliance, we help lay the groundwork for your long-term success — and we stay with you long after launch to keep everything running clean.</p>
+      </div>
+      <div class="editorial-visual">
+        <div class="ev-stamp">№ 04 · Built to last</div>
+        <div class="ev-big">Start<br/>right.<br/><em>Scale</em><br/>smart.</div>
+        <div class="ev-meta">
+          <div class="ev-row"><span>Entities</span><strong>LLC · S-Corp · C-Corp · LP</strong></div>
+          <div class="ev-row"><span>States</span><strong>All 50 supported</strong></div>
+          <div class="ev-row"><span>Setup</span><strong>2–4 weeks typical</strong></div>
+          <div class="ev-row"><span>Post-launch</span><strong>Ongoing compliance</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE OFFER -->
+<section id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="line"></span>What we offer</span>
+      <h2 class="section-h mt-md">A complete launch package.<br/><em class="kicker">Nothing skipped. Nothing missed.</em></h2>
+    </div>
+
+    <div class="launch-grid reveal-stagger">
+      <div class="launch-card">
+        <span class="launch-num">i.</span>
+        <h3>Entity <em>Selection Guidance</em></h3>
+        <p>LLC, S-Corp, C-Corp, partnership, or sole proprietorship? The right answer depends on your taxes, your goals, and your industry. We walk you through the trade-offs and recommend what actually fits.</p>
+      </div>
+      <div class="launch-card">
+        <span class="launch-num">ii.</span>
+        <h3>Business <em>Registration</em></h3>
+        <p>We file the necessary documents with the state and IRS — Articles of Organization, Operating Agreements, registered agent setup, foreign qualifications. Done properly the first time.</p>
+      </div>
+      <div class="launch-card">
+        <span class="launch-num">iii.</span>
+        <h3>EIN &amp; <em>Tax ID Application</em></h3>
+        <p>Secure your federal tax identification number quickly and correctly. Required for banking, payroll, tax filings, and most state-level registrations.</p>
+      </div>
+      <div class="launch-card">
+        <span class="launch-num">iv.</span>
+        <h3>Licenses &amp; <em>Permits</em></h3>
+        <p>Industry-specific guidance on the business licenses, professional licenses, and local permits you actually need. No more guessing what your city, county, or state requires.</p>
+      </div>
+      <div class="launch-card">
+        <span class="launch-num">v.</span>
+        <h3>Compliance <em>Support</em></h3>
+        <p>Ongoing support to ensure your business stays in good standing — annual filings, registered agent renewals, statement of information deadlines, all monitored on your behalf.</p>
+      </div>
+      <div class="launch-card">
+        <span class="launch-num">vi.</span>
+        <h3>Strategic <em>Financial Setup</em></h3>
+        <p>The piece most founders skip and later regret: getting your bookkeeping, payroll, and tax systems organized from day one — so growth doesn't outpace your back office.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="line"></span>The launch process</span>
+      <h2 class="section-h mt-md">Three steps to <em class="kicker">a real business.</em></h2>
+    </div>
+
+    <div class="process-line reveal">
+      <div class="pstep">
+        <span class="pnum">i.</span>
+        <h3>Discovery Session</h3>
+        <p>A focused conversation about your idea, your industry, your funding, and your goals. We listen carefully — this stage determines everything downstream.</p>
+      </div>
+      <div class="pstep">
+        <span class="pnum">ii.</span>
+        <h3>Structure &amp; Filing</h3>
+        <p>We recommend the right entity, file the formation documents, apply for your EIN, and walk you through every required license and permit for your state and industry.</p>
+      </div>
+      <div class="pstep">
+        <span class="pnum">iii.</span>
+        <h3>Financial Setup</h3>
+        <p>Bookkeeping configured. Payroll system selected (if needed). Tax strategy outlined. Banking ready. You launch with a complete operational back office — not just an LLC certificate.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section style="padding-top:0">
+  <div class="wrap reveal">
+    <div class="stats-strip">
+      <div class="stat"><span class="num">50</span><span class="lbl">States we file in</span></div>
+      <div class="stat"><span class="num">22+</span><span class="lbl">Years of expertise</span></div>
+      <div class="stat"><span class="num">2–4 wks</span><span class="lbl">Typical formation</span></div>
+      <div class="stat"><span class="num">CFO</span><span class="lbl">Level guidance</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- LEAD MAGNET STRIP -->
+<section class="lead-magnet-section">
+  <div class="wrap reveal">
+    <a href="entity-quiz.html" class="lm-strip">
+      <div class="lm-eyebrow"><span class="dot"></span>Free Interactive Tool</div>
+      <div>
+        <div class="lm-h">Not sure if you should be an <em>LLC, S-Corp, or C-Corp?</em></div>
+        <div class="lm-sub">Take our 2-minute entity quiz. Personalized recommendation + the actual tax math behind it.</div>
+      </div>
+      <div class="lm-cta">Take the Quiz <span class="arrow">→</span></div>
+    </a>
+  </div>
+</section>
+
+<!-- BOFU -->
+<section>
+  <div class="wrap reveal">
+    <div class="bofu">
+      <div class="bofu-inner">
+        <span class="eyebrow"><span class="dot"></span>Free launch consultation</span>
+        <h2>Ready to <em>schedule now?</em></h2>
+        <p class="lede">Book a free 30-minute consultation. We'll review your business idea, recommend the right structure, and outline exactly what setup looks like — no obligation, no pressure.</p>
+        <div class="bofu-cta">
+          <a href="contact.html" class="btn btn-primary">Schedule Now <span class="arrow">→</span></a>
+          <a href="founder.html" class="btn btn-outline">Meet Maya First</a>
+        </div>
+        <div class="bofu-line"><span class="ico">✦</span>The right setup. From day one.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand"><div class="brand" style="font-size:17px"><div class="brand-mark">M</div><div class="brand-name"><strong>MRG Accounting</strong><small>Service</small></div></div><p>Bookkeeping, taxes, payroll, business consulting, and administrative solutions for entrepreneurs and small business owners. Founded 2018 · San Diego, CA.</p></div>
+      <div class="foot-col"><h5>Services</h5><a href="bookkeeping.html">Bookkeeping</a><a href="taxes.html">Taxes</a><a href="payroll.html">Payroll</a><a href="business-consultant.html">Business Consultant</a><a href="administrative.html">Administrative</a></div>
+      <div class="foot-col"><h5>Resources</h5><a href="resources-taxes.html">Tax Resources</a><a href="founder.html">Meet the Founder</a><a href="contact.html">Contact</a></div>
+      <div class="foot-col"><h5>Connect</h5>
+        <a href="mailto:hello@mrgacct.com" style="padding:7px 0;display:block">hello@mrgacct.com</a>
+        <a href="tel:+16194547001" style="padding:7px 0;display:block">+1 (619) 454-7001</a>
+        <div style="font-size:13px;color:var(--text-3);padding:7px 0">San Diego, CA</div>
+        <div class="socials">
+          <a href="https://www.facebook.com/mayagraves" target="_blank" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.093 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.563V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg></a>
+          <a href="https://www.instagram.com/mrgacct143" target="_blank" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg></a>
+          <a href="https://www.linkedin.com/mayagraves" target="_blank" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 1 1 8.3 6.5a1.78 1.78 0 0 1-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0 0 13 14.19a.66.66 0 0 0 0 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 0 1 2.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom"><div>© 2026 MRG Accounting Service · All rights reserved.</div><div>Where numbers meet strategy.</div></div>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{if(window.scrollY>20)nav.classList.add('scrolled');else nav.classList.remove('scrolled')});
+const drawer=document.getElementById('drawer');document.getElementById('menuBtn').addEventListener('click',()=>drawer.classList.add('open'));document.getElementById('drawerClose').addEventListener('click',()=>drawer.classList.remove('open'));drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>drawer.classList.remove('open')));
+const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:0.12,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.reveal, .reveal-stagger').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

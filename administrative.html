@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Administrative Solutions | MRG Accounting Service</title>
+<meta name="description" content="Document management, scheduling, client communications, compliance monitoring, administrative consulting, and reporting follow-up — the back-office support most firms don't offer." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .admin-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media (max-width:900px){.admin-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:560px){.admin-grid{grid-template-columns:1fr}}
+  .admin-card{
+    padding:42px 36px;border-radius:var(--radius-lg);
+    background:linear-gradient(180deg,#ffffff,#fbfaf6);
+    border:1px solid var(--line-strong);transition:all .4s ease;
+    display:flex;flex-direction:column;
+  }
+  .admin-card:hover{transform:translateY(-5px);border-color:var(--line-bright);background:linear-gradient(180deg,#ffffff,#fbf8f0)}
+  .admin-num{font-family:'Instrument Serif',serif;font-style:italic;color:var(--accent);font-size:48px;line-height:1;letter-spacing:-.03em;margin-bottom:22px;display:block;font-weight:400}
+  .admin-card h3{font-size:21px;margin-bottom:14px;letter-spacing:-.02em;font-weight:600}
+  .admin-card h3 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
+  .admin-card > p{font-size:14.5px;color:var(--text-2);line-height:1.65;margin-bottom:20px}
+  .admin-items{list-style:none;padding-top:18px;border-top:1px solid var(--line);margin-top:auto}
+  .admin-items li{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--text-2);padding:7px 0;line-height:1.5}
+  .admin-items li::before{content:"";width:12px;height:1px;background:var(--accent);margin-top:11px;flex-shrink:0}
+
+  /* Hero visual */
+  .lead-block{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+  @media (max-width:900px){.lead-block{grid-template-columns:1fr;gap:50px}}
+  .lead-block h2{font-size:clamp(34px,4.8vw,52px);font-weight:600;letter-spacing:-.03em;line-height:1.05;margin-bottom:24px}
+  .lead-block h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
+  .lead-block p{color:var(--text-2);font-size:16.5px;line-height:1.75;margin-bottom:18px}
+  .lead-block .firm{color:var(--ink);font-weight:600}
+  .editorial-visual{aspect-ratio:5/6;border-radius:var(--radius-lg);background:linear-gradient(180deg,#ffffff,#fbfaf6);border:1px solid var(--line-strong);position:relative;overflow:hidden;padding:50px 40px;display:flex;flex-direction:column;justify-content:space-between}
+  .editorial-visual::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 30% 30%,rgba(255,209,160,.45),transparent 60%)}
+  .ev-stamp{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-3);font-weight:600;position:relative;z-index:1}
+  .ev-big{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:clamp(62px,8vw,108px);line-height:.95;letter-spacing:-.035em;color:var(--ink);position:relative;z-index:1}
+  .ev-meta{position:relative;z-index:1;display:flex;flex-direction:column;gap:14px}
+  .ev-row{display:flex;justify-content:space-between;padding:14px 0;border-top:1px solid var(--line);font-size:13.5px;color:var(--text-2)}
+  .ev-row strong{color:var(--ink);font-weight:600}
+</style>
+</head>
+<body>
+
+<div class="ambient"><div class="glow glow-1"></div><div class="glow glow-2"></div><div class="glow glow-3"></div></div>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="brand"><div class="brand-mark">M</div><div class="brand-name"><strong>MRG Accounting</strong><small>Service</small></div></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="founder.html">Founder</a>
+    <a href="bookkeeping.html">Bookkeeping</a>
+    <a href="taxes.html">Taxes</a>
+    <a href="payroll.html">Payroll</a>
+    <a href="business-consultant.html">Consultant</a>
+    <a href="administrative.html" class="active">Admin</a>
+  </div>
+  <a href="contact.html" class="nav-cta">Book a Call</a>
+  <button class="menu-btn" id="menuBtn" aria-label="Menu"><span></span></button>
+</nav>
+
+<div class="drawer" id="drawer">
+  <button class="drawer-close" id="drawerClose" aria-label="Close">✕</button>
+  <a href="index.html">Home</a><a href="founder.html">Meet the Founder</a><a href="bookkeeping.html">Bookkeeping</a><a href="taxes.html">Taxes</a><a href="resources-taxes.html">Resources Taxes</a><a href="payroll.html">Payroll</a><a href="business-consultant.html">Business Consultant</a><a href="administrative.html">Administrative</a><a href="contact.html">Contact Us</a>
+</div>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="wrap reveal">
+    <span class="eyebrow"><span class="dot"></span>Administrative Solutions</span>
+    <h1>The <em>back-office support</em> nobody else offers.</h1>
+    <p class="lede">Document filing. Deadline tracking. Client communications. Compliance monitoring. The administrative heavy-lifting most firms leave you to figure out alone — we handle it with the same care we bring to your books and taxes.</p>
+    <div class="cta-row">
+      <a href="contact.html" class="btn btn-primary">Schedule a Consultation <span class="arrow">→</span></a>
+      <a href="#services" class="btn btn-outline">See What's Included</a>
+    </div>
+  </div>
+</section>
+
+<!-- LEAD INTRO -->
+<section style="padding-top:40px">
+  <div class="wrap">
+    <div class="lead-block reveal">
+      <div>
+        <span class="eyebrow"><span class="line"></span>Beyond the books</span>
+        <h2 class="mt-md">The work that <em>quietly compounds.</em></h2>
+        <p>Great accounting is more than spreadsheets. The administrative layer — keeping documents organized, deadlines tracked, communications flowing, and compliance current — is where most small businesses silently bleed time, money, and focus.</p>
+        <p>At <span class="firm">MRG Accounting Service</span>, we built a dedicated administrative practice for the exact reason: so the work that quietly compounds in the background never becomes the work that quietly costs you.</p>
+      </div>
+      <div class="editorial-visual">
+        <div class="ev-stamp">№ 05 · Quiet excellence</div>
+        <div class="ev-big">Detail.<br/><em>Order.</em><br/>Care.</div>
+        <div class="ev-meta">
+          <div class="ev-row"><span>Document portals</span><strong>Secure &amp; encrypted</strong></div>
+          <div class="ev-row"><span>Reminders</span><strong>Email &amp; text</strong></div>
+          <div class="ev-row"><span>Compliance</span><strong>Federal &amp; state monitored</strong></div>
+          <div class="ev-row"><span>Reporting</span><strong>Monthly &amp; quarterly</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 SOLUTIONS -->
+<section id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="line"></span>Six administrative solutions</span>
+      <h2 class="section-h mt-md">Where the magic happens<br/><em class="kicker">behind the scenes.</em></h2>
+    </div>
+
+    <div class="admin-grid reveal-stagger">
+
+      <div class="admin-card">
+        <span class="admin-num">i.</span>
+        <h3>Document Management &amp; <em>Filing</em></h3>
+        <p>Secure client portals, organized digital filing, and a system that actually scales with your business.</p>
+        <ul class="admin-items">
+          <li>Setting up secure client portals for uploads</li>
+          <li>Organizing and labeling tax and accounting documents</li>
+          <li>Scanning, uploading, and archiving receipts</li>
+          <li>Tracking deadlines for filings (federal, state, payroll, sales tax)</li>
+        </ul>
+      </div>
+
+      <div class="admin-card">
+        <span class="admin-num">ii.</span>
+        <h3>Scheduling &amp; <em>Reminders</em></h3>
+        <p>Never miss a deadline or a consultation again. We run the calendar so you can run the business.</p>
+        <ul class="admin-items">
+          <li>Appointment scheduling for consultations, tax prep, reviews</li>
+          <li>Email and text reminders for tax deadlines or estimated payments</li>
+          <li>Maintaining a calendar of important compliance dates</li>
+          <li>Proactive deadline alerts before they become emergencies</li>
+        </ul>
+      </div>
+
+      <div class="admin-card">
+        <span class="admin-num">iii.</span>
+        <h3>Client <em>Communications</em></h3>
+        <p>Engagement letters, client updates, newsletters, tax law changes — clear, timely, professional outreach handled for you.</p>
+        <ul class="admin-items">
+          <li>Preparing and sending engagement letters</li>
+          <li>Emailing clients about new tax laws, credits, or deductions</li>
+          <li>Sending newsletters with financial tips and updates</li>
+          <li>Maintaining professional, consistent client touchpoints</li>
+        </ul>
+      </div>
+
+      <div class="admin-card">
+        <span class="admin-num">iv.</span>
+        <h3>Compliance <em>Monitoring</em></h3>
+        <p>Federal, state, local — we keep watch on every renewal, license, and filing requirement that matters.</p>
+        <ul class="admin-items">
+          <li>Monitoring state and federal filing obligations</li>
+          <li>Ensuring business licenses and permits stay renewed</li>
+          <li>Keeping records of correspondence with IRS/state agencies</li>
+          <li>Annual reports, statements of information, and registered agent renewals</li>
+        </ul>
+      </div>
+
+      <div class="admin-card">
+        <span class="admin-num">v.</span>
+        <h3>Administrative <em>Consulting</em></h3>
+        <p>Help your team work smarter. We set up the systems, processes, and templates that turn busy work into automated work.</p>
+        <ul class="admin-items">
+          <li>Setting up recordkeeping systems (QuickBooks &amp; beyond)</li>
+          <li>Training your staff on document organization and uploads</li>
+          <li>Creating templates for recurring tasks (expense reports, mileage logs)</li>
+          <li>Process documentation so the work survives turnover</li>
+        </ul>
+      </div>
+
+      <div class="admin-card">
+        <span class="admin-num">vi.</span>
+        <h3>Basic Reporting &amp; <em>Follow-Up</em></h3>
+        <p>The reporting most firms forget — and the gentle nudges that keep things on track without nagging.</p>
+        <ul class="admin-items">
+          <li>Generating monthly/quarterly bookkeeping summaries</li>
+          <li>Sending P&amp;L or balance sheet snapshots before meetings</li>
+          <li>Following up on missing documents or unresolved items</li>
+          <li>Closing the loop so nothing falls through the cracks</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section style="padding-top:0">
+  <div class="wrap reveal">
+    <div class="stats-strip">
+      <div class="stat"><span class="num">0</span><span class="lbl">Missed deadlines</span></div>
+      <div class="stat"><span class="num">24h</span><span class="lbl">Response time</span></div>
+      <div class="stat"><span class="num">100%</span><span class="lbl">Document security</span></div>
+      <div class="stat"><span class="num">Always</span><span class="lbl">On the same page</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOFU -->
+<section>
+  <div class="wrap reveal">
+    <div class="bofu">
+      <div class="bofu-inner">
+        <span class="eyebrow"><span class="dot"></span>Free administrative audit</span>
+        <h2>What's quietly <em>costing you?</em></h2>
+        <p class="lede">Tell us what your back office looks like today. We'll spend 30 minutes identifying the gaps, the risks, and the time you could be reclaiming. Free and confidential.</p>
+        <div class="bofu-cta">
+          <a href="contact.html" class="btn btn-primary">Book Your Free Audit <span class="arrow">→</span></a>
+          <a href="contact.html" class="btn btn-outline">Send a Message</a>
+        </div>
+        <div class="bofu-line"><span class="ico">✦</span>Quiet work. Loud results.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand"><div class="brand" style="font-size:17px"><div class="brand-mark">M</div><div class="brand-name"><strong>MRG Accounting</strong><small>Service</small></div></div><p>Bookkeeping, taxes, payroll, business consulting, and administrative solutions for entrepreneurs and small business owners. Founded 2018 · San Diego, CA.</p></div>
+      <div class="foot-col"><h5>Services</h5><a href="bookkeeping.html">Bookkeeping</a><a href="taxes.html">Taxes</a><a href="payroll.html">Payroll</a><a href="business-consultant.html">Business Consultant</a><a href="administrative.html">Administrative</a></div>
+      <div class="foot-col"><h5>Resources</h5><a href="resources-taxes.html">Tax Resources</a><a href="founder.html">Meet the Founder</a><a href="contact.html">Contact</a></div>
+      <div class="foot-col"><h5>Connect</h5>
+        <a href="mailto:hello@mrgacct.com" style="padding:7px 0;display:block">hello@mrgacct.com</a>
+        <a href="tel:+16194547001" style="padding:7px 0;display:block">+1 (619) 454-7001</a>
+        <div style="font-size:13px;color:var(--text-3);padding:7px 0">San Diego, CA</div>
+        <div class="socials">
+          <a href="https://www.facebook.com/mayagraves" target="_blank" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.093 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.563V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg></a>
+          <a href="https://www.instagram.com/mrgacct143" target="_blank" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg></a>
+          <a href="https://www.linkedin.com/mayagraves" target="_blank" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 1 1 8.3 6.5a1.78 1.78 0 0 1-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0 0 13 14.19a.66.66 0 0 0 0 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 0 1 2.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom"><div>© 2026 MRG Accounting Service · All rights reserved.</div><div>Where numbers meet strategy.</div></div>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{if(window.scrollY>20)nav.classList.add('scrolled');else nav.classList.remove('scrolled')});
+const drawer=document.getElementById('drawer');document.getElementById('menuBtn').addEventListener('click',()=>drawer.classList.add('open'));document.getElementById('drawerClose').addEventListener('click',()=>drawer.classList.remove('open'));drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>drawer.classList.remove('open')));
+const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:0.12,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.reveal, .reveal-stagger').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

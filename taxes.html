@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Personal &amp; Business Tax Services | MRG Accounting Service</title>
+<meta name="description" content="Personal and business tax preparation with a strategic lens. Individual prep, credits and deductions, amended returns, tax planning, small business filings, sales tax, and entity selection guidance." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .tax-split{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch}
+  @media (max-width:780px){.tax-split{grid-template-columns:1fr}}
+  .tax-col{
+    padding:48px 40px;border-radius:var(--radius-lg);
+    background:linear-gradient(180deg,#ffffff,#fbfaf6);
+    border:1px solid var(--line-strong);position:relative;overflow:hidden;
+    transition:all .4s ease;
+  }
+  .tax-col:hover{border-color:var(--line-bright);transform:translateY(-3px)}
+  .tax-col-tag{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600;
+    margin-bottom:18px;
+  }
+  .tax-col h2{font-size:clamp(30px,4vw,42px);font-weight:600;letter-spacing:-.025em;line-height:1.05;margin-bottom:16px}
+  .tax-col h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
+  .tax-col > p{color:var(--text-2);font-size:15px;line-height:1.7;margin-bottom:32px}
+  .tax-items{list-style:none}
+  .tax-items li{padding:22px 0;border-top:1px solid var(--line)}
+  .tax-items li:first-child{border-top:none;padding-top:0}
+  .tax-items strong{display:block;font-size:16.5px;font-weight:600;color:var(--ink);letter-spacing:-.01em;margin-bottom:6px}
+  .tax-items strong em{font-family:'Instrument Serif',serif;font-style:italic;color:var(--accent);font-weight:400}
+  .tax-items span{font-size:14px;color:var(--text-2);line-height:1.65}
+
+  /* Lead block */
+  .lead-block{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+  @media (max-width:900px){.lead-block{grid-template-columns:1fr;gap:50px}}
+  .lead-block h2{font-size:clamp(34px,4.8vw,52px);font-weight:600;letter-spacing:-.03em;line-height:1.05;margin-bottom:24px}
+  .lead-block h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
+  .lead-block p{color:var(--text-2);font-size:16.5px;line-height:1.75;margin-bottom:18px}
+  .lead-block .firm{color:var(--ink);font-weight:600}
+
+  .editorial-visual{
+    aspect-ratio:5/6;border-radius:var(--radius-lg);
+    background:linear-gradient(180deg,#ffffff,#fbfaf6);
+    border:1px solid var(--line-strong);position:relative;overflow:hidden;
+    padding:50px 40px;display:flex;flex-direction:column;justify-content:space-between;
+  }
+  .editorial-visual::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse at 30% 30%,rgba(255,209,160,.45),transparent 60%);
+  }
+  .ev-stamp{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-3);font-weight:600;position:relative;z-index:1}
+  .ev-big{
+    font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+    font-size:clamp(62px,8vw,108px);line-height:.95;letter-spacing:-.035em;
+    color:var(--ink);position:relative;z-index:1;
+  }
+  .ev-meta{position:relative;z-index:1;display:flex;flex-direction:column;gap:14px}
+  .ev-row{display:flex;justify-content:space-between;padding:14px 0;border-top:1px solid var(--line);font-size:13.5px;color:var(--text-2)}
+  .ev-row strong{color:var(--ink);font-weight:600}
+
+  /* Approach steps */
+  .approach{
+    background:linear-gradient(180deg,#fbfaf6 0%,#f6f4ef 100%);
+    border:1px solid var(--line-strong);border-radius:var(--radius-xl);
+    padding:80px 60px;
+  }
+  @media (max-width:780px){.approach{padding:50px 28px}}
+  .approach-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:36px;margin-top:50px}
+  @media (max-width:900px){.approach-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:560px){.approach-grid{grid-template-columns:1fr}}
+  .ap-step{position:relative}
+  .ap-num{font-family:'Instrument Serif',serif;font-style:italic;color:var(--accent);font-size:38px;line-height:1;letter-spacing:-.03em;margin-bottom:16px;display:block;font-weight:400}
+  .ap-step h4{font-size:18px;font-weight:600;letter-spacing:-.015em;margin-bottom:8px}
+  .ap-step p{font-size:14px;color:var(--text-2);line-height:1.65}
+</style>
+</head>
+<body>
+
+<div class="ambient"><div class="glow glow-1"></div><div class="glow glow-2"></div><div class="glow glow-3"></div></div>
+
+<nav class="nav" id="nav">
+  <a href="index.html" class="brand"><div class="brand-mark">M</div><div class="brand-name"><strong>MRG Accounting</strong><small>Service</small></div></a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="founder.html">Founder</a>
+    <a href="bookkeeping.html">Bookkeeping</a>
+    <a href="taxes.html" class="active">Taxes</a>
+    <a href="payroll.html">Payroll</a>
+    <a href="business-consultant.html">Consultant</a>
+    <a href="administrative.html">Admin</a>
+  </div>
+  <a href="contact.html" class="nav-cta">Book a Call</a>
+  <button class="menu-btn" id="menuBtn" aria-label="Menu"><span></span></button>
+</nav>
+
+<div class="drawer" id="drawer">
+  <button class="drawer-close" id="drawerClose" aria-label="Close">✕</button>
+  <a href="index.html">Home</a><a href="founder.html">Meet the Founder</a><a href="bookkeeping.html">Bookkeeping</a><a href="taxes.html">Taxes</a><a href="resources-taxes.html">Resources Taxes</a><a href="payroll.html">Payroll</a><a href="business-consultant.html">Business Consultant</a><a href="administrative.html">Administrative</a><a href="contact.html">Contact Us</a>
+</div>
+
+<!-- HERO -->
+<section class="page-hero">
+  <div class="wrap reveal">
+    <span class="eyebrow"><span class="dot"></span>Personal &amp; Business Tax Services</span>
+    <h1>Tax season, <em>simplified.</em> Tax bill, <em>minimized.</em></h1>
+    <p class="lede">Whether you're an individual aiming to maximize your refund or a business owner working to stay compliant and reduce your tax burden, MRG delivers accurate, strategic, personalized tax solutions — not generic filings.</p>
+    <div class="cta-row">
+      <a href="contact.html" class="btn btn-primary">Schedule a Tax Review <span class="arrow">→</span></a>
+      <a href="resources-taxes.html" class="btn btn-outline">Browse Tax Resources</a>
+    </div>
+  </div>
+</section>
+
+<!-- LEAD INTRO -->
+<section style="padding-top:40px">
+  <div class="wrap">
+    <div class="lead-block reveal">
+      <div>
+        <span class="eyebrow"><span class="line"></span>Why MRG for taxes</span>
+        <h2 class="mt-md">We don't just <em>file taxes.</em> We provide strategy.</h2>
+        <p>At <span class="firm">MRG Accounting Service</span>, we take the stress out of tax season. Whether you're an individual looking to maximize your refund or a business owner aiming to stay compliant and reduce your tax burden, we provide accurate, reliable, and personalized tax solutions.</p>
+        <p>With over 22 years of financial expertise, we provide strategies to help you save money, stay compliant, and focus on what matters most. Our goal is to make the process simple, stress-free, and beneficial for both your present and your future.</p>
+      </div>
+      <div class="editorial-visual">
+        <div class="ev-stamp">№ 02 · The strategy</div>
+        <div class="ev-big">Keep<br/>more.<br/><em>Stress</em><br/>less.</div>
+        <div class="ev-meta">
+          <div class="ev-row"><span>Approach</span><strong>Year-round planning</strong></div>
+          <div class="ev-row"><span>Coverage</span><strong>Personal + Business</strong></div>
+          <div class="ev-row"><span>Filings</span><strong>Federal · State · Multi-State</strong></div>
+          <div class="ev-row"><span>Strategy</span><strong>Quarterly check-ins</strong></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PERSONAL + BUSINESS SPLIT -->
+<section>
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="line"></span>What we handle</span>
+      <h2 class="section-h mt-md">Personal taxes. Business taxes. <em class="kicker">Every detail.</em></h2>
+    </div>
+
+    <div class="tax-split reveal-stagger">
+      <!-- PERSONAL -->
+      <div class="tax-col">
+        <div class="tax-col-tag">✦ Personal Taxes</div>
+        <h2>For <em>individuals</em> who want to keep more of what they earn.</h2>
+        <p>From simple W-2 filings to complex returns involving real estate, investments, K-1s, and high-earner deductions — we treat your personal return with the same strategic care we give our business clients.</p>
+        <ul class="tax-items">
+          <li>
+            <strong>Individual <em>Tax Preparation</em></strong>
+            <span>Precise, compliant filings designed to deliver the best legitimate outcome possible — not the fastest one.</span>
+          </li>
+          <li>
+            <strong>Tax Credits &amp; <em>Deductions</em></strong>
+            <span>We make sure you don't leave money on the table. Every credit, every deduction, every opportunity reviewed.</span>
+          </li>
+          <li>
+            <strong>Amended &amp; <em>Prior Year Returns</em></strong>
+            <span>Mistakes on past returns or missed years? We'll correct, file, and recover what you're owed.</span>
+          </li>
+          <li>
+            <strong>Tax <em>Planning</em></strong>
+            <span>Year-round strategies to minimize taxes and prepare for the future. Real planning beats reactive filing every time.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- BUSINESS -->
+      <div class="tax-col">
+        <div class="tax-col-tag">✦ Business Tax Services</div>
+        <h2>For <em>business owners</em> who want strategy, not surprises.</h2>
+        <p>From sole proprietorships to multi-entity structures, we handle the full scope of small business tax — filings, planning, sales tax, and the strategic entity guidance that quietly saves thousands every year.</p>
+        <ul class="tax-items">
+          <li>
+            <strong>Small Business <em>Tax Preparation</em></strong>
+            <span>Tailored solutions for sole proprietors, LLCs, S-Corps, C-Corps, and partnerships — handled by someone who actually knows your business.</span>
+          </li>
+          <li>
+            <strong>Quarterly &amp; <em>Annual Filings</em></strong>
+            <span>Stay on top of every IRS and state requirement. Estimated payments, quarterly forms, year-end filings — never miss a deadline.</span>
+          </li>
+          <li>
+            <strong>Sales Tax <em>Reporting</em></strong>
+            <span>Accurate, timely submissions across the states you operate in — avoiding penalties and audit triggers.</span>
+          </li>
+          <li>
+            <strong>Entity Selection &amp; <em>Tax Strategy</em></strong>
+            <span>Guidance on choosing the right structure for tax efficiency — and restructuring when growth demands it.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUR APPROACH -->
+<section>
+  <div class="wrap">
+    <div class="approach reveal">
+      <div style="text-align:center">
+        <span class="eyebrow"><span class="line"></span>The MRG approach</span>
+        <h2 class="section-h mt-md" style="margin-bottom:0">Proactive. Strategic. <em class="kicker">All year long.</em></h2>
+      </div>
+      <div class="approach-grid">
+        <div class="ap-step">
+          <span class="ap-num">i.</span>
+          <h4>Discovery</h4>
+          <p>We start with a real conversation about your goals, structure, and history — not a generic intake form.</p>
+        </div>
+        <div class="ap-step">
+          <span class="ap-num">ii.</span>
+          <h4>Strategy</h4>
+          <p>A written plan covering entity structure, deductions, timing, and quarterly tax payment strategy.</p>
+        </div>
+        <div class="ap-step">
+          <span class="ap-num">iii.</span>
+          <h4>Filing</h4>
+          <p>Accurate, on-time federal and state filings handled with care — for individuals, businesses, and multi-state operators.</p>
+        </div>
+        <div class="ap-step">
+          <span class="ap-num">iv.</span>
+          <h4>Ongoing</h4>
+          <p>Year-round check-ins, year-end planning sessions, and IRS notice resolution whenever something comes up.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section style="padding-top:0">
+  <div class="wrap reveal">
+    <div class="stats-strip">
+      <div class="stat"><span class="num">22+</span><span class="lbl">Years of tax expertise</span></div>
+      <div class="stat"><span class="num">100%</span><span class="lbl">On-time filing record</span></div>
+      <div class="stat"><span class="num">50</span><span class="lbl">States supported</span></div>
+      <div class="stat"><span class="num">CFO</span><span class="lbl">Level strategic lens</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOFU -->
+<section>
+  <div class="wrap reveal">
+    <div class="bofu">
+      <div class="bofu-inner">
+        <span class="eyebrow"><span class="dot"></span>Free tax review · 30 minutes</span>
+        <h2>Send us last year's <em>return.</em></h2>
+        <p class="lede">Upload your most recent tax filing and we'll spend 30 minutes finding missed deductions, structural opportunities, and red flags. Free, confidential, and surprisingly eye-opening.</p>
+        <div class="bofu-cta">
+          <a href="contact.html" class="btn btn-primary">Book Your Free Review <span class="arrow">→</span></a>
+          <a href="resources-taxes.html" class="btn btn-outline">Browse Resources</a>
+        </div>
+        <div class="bofu-line"><span class="ico">✦</span>Honest answers. Strategic eye. No pressure.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand"><div class="brand" style="font-size:17px"><div class="brand-mark">M</div><div class="brand-name"><strong>MRG Accounting</strong><small>Service</small></div></div><p>Bookkeeping, taxes, payroll, business consulting, and administrative solutions for entrepreneurs and small business owners. Founded 2018 · San Diego, CA.</p></div>
+      <div class="foot-col"><h5>Services</h5><a href="bookkeeping.html">Bookkeeping</a><a href="taxes.html">Taxes</a><a href="payroll.html">Payroll</a><a href="business-consultant.html">Business Consultant</a><a href="administrative.html">Administrative</a></div>
+      <div class="foot-col"><h5>Resources</h5><a href="resources-taxes.html">Tax Resources</a><a href="founder.html">Meet the Founder</a><a href="contact.html">Contact</a></div>
+      <div class="foot-col"><h5>Connect</h5>
+        <a href="mailto:hello@mrgacct.com" style="padding:7px 0;display:block">hello@mrgacct.com</a>
+        <a href="tel:+16194547001" style="padding:7px 0;display:block">+1 (619) 454-7001</a>
+        <div style="font-size:13px;color:var(--text-3);padding:7px 0">San Diego, CA</div>
+        <div class="socials">
+          <a href="https://www.facebook.com/mayagraves" target="_blank" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.093 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.563V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg></a>
+          <a href="https://www.instagram.com/mrgacct143" target="_blank" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg></a>
+          <a href="https://www.linkedin.com/mayagraves" target="_blank" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 1 1 8.3 6.5a1.78 1.78 0 0 1-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0 0 13 14.19a.66.66 0 0 0 0 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 0 1 2.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom"><div>© 2026 MRG Accounting Service · All rights reserved.</div><div>Where numbers meet strategy.</div></div>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{if(window.scrollY>20)nav.classList.add('scrolled');else nav.classList.remove('scrolled')});
+const drawer=document.getElementById('drawer');document.getElementById('menuBtn').addEventListener('click',()=>drawer.classList.add('open'));document.getElementById('drawerClose').addEventListener('click',()=>drawer.classList.remove('open'));drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>drawer.classList.remove('open')));
+const io=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:0.12,rootMargin:'0px 0px -60px 0px'});
+document.querySelectorAll('.reveal, .reveal-stagger').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
