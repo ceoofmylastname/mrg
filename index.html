@@ -7,7 +7,7 @@
 <meta name="description" content="Premium bookkeeping, tax strategy, payroll, and CFO-level advisory for small business owners. Founded by Maya Graves, 22+ years of corporate finance expertise." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <style>
 /* Home-specific — light luxe */
@@ -17,6 +17,26 @@
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:80px;align-items:center;width:100%}
 @media (max-width:1000px){.hero-grid{grid-template-columns:1fr;gap:50px}}
 .hero h1{margin:32px 0 0}
+/* Three-line H1 — small "Where", giant italic "numbers", small "meet strategy." */
+.hero h1.display{font-size:clamp(54px,11vw,160px);line-height:.92;letter-spacing:-.045em}
+.hero h1.display em{display:block;margin:6px 0;line-height:.9}
+.hero h1.display .h-sub{
+  display:block;margin:0;
+  font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+  font-size:clamp(28px,4.5vw,60px);
+  line-height:1.1;letter-spacing:-.02em;
+  color:var(--text-2);
+  white-space:nowrap;
+}
+/* "Where" — modern geometric sans, medium weight, ink color */
+.hero h1.display .h-pre{
+  font-family:'Space Grotesk','Inter',system-ui,sans-serif;
+  font-style:normal;font-weight:500;
+  font-size:clamp(60px,11vw,150px);
+  line-height:.92;letter-spacing:-.045em;
+  color:var(--ink);
+  margin-bottom:6px;
+}
 .hero .lede{margin-top:32px;font-size:19px}
 .hero .cta-row{display:flex;gap:14px;margin-top:44px;flex-wrap:wrap}
 .hero .meta{
@@ -29,6 +49,352 @@
   font-size:34px;line-height:1;letter-spacing:-.02em;color:var(--ink);
 }
 .hero .meta-item .l{font-size:11px;color:var(--text-3);text-transform:uppercase;letter-spacing:.16em;font-weight:600}
+
+/* ============================================================
+   HERO H1 v4 — pattern-interrupt headline
+   "Most CPAs file your taxes. We change how much you owe."
+   ============================================================ */
+.hero h1.hero-h1-v4{
+  display:flex;flex-direction:column;
+  gap:6px;margin:32px 0 0;position:relative;
+  font-size:clamp(46px,6.8vw,86px);
+  line-height:1.02;letter-spacing:-.035em;
+  color:var(--ink);
+}
+.hero h1.hero-h1-v4 .h4-line{display:block;line-height:1.02}
+.hero h1.hero-h1-v4 .h4-static{
+  font-family:'Inter','Space Grotesk',system-ui,sans-serif;
+  font-weight:700;letter-spacing:-.035em;
+  color:var(--text-2);
+}
+.hero h1.hero-h1-v4 .h4-accent em{
+  font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+  font-size:1.18em;letter-spacing:-.03em;line-height:1;
+  background:linear-gradient(110deg,#8a6a2a 0%,#b5934d 22%,#e8c779 42%,#fff4cf 52%,#e8c779 62%,#b5934d 82%,#8a6a2a 100%);
+  background-size:300% auto;
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;
+  animation:shimmerHero 10s linear infinite;
+}
+@keyframes shimmerHero{
+  0%{background-position:0% center}
+  100%{background-position:-300% center}
+}
+.hero h1.hero-h1-v4::before{
+  content:"";position:absolute;
+  top:30%;left:-6%;width:70%;height:90%;
+  background:radial-gradient(ellipse at center,rgba(232,199,121,.25) 0%,rgba(232,199,121,.08) 35%,transparent 70%);
+  filter:blur(70px);
+  z-index:-1;pointer-events:none;
+  animation:driftGlowHero 16s ease-in-out infinite;
+}
+@keyframes driftGlowHero{
+  0%,100%{transform:translate(0,0)}
+  50%{transform:translate(30px,-15px)}
+}
+
+/* ============================================================
+   PROOF STACK — floating modern stat cards on the right
+   ============================================================ */
+.proof-stack{
+  position:relative;width:100%;max-width:540px;margin-left:auto;
+  display:flex;flex-direction:column;gap:18px;
+}
+.proof-card{
+  position:relative;
+  background:linear-gradient(180deg,#ffffff 0%,#fbfaf6 100%);
+  border:1px solid var(--line);
+  border-radius:var(--radius-lg);
+  padding:28px 32px;
+  box-shadow:var(--shadow-2), var(--inset-hi);
+  animation:floatGentle 9s ease-in-out infinite;
+}
+.proof-card--lead{padding:36px 36px 30px}
+.proof-card--accent{
+  align-self:flex-end;width:78%;
+  background:linear-gradient(135deg,#0c0c0d 0%,#1c1c1f 100%);
+  color:#fff;border-color:#1c1c1f;
+  animation-delay:-2s;
+}
+.proof-card--quote{
+  align-self:flex-start;width:88%;
+  background:linear-gradient(180deg,#fbfaf6 0%,#f5efe3 100%);
+  animation-delay:-4s;
+}
+
+/* Lead card */
+.pc-label{
+  display:flex;align-items:center;gap:8px;
+  font-size:11px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--text-3);margin-bottom:14px;
+}
+.proof-card--accent .pc-label{color:rgba(255,255,255,.5)}
+.pc-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:#1e9e60;
+  box-shadow:0 0 0 4px rgba(30,158,96,.18);
+  animation:pulseDot 2.4s ease-in-out infinite;
+}
+@keyframes pulseDot{
+  0%,100%{box-shadow:0 0 0 4px rgba(30,158,96,.18)}
+  50%{box-shadow:0 0 0 8px rgba(30,158,96,.06)}
+}
+.pc-bignum{
+  font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+  font-size:clamp(62px,7vw,96px);line-height:.9;letter-spacing:-.04em;
+  background:linear-gradient(180deg,var(--ink) 0%,#5e4920 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  margin-bottom:14px;
+}
+.pc-bignum-sym{
+  font-family:'Inter',sans-serif;font-style:normal;font-weight:600;
+  font-size:.45em;letter-spacing:-.02em;color:var(--accent-2);
+  -webkit-text-fill-color:var(--accent-2);
+  margin-left:.06em;vertical-align:.45em;
+}
+.pc-sub{
+  font-size:14px;color:var(--text-2);line-height:1.55;max-width:380px;margin-bottom:18px;
+}
+.pc-bar{
+  height:4px;background:rgba(0,0,0,.06);border-radius:99px;overflow:hidden;
+}
+.pc-bar-fill{
+  display:block;height:100%;width:0;
+  background:linear-gradient(90deg,#b5934d 0%,#e8c779 50%,#fff4cf 100%);
+  border-radius:99px;
+  animation:fillBar 2.4s cubic-bezier(.2,.8,.2,1) .4s forwards;
+}
+@keyframes fillBar{to{width:84%}}
+
+/* Accent (dark) card */
+.proof-card--accent .pc-row{
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
+}
+.proof-card--accent .pc-label{margin-bottom:8px}
+.pc-midnum{
+  font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+  font-size:clamp(40px,4.8vw,56px);line-height:.9;letter-spacing:-.03em;
+  background:linear-gradient(110deg,#b5934d 0%,#e8c779 50%,#fff4cf 100%);
+  background-size:200% auto;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:shimmerHero 8s linear infinite;
+}
+.pc-flourish{
+  font-family:'Instrument Serif',serif;font-style:italic;
+  font-size:14px;color:rgba(255,255,255,.55);text-align:right;line-height:1.3;
+}
+
+/* Quote card */
+.pc-quote-text{
+  font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+  font-size:20px;line-height:1.35;letter-spacing:-.012em;color:var(--ink);
+  quotes:none;display:block;margin-bottom:16px;
+}
+.pc-quote-text em{
+  background:linear-gradient(110deg,#8a6a2a 0%,#b5934d 22%,#e8c779 42%,#fff4cf 52%,#e8c779 62%,#b5934d 82%,#8a6a2a 100%);
+  background-size:300% auto;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:shimmerHero 10s linear infinite;font-style:italic;
+}
+.pc-attribution{
+  display:flex;align-items:center;gap:10px;
+  font-size:12.5px;color:var(--text-3);font-weight:500;letter-spacing:.01em;
+}
+.pc-avatar{
+  width:28px;height:28px;border-radius:50%;
+  background:linear-gradient(135deg,#1c1c1f 0%,#3a3a3f 100%);
+  color:#fff;font-size:11px;font-weight:700;letter-spacing:.02em;
+  display:inline-flex;align-items:center;justify-content:center;
+}
+
+@media (max-width:1000px){
+  .proof-stack{max-width:100%;margin:0 auto}
+  .proof-card--accent,.proof-card--quote{width:100%;align-self:stretch}
+}
+
+/* Hero v4 — phone optimization */
+@media (max-width:640px){
+  .hero{padding:120px 0 50px;min-height:auto}
+  .hero-grid{gap:36px}
+
+  .hero h1.hero-h1-v4{
+    font-size:clamp(32px,8.5vw,48px);
+    line-height:1.05;gap:4px;margin-top:24px;
+  }
+  .hero h1.hero-h1-v4 .h4-accent em{font-size:1.12em}
+  .hero h1.hero-h1-v4::before{display:none}
+
+  .hero .lede{margin-top:24px;font-size:16px;line-height:1.55}
+  .hero .cta-row{margin-top:28px;flex-direction:column;align-items:stretch;gap:10px}
+  .hero .cta-row .btn{justify-content:center;width:100%}
+
+  .hero .meta{margin-top:36px;padding-top:24px;gap:18px}
+  .hero .meta-item{flex:1 1 calc(50% - 9px);min-width:120px}
+  .hero .meta-item .v{font-size:26px}
+  .hero .meta-item .l{font-size:10.5px}
+
+  .proof-stack{gap:14px}
+  .proof-card{padding:24px 22px;border-radius:18px}
+  .proof-card--lead{padding:28px 22px 22px}
+  .pc-bignum{font-size:clamp(48px,12vw,68px)}
+  .pc-bignum-sym{font-size:.5em}
+  .pc-sub{font-size:13px;margin-bottom:14px}
+  .pc-midnum{font-size:clamp(34px,9vw,46px)}
+  .pc-quote-text{font-size:17px;line-height:1.4}
+  .pc-attribution{font-size:11.5px}
+
+  /* Floating chip — pull inside the viewport on mobile */
+  .floating-chip{
+    position:relative!important;
+    top:auto!important;right:auto!important;left:auto!important;
+    margin:14px auto 0;width:fit-content;
+    box-shadow:var(--shadow-1);
+  }
+}
+
+@media (max-width:400px){
+  .hero h1.hero-h1-v4{font-size:clamp(28px,9vw,40px)}
+  .pc-bignum{font-size:clamp(40px,13vw,58px)}
+  .pc-midnum{font-size:clamp(28px,9vw,38px)}
+  .pc-quote-text{font-size:15.5px}
+  .hero .meta-item .v{font-size:22px}
+  .proof-card{padding:22px 18px}
+}
+
+/* ============================================================
+   HERO H1 v3 — Maya-introducing composition (kept for reference)
+   ============================================================ */
+.hero h1.hero-h1-v3{
+  display:flex;flex-direction:column;
+  gap:2px;margin:32px 0 0;position:relative;
+  font-size:clamp(52px,8.4vw,108px);
+  line-height:.96;letter-spacing:-.04em;
+  color:var(--ink);
+}
+.hero h1.hero-h1-v3 .h3-pre{
+  display:block;
+  font-family:'Inter','Space Grotesk',system-ui,sans-serif;
+  font-weight:400;font-size:.45em;
+  letter-spacing:.04em;text-transform:uppercase;
+  color:var(--text-3);margin-bottom:18px;
+  line-height:1;
+}
+.hero h1.hero-h1-v3 .h3-main{
+  display:block;
+  font-family:'Inter','Space Grotesk',system-ui,sans-serif;
+  font-weight:700;letter-spacing:-.04em;line-height:.94;
+  color:var(--ink);
+}
+.hero h1.hero-h1-v3 .h3-accent{
+  display:block;line-height:.94;margin-top:.06em;
+}
+.hero h1.hero-h1-v3 .h3-accent em{
+  font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+  letter-spacing:-.025em;line-height:.94;
+  background:linear-gradient(110deg,#8a6a2a 0%,#b5934d 22%,#e8c779 42%,#fff4cf 52%,#e8c779 62%,#b5934d 82%,#8a6a2a 100%);
+  background-size:300% auto;
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;
+  animation:shimmerHero 10s linear infinite;
+}
+@keyframes shimmerHero{
+  0%{background-position:0% center}
+  100%{background-position:-300% center}
+}
+/* Soft warm glow behind the headline */
+.hero h1.hero-h1-v3::before{
+  content:"";position:absolute;
+  top:30%;left:-8%;width:75%;height:80%;
+  background:radial-gradient(ellipse at center,rgba(232,199,121,.25) 0%,rgba(232,199,121,.08) 35%,transparent 70%);
+  filter:blur(60px);
+  z-index:-1;pointer-events:none;
+  animation:driftGlowHero 16s ease-in-out infinite;
+}
+@keyframes driftGlowHero{
+  0%,100%{transform:translate(0,0)}
+  50%{transform:translate(30px,-15px)}
+}
+
+/* ============================================================
+   PORTRAIT CARD — Maya in the hero
+   ============================================================ */
+.portrait-card{
+  position:relative;width:100%;max-width:520px;margin-left:auto;
+  aspect-ratio:4/5;
+  border-radius:var(--radius-lg);
+  background:linear-gradient(160deg,#fbfaf6 0%,#f5efe3 100%);
+  border:1px solid var(--line);
+  outline:1px solid var(--line);
+  box-shadow:var(--shadow-2), var(--inset-hi);
+  overflow:hidden;
+  transition:transform .4s cubic-bezier(.2,.8,.2,1);
+  animation:floatGentle 9s ease-in-out infinite;
+}
+.portrait-photo{
+  position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;
+  background:linear-gradient(180deg,#f5efe3 0%,#e8dfca 100%);
+}
+.portrait-photo img{
+  width:100%;height:100%;object-fit:cover;object-position:center 18%;
+  filter:contrast(1.04);
+}
+@media (max-width:768px){
+  .portrait-photo img{object-position:center top}
+}
+.portrait-fallback{
+  position:absolute;inset:0;display:none;align-items:flex-end;justify-content:center;
+}
+.portrait-fallback span{
+  font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+  font-size:220px;line-height:1;letter-spacing:-.04em;
+  padding-bottom:30px;
+  background:linear-gradient(180deg,var(--ink) 0%,var(--accent-2) 70%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.portrait-photo img[src=""]+ .portrait-fallback,
+.portrait-photo img:not([src]) + .portrait-fallback{display:flex}
+
+/* Badge top-left of portrait */
+.portrait-badges{
+  position:absolute;top:20px;left:20px;z-index:3;
+}
+
+/* Editorial overlay at bottom of portrait — name + role + quote */
+.portrait-overlay{
+  position:absolute;left:0;right:0;bottom:0;z-index:2;
+  padding:80px 28px 28px;
+  background:linear-gradient(180deg,
+    rgba(11,11,12,0) 0%,
+    rgba(11,11,12,.55) 40%,
+    rgba(11,11,12,.85) 100%);
+  color:#fff;
+}
+.portrait-overlay .po-eyebrow{
+  font-size:10.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(255,255,255,.7);margin-bottom:8px;
+}
+.portrait-overlay .po-name{
+  font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+  font-size:clamp(34px,3.4vw,46px);line-height:.95;letter-spacing:-.02em;
+  margin-bottom:10px;color:#fff;
+}
+.portrait-overlay .po-period{color:var(--accent)}
+.portrait-overlay .po-quote{
+  font-family:'Instrument Serif',serif;font-style:italic;
+  font-size:14.5px;line-height:1.5;color:rgba(255,255,255,.88);
+  max-width:380px;
+}
+.portrait-overlay .po-quote em{
+  background:linear-gradient(110deg,#e8c779 0%,#fff4cf 50%,#e8c779 100%);
+  background-size:200% auto;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:shimmerHero 8s linear infinite;
+  font-style:italic;
+}
+
+@media (max-width:1000px){
+  .portrait-card{max-width:480px;margin:0 auto}
+}
 
 /* Hero visual — floating editorial card stack (white 3D) */
 .hero-visual{position:relative;height:640px}
@@ -190,8 +556,12 @@
   background:radial-gradient(ellipse at top,rgba(255,255,255,.6),transparent 60%);
 }
 .founder-portrait img{
-  width:100%;height:100%;object-fit:cover;
+  width:100%;height:100%;object-fit:cover;object-position:center 15%;
   filter:contrast(1.02);
+}
+@media (max-width:1000px){
+  .founder-portrait{aspect-ratio:4/5;max-width:420px;margin:0 auto}
+  .founder-portrait img{object-position:center top}
 }
 .founder-initials{
   font-family:'Instrument Serif',serif;font-style:italic;
@@ -305,11 +675,14 @@
   <div class="wrap hero-grid">
     <div class="reveal-left">
       <span class="eyebrow"><span class="dot"></span>Founded 2018 · San Diego · Nationwide</span>
-      <h1 class="display">Where <em>numbers</em><br/>meet strategy.</h1>
-      <p class="lede">MRG Accounting Service helps entrepreneurs, founders, and small business owners stay financially organized, compliant, and positioned for real growth. Bookkeeping, tax preparation, payroll, business consulting, and CFO-level guidance — all under one roof.</p>
+      <h1 class="display hero-h1-v4">
+        <span class="h4-line h4-static">Most CPAs file your taxes.</span>
+        <span class="h4-line h4-accent"><em>We change how much you owe.</em></span>
+      </h1>
+      <p class="lede">Year-round tax strategy. Audit-proof books. Direct access to a 22-year corporate finance veteran. Built for owners who want more than April.</p>
       <div class="cta-row">
-        <a href="contact.html" class="btn btn-primary">Schedule a Consultation <span class="arrow">→</span></a>
-        <a href="#services" class="btn btn-ghost">Explore Services</a>
+        <a href="contact.html" class="btn btn-primary">Schedule a Strategy Call <span class="arrow">→</span></a>
+        <a href="entity-quiz.html" class="btn btn-ghost">Take the 2-Min Entity Quiz</a>
       </div>
       <div class="meta">
         <div class="meta-item"><span class="v count-up" data-count="22" data-suffix="+">22+</span><span class="l">Years experience</span></div>
@@ -320,31 +693,37 @@
     </div>
 
     <div class="hero-visual reveal-right">
-      <div class="editorial-frame">
-        <div class="editorial-content">
-          <div class="ec-top">
-            <div class="ec-stamp"><span class="dot"></span>Trusted partner</div>
-            <div class="ec-no">№ 01</div>
-          </div>
-          <div class="ec-mid">
-            <div class="ec-title">Clarity.<br/><em>Compliance.</em><br/>Confidence.</div>
-          </div>
-          <div class="ec-bottom">
-            <div class="ec-meta-row">
-              <div><strong>Founded</strong>2018</div>
-              <div><strong>HQ</strong>San Diego, CA</div>
-              <div><strong>Focus</strong>Small Business</div>
-              <div><strong>Approach</strong>Year-Round</div>
+      <!-- Proof stack — floating modern stat cards -->
+      <div class="proof-stack" id="proof-stack">
+
+        <div class="proof-card proof-card--lead">
+          <div class="pc-label"><span class="pc-dot"></span>Client tax savings · since 2018</div>
+          <div class="pc-bignum"><span class="count-up" data-count="4.2" data-decimals="1">4.2</span><span class="pc-bignum-sym">M+</span></div>
+          <div class="pc-sub">Across 500+ small businesses. Documented. Auditable. Real.</div>
+          <div class="pc-bar"><span class="pc-bar-fill"></span></div>
+        </div>
+
+        <div class="proof-card proof-card--accent">
+          <div class="pc-row">
+            <div>
+              <div class="pc-label">Avg year-1 savings</div>
+              <div class="pc-midnum">$<span class="count-up" data-count="32400">32,400</span></div>
             </div>
+            <div class="pc-flourish">per client</div>
           </div>
         </div>
+
+        <div class="proof-card proof-card--quote">
+          <div class="pc-label">What clients say</div>
+          <q class="pc-quote-text">She found $38K my last CPA missed. <em>In one meeting.</em></q>
+          <div class="pc-attribution">
+            <span class="pc-avatar">JR</span>
+            <span>Jordan R. · Construction owner</span>
+          </div>
+        </div>
+
       </div>
       <div class="floating-chip"><span class="pulse"></span>Now booking 2026 clients</div>
-      <div class="floating-card">
-        <div class="label">Founder Philosophy</div>
-        <div class="big">Integrity.<br/><em>Dedication.</em></div>
-        <div class="sub">Personalized care for every client we serve.</div>
-      </div>
     </div>
   </div>
 </section>
@@ -370,6 +749,18 @@
     <div class="marquee-item">Tax Strategy</div>
   </div>
 </div>
+
+<!-- EDITORIAL IMAGE — BRAND ATMOSPHERE -->
+<section style="padding:70px 0 20px">
+  <div class="wrap reveal">
+    <figure class="img-frame img-frame--wide">
+      <img src="assets/home-atmosphere.webp"
+           alt="Modernist San Diego office at golden hour with floor-to-ceiling windows, a single leather chair pulled to a walnut conference table."
+           loading="lazy" decoding="async" width="2100" height="900" />
+      <figcaption>Where the work happens. Where your numbers find clarity.</figcaption>
+    </figure>
+  </div>
+</section>
 
 <!-- LEAD MAGNET STRIP -->
 <section class="lead-magnet-section">
@@ -624,22 +1015,30 @@ document.getElementById('drawerClose').addEventListener('click', () => drawer.cl
 drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => drawer.classList.remove('open')));
 
 // Counter animation — uses requestAnimationFrame with an ease-out curve.
+// Supports data-decimals (e.g. "1" → 4.2) and comma-separates integers > 999.
 function animateCount(el){
   const target = parseFloat(el.dataset.count);
   if (isNaN(target)) return;
   const suffix = el.dataset.suffix || '';
+  const decimals = parseInt(el.dataset.decimals || (Number.isInteger(target) ? '0' : '1'), 10);
   const duration = 1600;
-  const isInt = Number.isInteger(target);
   const start = performance.now();
+  const fmt = (n) => {
+    const v = decimals > 0 ? n.toFixed(decimals) : Math.round(n).toString();
+    // Add thousands separators on the integer portion when no decimals
+    if (decimals === 0 && Math.abs(target) >= 1000) {
+      return parseInt(v, 10).toLocaleString();
+    }
+    return v;
+  };
   function tick(now){
     const t = Math.min(1, (now - start) / duration);
     const eased = 1 - Math.pow(1 - t, 3);
-    const val = target * eased;
-    el.textContent = (isInt ? Math.round(val) : val.toFixed(1)) + suffix;
+    el.textContent = fmt(target * eased) + suffix;
     if (t < 1) requestAnimationFrame(tick);
-    else el.textContent = target + suffix;
+    else el.textContent = fmt(target) + suffix;
   }
-  el.textContent = '0' + suffix;
+  el.textContent = fmt(0) + suffix;
   requestAnimationFrame(tick);
 }
 
@@ -685,15 +1084,15 @@ document.querySelectorAll('[data-hover]').forEach(card => {
   });
 });
 
-// Subtle 3D tilt on the hero editorial frame
-const tiltTarget = document.querySelector('.editorial-frame');
+// Subtle 3D tilt on the hero portrait card (Maya's photo)
+const tiltTarget = document.querySelector('.portrait-card') || document.querySelector('.editorial-frame');
 if (tiltTarget) {
   const wrap = tiltTarget.closest('.hero-visual');
   wrap.addEventListener('mousemove', (e) => {
     const r = wrap.getBoundingClientRect();
     const px = (e.clientX - r.left) / r.width - .5;
     const py = (e.clientY - r.top) / r.height - .5;
-    tiltTarget.style.transform = `perspective(1200px) rotateY(${px * 6}deg) rotateX(${-py * 6}deg)`;
+    tiltTarget.style.transform = `perspective(1200px) rotateY(${px * 5}deg) rotateX(${-py * 5}deg)`;
   });
   wrap.addEventListener('mouseleave', () => {
     tiltTarget.style.transform = '';
