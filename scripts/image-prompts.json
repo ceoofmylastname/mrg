@@ -1,0 +1,71 @@
+{
+  "model": "nano-banana-2",
+  "size": "2k",
+  "images": [
+    {
+      "filename": "home-atmosphere.webp",
+      "aspect": "21:9",
+      "prompt": "Cinematic editorial widescreen photograph, an empty modernist San Diego office with floor-to-ceiling windows overlooking palm trees at golden hour, a single leather chair pulled up to a polished walnut conference table with a fresh leather portfolio, soft warm light pouring through the windows, monochromatic warm tones of charcoal black cream and ivory with subtle gold highlights, calm sophisticated mood, ultra-detailed 8K photography shot on Hasselblad medium format, shallow depth of field, NOT cartoon, NOT illustration, NOT stock photo"
+    },
+    {
+      "filename": "bookkeeping-hero.webp",
+      "aspect": "16:9",
+      "prompt": "Cinematic editorial photograph, neatly stacked vintage leather-bound accounting ledgers next to a brass fountain pen and a porcelain coffee cup, on a polished dark walnut desk with soft window light from the left, monochromatic warm tones of charcoal black cream and ivory, calm disciplined mood, ultra-detailed 4K photography shot on Hasselblad medium format, shallow depth of field, generous negative space, NOT cartoon, NOT illustration, NOT clipart, NOT bright colors, NOT stock photo"
+    },
+    {
+      "filename": "bookkeeping-detail.webp",
+      "aspect": "4:5",
+      "prompt": "Editorial overhead photograph, hands of a Black woman in a tailored cream blazer carefully writing in a leather notebook with a fountain pen, surrounded by neatly organized receipts and a vintage calculator, soft natural window light, monochromatic palette of charcoal black warm cream and ivory, intentional and focused mood, ultra-detailed 4K shot on Hasselblad, shallow depth of field, NOT cartoon, NOT illustration, NOT stock photo"
+    },
+    {
+      "filename": "taxes-hero.webp",
+      "aspect": "16:9",
+      "prompt": "Cinematic editorial photograph, a quiet desk scene with an open tax planning binder beside a brass magnifying glass and a black fountain pen, dramatic soft window light casting long shadows, monochromatic warm tones of charcoal black cream and ivory, contemplative strategic mood, ultra-detailed 4K photography shot on Hasselblad medium format, shallow depth of field, generous negative space, NOT cartoon, NOT illustration, NOT stock photo"
+    },
+    {
+      "filename": "taxes-strategy.webp",
+      "aspect": "16:9",
+      "prompt": "Editorial close-up photograph, a hand holding a black fountain pen over a printed tax projection spreadsheet with handwritten notes in the margins, soft directional light from the upper left, monochromatic warm tones of charcoal black cream and ivory, focused strategic mood, ultra-detailed 4K shot on Hasselblad medium format, shallow depth of field, NOT cartoon, NOT illustration, NOT stock photo"
+    },
+    {
+      "filename": "payroll-hero.webp",
+      "aspect": "16:9",
+      "prompt": "Cinematic editorial photograph, a stack of neatly folded paychecks tied with brown twine beside a vintage stamp marked PAID and a brass desk clock, on a polished dark wood surface, soft window light from the left, monochromatic warm tones of charcoal black cream and ivory, calm reliable mood, ultra-detailed 4K photography shot on Hasselblad medium format, shallow depth of field, NOT cartoon, NOT illustration, NOT stock photo"
+    },
+    {
+      "filename": "payroll-multistate.webp",
+      "aspect": "16:9",
+      "prompt": "Editorial overhead photograph, a vintage paper map of the United States with several state outlines highlighted in warm cream ink, beside a brass compass and stack of folded payroll documents, soft natural light, monochromatic warm tones of charcoal black cream and ivory, considered geographic mood, ultra-detailed 4K shot on Hasselblad, shallow depth of field, generous negative space, NOT cartoon, NOT illustration, NOT stock photo"
+    },
+    {
+      "filename": "launch-hero.webp",
+      "aspect": "16:9",
+      "prompt": "Cinematic editorial photograph, an empty leather chair pulled up to a polished walnut desk with a fresh leather portfolio and a brass fountain pen waiting, morning window light from the left, monochromatic warm tones of charcoal black cream and ivory, anticipatory beginning mood, ultra-detailed 4K photography shot on Hasselblad medium format, shallow depth of field, generous negative space, NOT cartoon, NOT illustration, NOT stock photo"
+    },
+    {
+      "filename": "launch-entity.webp",
+      "aspect": "4:5",
+      "prompt": "Editorial close-up photograph, freshly stamped Articles of Organization documents in a leather folder beside a wax seal and a black fountain pen, soft directional window light, monochromatic warm tones of charcoal black cream and ivory, ceremonial intentional mood, ultra-detailed 4K shot on Hasselblad, shallow depth of field, NOT cartoon, NOT illustration, NOT stock photo"
+    },
+    {
+      "filename": "admin-hero.webp",
+      "aspect": "16:9",
+      "prompt": "Cinematic editorial photograph, a perfectly organized vintage filing cabinet drawer open to reveal alphabetized cream manila folders, beside a brass desk lamp casting warm light, monochromatic warm tones of charcoal black cream and ivory, orderly meticulous mood, ultra-detailed 4K photography shot on Hasselblad medium format, shallow depth of field, NOT cartoon, NOT illustration, NOT stock photo"
+    },
+    {
+      "filename": "admin-calendar.webp",
+      "aspect": "16:9",
+      "prompt": "Editorial overhead photograph, a leather-bound calendar planner open to a month view with handwritten appointments in cream ink, beside a brass fountain pen and a tortoiseshell reading glasses, soft window light, monochromatic warm tones of charcoal black cream and ivory, considered intentional mood, ultra-detailed 4K shot on Hasselblad, shallow depth of field, NOT cartoon, NOT illustration, NOT stock photo"
+    },
+    {
+      "filename": "resources-hero.webp",
+      "aspect": "16:9",
+      "prompt": "Cinematic editorial photograph, an organized library shelf with leather-bound tax code books and reference manuals, a brass library lamp casting warm focused light, vintage card catalog drawer slightly open in the foreground, monochromatic warm tones of charcoal black cream and ivory, scholarly authoritative mood, ultra-detailed 4K photography shot on Hasselblad medium format, shallow depth of field, NOT cartoon, NOT illustration, NOT stock photo"
+    },
+    {
+      "filename": "founder-story.webp",
+      "aspect": "16:9",
+      "prompt": "Cinematic editorial photograph, a Black woman in her early forties wearing a crisp cream blazer and black-framed glasses, viewed from behind walking through a sunlit San Diego high-rise office hallway holding a leather portfolio, soft natural light, monochromatic warm tones of charcoal black cream and ivory, deliberate purposeful mood, ultra-detailed 4K photography shot on Hasselblad medium format, shallow depth of field, NOT cartoon, NOT illustration, NOT stock photo"
+    }
+  ]
+}
