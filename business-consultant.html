@@ -22,8 +22,14 @@
   .ev-stamp{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-3);font-weight:600;position:relative;z-index:1}
   .ev-big{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:clamp(62px,8vw,108px);line-height:.95;letter-spacing:-.035em;color:var(--ink);position:relative;z-index:1}
   .ev-meta{position:relative;z-index:1;display:flex;flex-direction:column;gap:14px}
-  .ev-row{display:flex;justify-content:space-between;padding:14px 0;border-top:1px solid var(--line);font-size:13.5px;color:var(--text-2)}
-  .ev-row strong{color:var(--ink);font-weight:600}
+  .ev-row{display:flex;justify-content:space-between;padding:14px 0;border-top:1px solid var(--line);font-size:13.5px;color:var(--text-2);gap:16px;flex-wrap:wrap}
+  .ev-row span{flex-shrink:0}
+  .ev-row strong{color:var(--ink);font-weight:600;text-align:right}
+  @media (max-width:780px){
+    .editorial-visual{aspect-ratio:auto;padding:36px 28px}
+    .ev-big{font-size:clamp(46px,11vw,68px)}
+    .ev-row{font-size:13px}
+  }
 
   /* Services large editorial */
   .launch-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}

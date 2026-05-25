@@ -99,7 +99,14 @@
 }
 .preview-chip .pulse{width:8px;height:8px;border-radius:50%;background:#1e9e60;box-shadow:0 0 0 4px rgba(30,158,96,.18);animation:pulseDot 2s ease-in-out infinite}
 @keyframes pulseDot{0%,100%{box-shadow:0 0 0 4px rgba(30,158,96,.18)}50%{box-shadow:0 0 0 8px rgba(30,158,96,.08)}}
-@media (max-width:1000px){.landing-visual{height:560px;max-width:460px;margin:0 auto}.preview-chip{right:0}}
+@media (max-width:1000px){.landing-visual{width:100%;height:560px;max-width:460px;margin:0 auto}.preview-chip{right:0}}
+@media (max-width:780px){
+  .landing-visual{height:auto;min-height:540px}
+  .preview-frame{position:relative;width:100%;aspect-ratio:auto;padding:36px 26px;min-height:520px}
+  .preview-frame .preview-h{font-size:clamp(40px,12vw,60px);line-height:.95}
+  .preview-chip{position:relative;top:auto;right:auto;display:inline-flex;margin-bottom:20px;align-self:flex-start;animation:none;white-space:nowrap}
+  .preview-list li{font-size:13px;line-height:1.45}
+}
 
 /* ----- QUIZ ----- */
 .quiz-shell{position:relative}
@@ -514,6 +521,207 @@
 .share-btn.copied .share-label::after{content:" — Copied!";color:var(--accent)}
 
 /* ============================================================
+   FILING PLAYBOOK (SOP) — premium document inside the result page
+   ============================================================ */
+.sop-section{
+  margin-top:14px;
+  padding:64px 64px 56px;border-radius:var(--radius-xl);
+  background:linear-gradient(180deg,#ffffff 0%,#fbfaf6 100%);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-2), var(--inset-hi);
+  position:relative;overflow:hidden;
+}
+.sop-section::before{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(70% 50% at 100% 0%, var(--spot-cream), transparent 70%),
+    radial-gradient(40% 40% at 0% 100%, var(--spot-peach), transparent 60%);
+  opacity:.45;pointer-events:none;
+}
+.sop-section > *{position:relative;z-index:1}
+@media (max-width:780px){.sop-section{padding:40px 24px}}
+
+/* Sticky action bar */
+.sop-actions{
+  position:sticky;top:90px;z-index:5;
+  display:flex;gap:10px;justify-content:flex-end;
+  margin-bottom:18px;
+}
+.sop-action-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 18px;border-radius:999px;
+  background:#fff;border:1px solid var(--line-strong);
+  color:var(--ink);font-size:13px;font-weight:600;letter-spacing:-.005em;
+  box-shadow:var(--shadow-1), var(--inset-hi);
+  cursor:pointer;transition:transform .22s ease, box-shadow .22s ease;
+}
+.sop-action-btn:hover{transform:translateY(-2px);box-shadow:var(--shadow-2), var(--inset-hi)}
+.sop-action-btn.primary{
+  background:linear-gradient(180deg,#1a1a1f,#000);color:#fff;border-color:transparent;
+  box-shadow:0 12px 26px -10px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.08);
+}
+.sop-action-btn.primary:hover{box-shadow:0 18px 36px -10px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.10)}
+.sop-action-btn svg{width:14px;height:14px}
+
+/* Mast (title + meta) */
+.sop-mast{text-align:center;padding-bottom:36px;border-bottom:1px solid var(--line);margin-bottom:36px}
+.sop-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:7px 16px;border-radius:999px;
+  background:rgba(181,137,58,.10);border:1px solid rgba(181,137,58,.28);
+  color:var(--accent-2);
+  font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  margin-bottom:22px;
+}
+.sop-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px rgba(181,137,58,.6)}
+.sop-title{
+  font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;
+  font-size:clamp(38px,5vw,62px);line-height:1.02;letter-spacing:-.025em;
+  color:var(--ink);margin-bottom:16px;
+}
+.sop-sub{font-size:17px;color:var(--text-2);max-width:660px;margin:0 auto;line-height:1.55}
+.sop-sub strong{color:var(--ink);font-weight:600}
+.sop-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:32px}
+@media (max-width:780px){.sop-meta{grid-template-columns:1fr 1fr}}
+.sop-meta-item{
+  padding:16px 18px;border-radius:14px;
+  background:#fff;border:1px solid var(--line);
+  box-shadow:var(--shadow-soft), var(--inset-hi);
+  text-align:left;
+}
+.sop-meta-item strong{display:block;font-size:10.5px;text-transform:uppercase;letter-spacing:.16em;color:var(--text-3);font-weight:600;margin-bottom:6px}
+.sop-meta-item span{font-size:14.5px;color:var(--ink);font-weight:600;letter-spacing:-.005em}
+
+/* Body */
+.sop{font-size:15.5px;color:var(--text-2);line-height:1.7}
+.sop p{margin-bottom:14px}
+.sop p strong{color:var(--ink);font-weight:600}
+.sop a{color:var(--accent-2);text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(138,100,40,.4);word-break:break-word}
+.sop a:hover{color:var(--ink);text-decoration-color:var(--ink)}
+
+.sop-h2{
+  font-size:clamp(22px,3vw,30px);font-weight:600;letter-spacing:-.02em;
+  color:var(--ink);margin:42px 0 14px;
+  padding-bottom:10px;border-bottom:1px solid var(--line);
+}
+.sop-h2 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--accent-2)}
+
+.sop-check{
+  list-style:none;padding:18px 22px;
+  background:rgba(255,255,255,.65);border:1px solid var(--line);
+  border-radius:14px;
+  margin:8px 0 22px;
+}
+.sop-check li{display:flex;align-items:flex-start;gap:12px;padding:6px 0;font-size:14.5px;color:var(--text);line-height:1.55}
+.sop-check li::before{
+  content:"";width:14px;height:14px;border-radius:4px;
+  border:1.5px solid var(--accent);margin-top:5px;flex-shrink:0;
+  background:rgba(255,255,255,.85);
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.95);
+}
+
+/* Numbered step block */
+.sop-step{
+  margin:32px 0 28px;padding:30px 32px;
+  background:#fff;border:1px solid var(--line);border-radius:20px;
+  box-shadow:var(--shadow-1), var(--inset-hi);
+  position:relative;
+}
+@media (max-width:780px){.sop-step{padding:28px 22px}}
+.sop-step-num{
+  position:absolute;top:-18px;left:26px;
+  width:46px;height:46px;border-radius:50%;
+  background:linear-gradient(180deg,#1a1a1f,#000);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Instrument Serif',serif;font-style:italic;font-size:22px;font-weight:400;
+  box-shadow:0 10px 22px -8px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.10);
+}
+.sop-step-title{font-size:21px;font-weight:600;letter-spacing:-.015em;color:var(--ink);margin:10px 0 6px}
+.sop-step-action{
+  font-size:12px;text-transform:uppercase;letter-spacing:.16em;color:var(--accent-2);
+  font-weight:700;margin-bottom:16px;display:block;
+}
+.sop-step p:last-child{margin-bottom:0}
+
+/* Inline callouts */
+.sop-callout{
+  margin:16px 0;padding:18px 22px;
+  background:rgba(181,137,58,.08);border-left:3px solid var(--accent);
+  border-radius:12px;
+  font-size:14px;color:var(--ink);line-height:1.65;
+}
+.sop-callout strong{font-weight:700}
+.sop-warning{
+  margin:16px 0;padding:18px 22px;
+  background:rgba(198,69,69,.06);border-left:3px solid #c64545;
+  border-radius:12px;
+  font-size:14px;color:var(--ink);line-height:1.65;
+}
+
+/* Tables */
+.sop-table{
+  width:100%;border-collapse:separate;border-spacing:0;
+  border-radius:14px;overflow:hidden;
+  background:#fff;border:1px solid var(--line);
+  box-shadow:var(--shadow-soft);
+  margin:18px 0;
+}
+.sop-table th,.sop-table td{
+  padding:14px 18px;text-align:left;font-size:13.5px;color:var(--text);
+  border-bottom:1px solid var(--line);vertical-align:top;line-height:1.5;
+}
+.sop-table th{
+  font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;
+  color:var(--ink);background:linear-gradient(180deg,#fbfaf6,#f1ede4);
+}
+.sop-table tbody tr:last-child td{border-bottom:none}
+@media (max-width:600px){.sop-table th,.sop-table td{padding:12px 12px;font-size:12.5px}}
+
+.sop-footer{
+  margin-top:40px;padding-top:24px;border-top:1px solid var(--line);
+  text-align:center;font-size:12.5px;color:var(--text-3);
+  font-family:'Instrument Serif',serif;font-style:italic;
+}
+
+/* Friction (BOFU) inside the SOP — dark contrast */
+.sop-friction{
+  margin-top:34px;padding:40px 44px;border-radius:var(--radius-lg);
+  background:linear-gradient(135deg,#15151a 0%,#0b0b0d 50%,#1a1a1f 100%);
+  border:1px solid rgba(255,255,255,.08);color:#fff;
+  position:relative;overflow:hidden;
+  box-shadow:var(--shadow-2);
+}
+.sop-friction::before{
+  content:"";position:absolute;inset:-30%;
+  background:radial-gradient(60% 60% at 30% 20%, rgba(181,137,58,.22), transparent 50%),
+             radial-gradient(40% 40% at 80% 80%, rgba(200,216,255,.10), transparent 60%);
+}
+.sop-friction > *{position:relative;z-index:1}
+@media (max-width:780px){.sop-friction{padding:32px 22px}}
+.sop-friction h3{font-size:22px;font-weight:600;color:#fff;margin-bottom:12px;letter-spacing:-.015em;line-height:1.2}
+.sop-friction h3 em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:var(--accent)}
+.sop-friction p{color:rgba(255,255,255,.78);font-size:15px;line-height:1.65;margin-bottom:12px}
+.sop-friction p strong{color:#fff;font-weight:600}
+.sop-friction ul{list-style:none;padding:0;margin:14px 0 18px}
+.sop-friction ul li{
+  padding:7px 0 7px 24px;position:relative;
+  font-size:14.5px;color:rgba(255,255,255,.85);line-height:1.55;
+}
+.sop-friction ul li::before{
+  content:"›";position:absolute;left:0;color:var(--accent);font-weight:700;font-size:18px;line-height:1.4;
+}
+.sop-friction .friction-cta{
+  display:inline-flex;align-items:center;gap:10px;margin-top:14px;
+  padding:14px 24px;border-radius:999px;
+  background:#fff;color:var(--ink);font-weight:600;font-size:14px;letter-spacing:-.005em;
+  box-shadow:0 12px 28px -10px rgba(0,0,0,.5);
+  transition:transform .25s ease;
+}
+.sop-friction .friction-cta:hover{transform:translateY(-2px)}
+.sop-friction .friction-cta .arrow{transition:transform .25s ease}
+.sop-friction .friction-cta:hover .arrow{transform:translateX(4px)}
+
+/* ============================================================
    PRINT — keep only result page
    ============================================================ */
 @media print{
@@ -523,15 +731,27 @@
   .screen{display:none!important}
   #screen-result{display:block!important}
   #screen-result.active{animation:none!important;opacity:1!important;transform:none!important}
-  .result-hero,.reasoning-block,.breakdown,.math-card,.next-steps,.maya-note{
+  .result-hero,.reasoning-block,.breakdown,.math-card,.next-steps,.maya-note,.sop-section{
     background:#fff!important;color:#000!important;
     box-shadow:none!important;border:1px solid #ddd!important;
     page-break-inside:avoid;
   }
-  .result-hero::before,.reasoning-block::before,.math-card::before,.maya-note::before{display:none!important}
+  .result-hero::before,.reasoning-block::before,.math-card::before,.maya-note::before,.sop-section::before,.sop-friction::before{display:none!important}
   .result-name{background:none!important;-webkit-text-fill-color:#0b0b0d!important;color:#0b0b0d!important}
   .result-ctas,.share-strip{display:none!important}
-  a{color:#0b0b0d!important;text-decoration:none}
+  a{color:#0b0b0d!important;text-decoration:underline}
+
+  /* SOP print rules */
+  .sop-section{padding:30px!important;page-break-before:always}
+  .sop-actions{display:none!important}
+  .sop-step{box-shadow:none!important;border:1px solid #ddd!important;page-break-inside:avoid;margin-top:34px}
+  .sop-step-num{box-shadow:none!important;background:#0b0b0d!important;color:#fff!important}
+  .sop-friction{background:#fff!important;color:#000!important;border:1px solid #ccc!important;box-shadow:none!important;page-break-inside:avoid}
+  .sop-friction h3,.sop-friction p,.sop-friction li,.sop-friction p strong{color:#000!important}
+  .sop-friction h3 em{color:#8a6428!important}
+  .sop-friction .friction-cta{background:#000!important;color:#fff!important;box-shadow:none!important}
+  .sop-callout,.sop-warning{background:#f7f3ea!important;color:#000!important}
+  .sop-table{box-shadow:none!important}
 }
 </style>
 </head>
@@ -1241,6 +1461,1071 @@ function buildMath(entity, profitKey) {
   `;
 }
 
+// ============================================================
+//   FILING PLAYBOOK — state data + SOP variable mappers + templates
+// ============================================================
+
+const STATE_DATA = {
+  CA: {
+    name: "California",
+    sosUrl: "https://bizfileonline.sos.ca.gov",
+    nameSearchUrl: "https://bizfileonline.sos.ca.gov/search/business",
+    filingFee: "$70",
+    processingTime: "5–10 business days online, longer by mail",
+    annualReport: "Statement of Information — due within 90 days of formation, then every 2 years ($20)",
+    stateTaxUrl: "https://www.ftb.ca.gov",
+    franchiseTax: "$800 minimum annual franchise tax (waived for first year of new LLCs through 2024)",
+    notes: "California requires a Statement of Information within 90 days and an $800 annual franchise tax."
+  },
+  TX: {
+    name: "Texas",
+    sosUrl: "https://www.sos.state.tx.us/corp/sosda/index.shtml",
+    nameSearchUrl: "https://mycpa.cpa.state.tx.us/coa/Index.html",
+    filingFee: "$300",
+    processingTime: "5–7 business days online",
+    annualReport: "Public Information Report — due annually with franchise tax filing (free if under threshold)",
+    stateTaxUrl: "https://comptroller.texas.gov",
+    franchiseTax: "Franchise tax — no obligation if revenue is under $1.23M (as of 2024)",
+    notes: "No state income tax. Franchise tax exempt for most small businesses."
+  },
+  FL: {
+    name: "Florida",
+    sosUrl: "https://dos.fl.gov/sunbiz",
+    nameSearchUrl: "https://search.sunbiz.org",
+    filingFee: "$125",
+    processingTime: "2–5 business days online",
+    annualReport: "Annual Report due May 1 each year ($138.75)",
+    stateTaxUrl: "https://floridarevenue.com",
+    franchiseTax: "No franchise tax. No state income tax for individuals.",
+    notes: "Affordable filing fees and no state income tax make Florida popular for small businesses."
+  },
+  NY: {
+    name: "New York",
+    sosUrl: "https://dos.ny.gov/corporations-state-records-and-uniform-commercial-code",
+    nameSearchUrl: "https://apps.dos.ny.gov/publicInquiry",
+    filingFee: "$200",
+    processingTime: "Approximately 7 business days online",
+    annualReport: "Biennial Statement due every 2 years ($9)",
+    stateTaxUrl: "https://www.tax.ny.gov",
+    franchiseTax: "Annual filing fee based on income — minimum $25",
+    notes: "New York requires LLCs to publish formation notice in two newspapers — significant additional cost."
+  },
+  DE: {
+    name: "Delaware",
+    sosUrl: "https://corp.delaware.gov",
+    nameSearchUrl: "https://icis.corp.delaware.gov/Ecorp/EntitySearch/NameSearch.aspx",
+    filingFee: "$110 for LLC, $89 for Corporation",
+    processingTime: "1–3 business days online (expedited available)",
+    annualReport: "LLC: flat $300 annual tax. Corporation: annual report + franchise tax (minimum $175)",
+    stateTaxUrl: "https://revenue.delaware.gov",
+    franchiseTax: "Yes — significant for corporations based on share structure",
+    notes: "Preferred state for C-Corps raising venture capital. Established case law and business-friendly courts."
+  },
+  WA: {
+    name: "Washington",
+    sosUrl: "https://www.sos.wa.gov/corps",
+    nameSearchUrl: "https://ccfs.sos.wa.gov/#/BusinessSearch",
+    filingFee: "$200 (LLC), $200 (Corporation)",
+    processingTime: "2–5 business days online",
+    annualReport: "Annual Report due each year ($60 for LLC)",
+    stateTaxUrl: "https://dor.wa.gov",
+    franchiseTax: "B&O (Business & Occupation) tax based on gross revenue — varies by industry",
+    notes: "No state income tax, but B&O tax applies to gross revenue."
+  },
+  NV: {
+    name: "Nevada",
+    sosUrl: "https://www.nvsos.gov/sos",
+    nameSearchUrl: "https://esos.nv.gov/EntitySearch",
+    filingFee: "$75 (LLC), $75 (Corporation) + $150 initial list of managers",
+    processingTime: "7–10 business days online",
+    annualReport: "Annual List of Managers/Officers + Business License — combined approximately $350/year",
+    stateTaxUrl: "https://tax.nv.gov",
+    franchiseTax: "No state income tax. No franchise tax. Annual business license required.",
+    notes: "Popular for privacy and lack of state income tax. Higher ongoing fees than expected."
+  },
+  WY: {
+    name: "Wyoming",
+    sosUrl: "https://wyobiz.wyo.gov",
+    nameSearchUrl: "https://wyobiz.wyo.gov/Business/FilingSearch.aspx",
+    filingFee: "$100 (LLC)",
+    processingTime: "1–2 business days online",
+    annualReport: "Annual Report due first day of formation month each year ($60 minimum)",
+    stateTaxUrl: "https://revenue.wyo.gov",
+    franchiseTax: "No state income tax. No franchise tax.",
+    notes: "Often considered the most LLC-friendly state. Strong privacy protections."
+  },
+  PA: {
+    name: "Pennsylvania",
+    sosUrl: "https://www.dos.pa.gov/BusinessCharities/Business",
+    nameSearchUrl: "https://www.corporations.pa.gov/Search/CorpSearch",
+    filingFee: "$125",
+    processingTime: "7–10 business days online",
+    annualReport: "Decennial Report (every 10 years) — $70",
+    stateTaxUrl: "https://www.revenue.pa.gov",
+    franchiseTax: "Flat 9.99% corporate net income tax for C-Corps. LLCs pass through.",
+    notes: "One of the few states with a decennial (10-year) report instead of annual."
+  },
+  IL: {
+    name: "Illinois",
+    sosUrl: "https://www.ilsos.gov/departments/business_services",
+    nameSearchUrl: "https://apps.ilsos.gov/businessentitysearch",
+    filingFee: "$150",
+    processingTime: "10–15 business days online",
+    annualReport: "Annual Report due each year ($75 for LLC)",
+    stateTaxUrl: "https://www2.illinois.gov/rev",
+    franchiseTax: "Personal Property Replacement Tax of 1.5% on LLC income, plus 4.95% individual rate on pass-through",
+    notes: "Higher tax burden than many states. Consider Delaware or Nevada for non-resident operators."
+  },
+  GA: {
+    name: "Georgia",
+    sosUrl: "https://sos.ga.gov/corporations-division",
+    nameSearchUrl: "https://ecorp.sos.ga.gov/BusinessSearch",
+    filingFee: "$100",
+    processingTime: "5–7 business days online",
+    annualReport: "Annual Registration due April 1 each year ($50)",
+    stateTaxUrl: "https://dor.georgia.gov",
+    franchiseTax: "Net worth tax on corporations — minimal for small entities",
+    notes: "Affordable filing fees and straightforward process."
+  },
+  AZ: {
+    name: "Arizona",
+    sosUrl: "https://ecorp.azcc.gov",
+    nameSearchUrl: "https://ecorp.azcc.gov/EntitySearch/Index",
+    filingFee: "$50 (LLC), $60 (Corporation)",
+    processingTime: "3–5 business days online",
+    annualReport: "Corporations: Annual Report ($45). LLCs: no annual report required.",
+    stateTaxUrl: "https://azdor.gov",
+    franchiseTax: "No franchise tax for LLCs",
+    notes: "Among the lowest fees and least paperwork of any state for LLCs."
+  }
+};
+
+function STATE_FALLBACK(code, name) {
+  return {
+    name,
+    sosUrl: `Search Google for &ldquo;${name} Secretary of State business filings&rdquo;`,
+    nameSearchUrl: `Search Google for &ldquo;${name} business name availability search&rdquo;`,
+    filingFee: "Varies — typically $50–$300",
+    processingTime: "Varies by state — typically 5–15 business days online",
+    annualReport: `Most states require an annual or biennial report. Check your ${name} Secretary of State website.`,
+    stateTaxUrl: `Search Google for &ldquo;${name} Department of Revenue business taxes&rdquo;`,
+    franchiseTax: `Varies. Consult your ${name} Department of Revenue for state-specific requirements.`,
+    notes: `${name} requirements vary. Always confirm current fees and processes on official state websites before filing.`
+  };
+}
+
+function getStateData(code) {
+  if (STATE_DATA[code]) return Object.assign({ code }, STATE_DATA[code]);
+  const found = US_STATES.find(([c]) => c === code);
+  const name = found ? found[1] : code;
+  return Object.assign({ code }, STATE_FALLBACK(code, name));
+}
+
+// ---------- SOP variable mappers ----------
+const ownerCountLabel = {
+  A: 'Just you (solo)',
+  B: 'You + 1 partner (2 owners)',
+  C: '3 or more owners',
+  D: 'Solo now, planning equity grants / acquisition'
+};
+const ownerCountIsMulti = (q1) => q1 === 'B' || q1 === 'C';
+const growthPlanLabel = {
+  A: 'keeping it lean and profitable',
+  B: 'steady, organic growth',
+  C: 'scaling aggressively across markets',
+  D: 'raising venture capital or outside investors'
+};
+const compStrategyLabel = {
+  A: 'All profits flow to me as personal income',
+  B: 'Reasonable salary + distributions on top',
+  C: 'Reinvest most profits back into growth',
+  D: 'Mix of salary, equity grants, and dividends'
+};
+const wantsProtection = (q4) => q4 === 'A' || q4 === 'B';
+
+function getTimestamp() {
+  const d = new Date();
+  const m = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  return `${m[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+}
+
+function buildSopVars() {
+  const a = state.answers;
+  const s = getStateData(state.lead.state);
+  return {
+    firstName: state.lead.firstName || 'Founder',
+    stateCode: s.code,
+    stateName: s.name,
+    sosUrl: s.sosUrl,
+    nameSearchUrl: s.nameSearchUrl,
+    filingFee: s.filingFee,
+    processingTime: s.processingTime,
+    annualReport: s.annualReport,
+    stateTaxUrl: s.stateTaxUrl,
+    franchiseTax: s.franchiseTax,
+    notes: s.notes,
+    entity: state.recommendation,
+    ownerCount: ownerCountLabel[a.q1],
+    isMultiOwner: ownerCountIsMulti(a.q1),
+    profitRange: profitLabel[a.q2],
+    profitKey: a.q2,
+    growthPlan: growthPlanLabel[a.q3],
+    growthKey: a.q3,
+    wantsProtection: wantsProtection(a.q4),
+    compStrategy: compStrategyLabel[a.q5],
+    compKey: a.q5,
+    timestamp: getTimestamp()
+  };
+}
+
+// Small helper — render URL as a link unless it's a "Search Google for…" fallback
+function linkOrText(value) {
+  if (typeof value === 'string' && /^https?:\/\//i.test(value)) {
+    return `<a href="${value}" target="_blank" rel="noopener">${value}</a>`;
+  }
+  return `<span>${value}</span>`;
+}
+
+// ============================================================
+//   SOP TEMPLATES — one per entity
+//   Each returns a complete HTML block for the result page.
+// ============================================================
+
+const SOPS = {
+  'Sole Proprietorship': (v) => `
+    <div class="sop-mast">
+      <span class="sop-eyebrow"><span class="dot"></span>Filing Playbook</span>
+      <div class="sop-title">${v.firstName}'s playbook<br/>Sole Proprietorship in ${v.stateName}</div>
+      <p class="sop-sub">Below is the step-by-step manual to become a legitimate sole proprietor in <strong>${v.stateName}</strong> — the simplest possible business structure, where you and the business are legally the same entity.</p>
+      <div class="sop-meta">
+        <div class="sop-meta-item"><strong>Structure</strong><span>Sole Proprietorship</span></div>
+        <div class="sop-meta-item"><strong>State</strong><span>${v.stateName}</span></div>
+        <div class="sop-meta-item"><strong>Time</strong><span>1–3 hours</span></div>
+        <div class="sop-meta-item"><strong>Cost</strong><span>$0–$150</span></div>
+      </div>
+    </div>
+
+    <div class="sop">
+      <h3 class="sop-h2">Purpose</h3>
+      <p>A sole proprietorship requires almost no formal filing to exist — you become one automatically the moment you earn business income under your own name. The steps below cover the things you <strong>should</strong> do to make it official, separate your finances, and stay compliant in ${v.stateName}.</p>
+
+      <h3 class="sop-h2">Before you start</h3>
+      <ul class="sop-check">
+        <li>Your legal name and Social Security Number (you'll use SSN for taxes unless you get an EIN)</li>
+        <li>A business name (optional — if you don't have one, you'll operate under your legal name)</li>
+        <li>A general idea of what licenses your industry requires in ${v.stateName}</li>
+      </ul>
+
+      <div class="sop-step">
+        <div class="sop-step-num">1</div>
+        <div class="sop-step-title">Decide on your business name</div>
+        <span class="sop-step-action">Action — Choose whether to operate under your legal name or a DBA</span>
+        <p>If you'll operate as "Jane Smith Consulting" (your legal name), skip to Step 2.</p>
+        <p>If you want to operate under a different name like "Bright Path Studio," you'll need to file a DBA / Fictitious Business Name with your county clerk's office.</p>
+        <div class="sop-callout"><strong>What you'll see:</strong> County clerk websites vary widely. Search Google for "${v.stateName} fictitious business name DBA filing" and look for an official .gov result. <br/><strong>Cost:</strong> $25–$100 depending on your county. Sometimes requires publication in a local newspaper.</div>
+      </div>
+
+      <div class="sop-step">
+        <div class="sop-step-num">2</div>
+        <div class="sop-step-title">Get an EIN (optional but recommended)</div>
+        <span class="sop-step-action">Action — Apply for a free Employer Identification Number from the IRS</span>
+        <p>Go to: <a href="https://www.irs.gov/businesses/small-businesses-self-employed/apply-for-an-employer-identification-number-ein-online" target="_blank" rel="noopener">irs.gov/businesses (EIN Online)</a></p>
+        <p>Click <strong>Apply Online Now</strong>, fill out the application (about 10 minutes), and you'll receive your EIN immediately.</p>
+        <div class="sop-callout"><strong>Why this matters:</strong> Without an EIN, you'll give your SSN to clients on every W-9. With an EIN, you protect your SSN.<br/><strong>Cost:</strong> Free. Anyone charging you for an EIN is scamming you.</div>
+      </div>
+
+      <div class="sop-step">
+        <div class="sop-step-num">3</div>
+        <div class="sop-step-title">Open a separate business bank account</div>
+        <span class="sop-step-action">Action — Open business checking with your EIN (or SSN) and DBA documentation if applicable</span>
+        <p>Recommended options for sole proprietors:</p>
+        <ul class="sop-check">
+          <li><strong>Bluevine</strong> — no fees, online application, fast approval</li>
+          <li><strong>Novo</strong> — built for solopreneurs</li>
+          <li><strong>Mercury</strong> — premium feel, good for service businesses</li>
+          <li><strong>Local credit union</strong> — relationships matter for future financing</li>
+        </ul>
+        <div class="sop-warning"><strong>Why this is critical:</strong> Mixing personal and business funds is the #1 mistake sole proprietors make. It destroys your audit trail and complicates taxes massively.</div>
+      </div>
+
+      <div class="sop-step">
+        <div class="sop-step-num">4</div>
+        <div class="sop-step-title">Check required licenses in ${v.stateName}</div>
+        <span class="sop-step-action">Action — Determine which licenses or permits your industry requires</span>
+        <p>Common requirements:</p>
+        <ul class="sop-check">
+          <li>City or county business license (most cities require one)</li>
+          <li>Industry-specific license (contractor, food service, real estate, etc.)</li>
+          <li>Professional license (CPA, lawyer, therapist, etc.)</li>
+          <li>Sales tax permit if you sell physical goods in ${v.stateName}</li>
+        </ul>
+        <p>Visit ${linkOrText(v.sosUrl)} (start here) and ${linkOrText(v.stateTaxUrl)} (for sales tax).</p>
+      </div>
+
+      <div class="sop-step">
+        <div class="sop-step-num">5</div>
+        <div class="sop-step-title">Set up a bookkeeping system</div>
+        <span class="sop-step-action">Action — Choose how you'll track income and expenses from day one</span>
+        <p>Options:</p>
+        <ul class="sop-check">
+          <li><strong>QuickBooks Self-Employed</strong> — designed for sole proprietors, integrates with Schedule C</li>
+          <li><strong>Wave</strong> — free, basic but functional</li>
+          <li><strong>Spreadsheet</strong> — works if you're disciplined, fails when life gets busy</li>
+        </ul>
+        <div class="sop-callout"><strong>Reality check:</strong> Most sole proprietors abandon their bookkeeping by month 4 and then panic in March. Set this up now or hire someone (like MRG) to handle it monthly.</div>
+      </div>
+
+      <div class="sop-step">
+        <div class="sop-step-num">6</div>
+        <div class="sop-step-title">Plan for quarterly estimated taxes</div>
+        <span class="sop-step-action">Action — Calculate and pay quarterly estimated taxes if you'll owe more than $1,000 in tax for the year</span>
+        <p>Federal quarterly deadlines:</p>
+        <ul class="sop-check">
+          <li><strong>April 15</strong> — Q1</li>
+          <li><strong>June 15</strong> — Q2</li>
+          <li><strong>September 15</strong> — Q3</li>
+          <li><strong>January 15</strong> — Q4 (of the following year)</li>
+        </ul>
+        <p>Use IRS Form 1040-ES. Pay online at <a href="https://www.irs.gov/payments" target="_blank" rel="noopener">irs.gov/payments</a>.</p>
+        <div class="sop-warning"><strong>Most-missed step:</strong> Sole proprietors forget that nobody is withholding taxes from their checks. The IRS expects 25–30% of profits forwarded quarterly. Miss it and you'll owe penalties.</div>
+      </div>
+
+      <h3 class="sop-h2">Final step — verify you're set up</h3>
+      <ul class="sop-check">
+        <li>Business name decided (legal name or DBA filed)</li>
+        <li>EIN from the IRS (optional but recommended)</li>
+        <li>Separate business bank account</li>
+        <li>Required licenses or permits</li>
+        <li>Bookkeeping system in place</li>
+        <li>A calendar reminder for the next quarterly tax payment</li>
+      </ul>
+
+      <h3 class="sop-h2">Troubleshooting</h3>
+      <table class="sop-table">
+        <thead><tr><th>Problem</th><th>Likely cause</th><th>Fix</th></tr></thead>
+        <tbody>
+          <tr><td>Bank rejected my application</td><td>Missing DBA paperwork or EIN</td><td>Get the EIN first, then re-apply</td></tr>
+          <tr><td>Got a notice from ${v.stateName}</td><td>Missing local business license</td><td>Visit your city/county website and register</td></tr>
+          <tr><td>Confused about what's deductible</td><td>Sole proprietors get fewer tools than LLCs</td><td>Consider upgrading to an LLC once profit grows</td></tr>
+        </tbody>
+      </table>
+
+      <div class="sop-friction">
+        <h3>Where most owners hit <em>friction</em> &mdash; and where MRG steps in</h3>
+        <p>Sole proprietorship is the simplest structure on paper. The expensive mistakes happen after: tracking deductions correctly, paying quarterly estimates on time, separating finances properly, and knowing when to upgrade to an LLC.</p>
+        <p><strong>MRG's sole-proprietor package handles:</strong></p>
+        <ul>
+          <li>Monthly bookkeeping and Schedule C prep</li>
+          <li>Quarterly estimated tax calculation and reminders</li>
+          <li>Annual tax filing and strategic planning for the next year</li>
+          <li>Guidance on when to upgrade to an LLC (typically around $40K–$50K in profit)</li>
+        </ul>
+        <a class="friction-cta" href="contact.html#consult">Book your free consultation <span class="arrow">→</span></a>
+      </div>
+
+      <div class="sop-footer">Generated for ${v.firstName} &middot; ${v.timestamp} &middot; MRG Accounting Service</div>
+    </div>
+  `,
+
+  'LLC': (v) => `
+    <div class="sop-mast">
+      <span class="sop-eyebrow"><span class="dot"></span>Filing Playbook</span>
+      <div class="sop-title">${v.firstName}'s playbook<br/>LLC in ${v.stateName}</div>
+      <p class="sop-sub">A step-by-step manual to form a ${v.isMultiOwner ? 'multi-member' : 'single-member'} LLC in <strong>${v.stateName}</strong>, get an EIN, open a business bank account, and put bookkeeping in place from day one.</p>
+      <div class="sop-meta">
+        <div class="sop-meta-item"><strong>Structure</strong><span>Limited Liability Company</span></div>
+        <div class="sop-meta-item"><strong>State</strong><span>${v.stateName}</span></div>
+        <div class="sop-meta-item"><strong>Time</strong><span>1–3 weeks</span></div>
+        <div class="sop-meta-item"><strong>Cost</strong><span>${v.filingFee} + options</span></div>
+      </div>
+    </div>
+
+    <div class="sop">
+      <h3 class="sop-h2">Purpose</h3>
+      <p>You're choosing an LLC because it's the right balance for your situation: liability protection between you and the business, pass-through taxation (no double tax), and the flexibility to elect S-Corp tax treatment later if profits grow.</p>
+
+      <h3 class="sop-h2">Before you start</h3>
+      <ul class="sop-check">
+        <li>A name for your LLC (must include "LLC" or "Limited Liability Company")</li>
+        <li>Your home address (or registered agent service address)</li>
+        <li>A short description of what your business does</li>
+        <li>${v.filingFee} for the state filing fee</li>
+        <li>An hour of focused time for the filing itself</li>
+      </ul>
+
+      <div class="sop-step">
+        <div class="sop-step-num">1</div>
+        <div class="sop-step-title">Choose and check your LLC name</div>
+        <span class="sop-step-action">Action — Pick a name and verify it's not already taken in ${v.stateName}</span>
+        <p>Go to: ${linkOrText(v.nameSearchUrl)}</p>
+        <p>Search for your desired name. If it returns no results, you're clear. If it's taken, brainstorm variations.</p>
+        <p><strong>Naming rules in ${v.stateName}:</strong></p>
+        <ul class="sop-check">
+          <li>Must contain "LLC", "L.L.C.", or "Limited Liability Company"</li>
+          <li>Cannot include restricted words like "bank," "insurance," or "trust" without special permission</li>
+          <li>Must be distinguishable from other registered businesses</li>
+        </ul>
+        <div class="sop-callout"><strong>Pro tip:</strong> Also check that the matching .com domain and social handles are available before committing.</div>
+      </div>
+
+      <div class="sop-step">
+        <div class="sop-step-num">2</div>
+        <div class="sop-step-title">Appoint a registered agent</div>
+        <span class="sop-step-action">Action — Designate someone to receive legal mail on behalf of your LLC</span>
+        <ul class="sop-check">
+          <li><strong>Serve as your own registered agent</strong> — free, but your home address becomes public record</li>
+          <li><strong>Use a registered agent service</strong> — $100–$300/year, keeps your address private (Northwest Registered Agent, Harbor Compliance)</li>
+          <li><strong>Use a friend or family member at a business address</strong> — free, but they must be available during business hours</li>
+        </ul>
+        <div class="sop-callout"><strong>What you'll see:</strong> When filing, you'll provide the agent's name and a physical street address in ${v.stateName} (no P.O. boxes allowed).</div>
+      </div>
+
+      <div class="sop-step">
+        <div class="sop-step-num">3</div>
+        <div class="sop-step-title">File Articles of Organization</div>
+        <span class="sop-step-action">Action — File the legal formation document that creates your LLC</span>
+        <p>Go to: ${linkOrText(v.sosUrl)}</p>
+        <p>Look for "Form an LLC" or "Start a Business" on the homepage. You'll create an account if you don't have one. You'll need to provide:</p>
+        <ul class="sop-check">
+          <li>LLC name (from Step 1)</li>
+          <li>Registered agent name and address (from Step 2)</li>
+          <li>Principal business address</li>
+          <li>Member/manager information (you and any partners)</li>
+          <li>Business purpose (a one-sentence description is usually fine)</li>
+          <li>Effective date (most people select "upon filing")</li>
+        </ul>
+        <p>Pay the <strong>${v.filingFee}</strong> filing fee with a credit card.</p>
+        <div class="sop-callout"><strong>What you'll see after filing:</strong> A confirmation page with your file number. You'll receive your stamped Articles of Organization via email within ${v.processingTime}.</div>
+        ${v.stateCode === 'NY' ? `<div class="sop-warning"><strong>⚠️ New York-specific:</strong> After formation, you have 120 days to publish notice of your LLC formation in two newspapers in your county. This can cost $500–$2,000 depending on county. Plan for this expense.</div>` : ''}
+        ${v.stateCode === 'CA' ? `<div class="sop-warning"><strong>⚠️ California-specific:</strong> ${v.franchiseTax} You'll also file a Statement of Information within 90 days.</div>` : ''}
+      </div>
+
+      <div class="sop-step">
+        <div class="sop-step-num">4</div>
+        <div class="sop-step-title">Create an Operating Agreement</div>
+        <span class="sop-step-action">Action — Draft an Operating Agreement, even if you're a single-member LLC</span>
+        <p>This internal document outlines:</p>
+        <ul class="sop-check">
+          <li>Ownership percentages (100% you if single-member, split if multi-member)</li>
+          <li>Voting rights and decision-making process</li>
+          <li>How profits and losses are distributed</li>
+          <li>Procedures for adding or removing members</li>
+          <li>Dissolution procedures</li>
+        </ul>
+        <p>Free templates available at <a href="https://www.legalzoom.com/articles/operating-agreement-template" target="_blank" rel="noopener">LegalZoom</a> and <a href="https://www.nolo.com" target="_blank" rel="noopener">Nolo</a>.</p>
+        <div class="sop-callout"><strong>Why this matters even for solo LLCs:</strong> Without an Operating Agreement, your LLC defaults to ${v.stateName}'s generic LLC rules — which may not match your intent. Courts and banks also like to see it.</div>
+        ${v.isMultiOwner ? `<div class="sop-warning"><strong>Multi-member note:</strong> Since you'll have ${v.ownerCount.toLowerCase()}, this agreement is critical. It prevents disputes about money, decisions, and exits. Don't skip it. Don't use a generic template without customization.</div>` : ''}
+      </div>
+
+      <div class="sop-step">
+        <div class="sop-step-num">5</div>
+        <div class="sop-step-title">Get an EIN from the IRS</div>
+        <span class="sop-step-action">Action — Apply for a free Employer Identification Number</span>
+        <p>Go to: <a href="https://www.irs.gov/businesses/small-businesses-self-employed/apply-for-an-employer-identification-number-ein-online" target="_blank" rel="noopener">irs.gov/businesses (EIN Online)</a></p>
+        <ul class="sop-check">
+          <li>Click <strong>Apply Online Now</strong></li>
+          <li>Select <strong>Limited Liability Company</strong></li>
+          <li>Fill in the form (~10 minutes)</li>
+          <li>Receive your EIN immediately on screen — save the PDF confirmation</li>
+        </ul>
+        <div class="sop-callout"><strong>Cost:</strong> Free. The IRS does not charge for EINs. Any third-party service charging $50+ is overcharging for what takes 10 minutes.</div>
+      </div>
+
+      <div class="sop-step">
+        <div class="sop-step-num">6</div>
+        <div class="sop-step-title">Open a business bank account</div>
+        <span class="sop-step-action">Action — Open a dedicated business checking account</span>
+        <p><strong>Required documents:</strong></p>
+        <ul class="sop-check">
+          <li>Stamped Articles of Organization</li>
+          <li>EIN confirmation letter (CP 575)</li>
+          <li>Operating Agreement</li>
+          <li>Personal ID</li>
+          <li>Initial deposit (usually $25–$100)</li>
+        </ul>
+        <p><strong>Recommended banks for LLCs:</strong></p>
+        <ul class="sop-check">
+          <li><strong>Mercury</strong> — free, online, built for startups</li>
+          <li><strong>Bluevine</strong> — free, online, includes high-yield checking</li>
+          <li><strong>Novo</strong> — free, online, integrates well with QuickBooks</li>
+          <li><strong>Local community bank or credit union</strong> — relationships pay off when you need credit later</li>
+        </ul>
+        <div class="sop-warning"><strong>Why this is non-negotiable:</strong> Mixing personal and business funds is called "piercing the corporate veil." If you do it, courts can strip away your liability protection — defeating the entire point of having an LLC.</div>
+      </div>
+
+      <div class="sop-step">
+        <div class="sop-step-num">7</div>
+        <div class="sop-step-title">Register for state taxes in ${v.stateName}</div>
+        <span class="sop-step-action">Action — Register with your state's revenue department if applicable</span>
+        <p>Visit: ${linkOrText(v.stateTaxUrl)}</p>
+        <p><strong>Common registrations:</strong></p>
+        <ul class="sop-check">
+          <li><strong>Sales tax permit</strong> — if you'll sell physical goods or taxable services</li>
+          <li><strong>Employer withholding</strong> — if you'll have W-2 employees</li>
+          <li><strong>State income tax</strong> — most states require LLCs to register</li>
+        </ul>
+        <div class="sop-callout"><strong>What you'll see:</strong> A business registration portal. Most states walk you through which taxes apply based on your business type.</div>
+      </div>
+
+      <div class="sop-step">
+        <div class="sop-step-num">8</div>
+        <div class="sop-step-title">Get required business licenses</div>
+        <span class="sop-step-action">Action — Confirm what local and industry-specific licenses you need</span>
+        <p>Check three levels:</p>
+        <ul class="sop-check">
+          <li><strong>City business license</strong> — most cities require any business operating within their limits to register and pay an annual fee ($50–$500)</li>
+          <li><strong>County business license</strong> — fewer counties require this, but worth checking</li>
+          <li><strong>Industry-specific licenses</strong> — contractors, food service, healthcare, real estate, financial services, and many others require professional licensing</li>
+        </ul>
+        <p>Search Google for "[your city] business license" and "[your industry] license ${v.stateName}".</p>
+      </div>
+
+      <div class="sop-step">
+        <div class="sop-step-num">9</div>
+        <div class="sop-step-title">File your initial report</div>
+        <span class="sop-step-action">Action — File any required initial filing within the post-formation window</span>
+        <p>In ${v.stateName}: ${v.annualReport}</p>
+        <div class="sop-callout"><strong>Set a calendar reminder for next year</strong> so you never miss this.</div>
+      </div>
+
+      <div class="sop-step">
+        <div class="sop-step-num">10</div>
+        <div class="sop-step-title">Set up bookkeeping from day one</div>
+        <span class="sop-step-action">Action — Choose and configure a bookkeeping system before you make your first transaction</span>
+        <ul class="sop-check">
+          <li><strong>QuickBooks Online</strong> — industry standard, integrates with everything</li>
+          <li>Connect your business bank account for automatic transaction import</li>
+          <li>Set up your chart of accounts (or have MRG do it)</li>
+          <li>Schedule monthly closes — don't let a year of receipts pile up</li>
+        </ul>
+        <div class="sop-warning"><strong>Why now matters:</strong> The single biggest reason LLC owners get in trouble at tax time is procrastinating on bookkeeping. Day-one setup costs hours. Year-end catch-up costs thousands.</div>
+      </div>
+
+      <h3 class="sop-h2">Final step — verify you're live</h3>
+      <ul class="sop-check">
+        <li>Stamped Articles of Organization from ${v.stateName}</li>
+        <li>Operating Agreement signed and stored</li>
+        <li>EIN from the IRS</li>
+        <li>Business bank account open</li>
+        <li>State tax registrations completed (where required)</li>
+        <li>Required business licenses obtained</li>
+        <li>Initial report filed (where applicable)</li>
+        <li>Bookkeeping system set up and connected to your bank account</li>
+        <li>Calendar reminders set for annual report renewals</li>
+      </ul>
+
+      <h3 class="sop-h2">Troubleshooting</h3>
+      <table class="sop-table">
+        <thead><tr><th>Problem</th><th>Likely cause</th><th>Fix</th></tr></thead>
+        <tbody>
+          <tr><td>Articles of Organization rejected</td><td>Name not unique or formatting error</td><td>Re-check name search, fix and refile (some states refund partial fees)</td></tr>
+          <tr><td>EIN application errors</td><td>LLC name doesn't match state filing exactly</td><td>Wait 24h after Articles are stamped, then reapply with exact match</td></tr>
+          <tr><td>Bank account denied</td><td>Missing Operating Agreement or mismatched EIN</td><td>Bring all formation documents, including Operating Agreement</td></tr>
+          <tr><td>${v.stateName} sent a notice about back taxes/fees</td><td>Missed an initial filing requirement</td><td>Visit ${v.stateCode in STATE_DATA ? v.sosUrl.replace(/<[^>]+>/g,'') : 'your Secretary of State website'} to check status before penalties accrue</td></tr>
+        </tbody>
+      </table>
+
+      <h3 class="sop-h2">When you should consider an <em>S-Corp election</em></h3>
+      ${(v.profitKey === 'C' || v.profitKey === 'D') ? `
+        <p><strong>Your profit level (${v.profitRange}) means you should evaluate an S-Corp election right now.</strong> An S-Corp election can save you ${v.profitKey === 'C' ? '$5,000–$12,000' : '$12,000+'} per year in self-employment tax. The election is made via IRS Form 2553, due within 75 days of formation.</p>
+      ` : ''}
+      ${v.profitKey === 'B' ? `
+        <p><strong>Watch your profit growth carefully.</strong> Once you cross $50K–$60K in annual profit, an S-Corp election typically becomes worth the added complexity. We recommend revisiting this decision when you file your first year of taxes.</p>
+      ` : ''}
+      ${v.profitKey === 'A' ? `
+        <p><strong>Stay LLC-default for now.</strong> S-Corp election adds payroll complexity and only pays off above ~$50K profit. Re-evaluate annually as your business grows.</p>
+      ` : ''}
+
+      <div class="sop-friction">
+        <h3>Where most owners hit <em>friction</em> &mdash; and where MRG steps in</h3>
+        <p>Filing the LLC is the easy part. The expensive mistakes happen in the months after:</p>
+        <ul>
+          <li>Missing your initial state report and accruing penalties</li>
+          <li>Setting up bookkeeping incorrectly and discovering it 9 months later</li>
+          <li>Not knowing when to elect S-Corp status (and overpaying SE tax for years)</li>
+          <li>Not realizing you needed a sales tax permit until the state sends a notice</li>
+          <li>Mixing personal and business funds, destroying your liability shield</li>
+        </ul>
+        <p><strong>MRG's LLC launch package handles:</strong></p>
+        <ul>
+          <li>Monthly bookkeeping configured correctly from day one</li>
+          <li>Quarterly check-ins to evaluate S-Corp election timing</li>
+          <li>Annual report calendar management</li>
+          <li>Tax filing aligned with your specific entity structure</li>
+        </ul>
+        <a class="friction-cta" href="contact.html#consult">Book your free consultation <span class="arrow">→</span></a>
+      </div>
+
+      <div class="sop-footer">Generated for ${v.firstName} &middot; ${v.timestamp} &middot; MRG Accounting Service</div>
+    </div>
+  `,
+
+  'S-Corp': (v) => `
+    <div class="sop-mast">
+      <span class="sop-eyebrow"><span class="dot"></span>Filing Playbook</span>
+      <div class="sop-title">${v.firstName}'s playbook<br/>S-Corp in ${v.stateName}</div>
+      <p class="sop-sub">S-Corp isn't an entity type — it's a <strong>tax election</strong> made AFTER forming an LLC or Corporation. This playbook walks both steps: form an LLC in <strong>${v.stateName}</strong>, then elect S-Corp tax treatment with the IRS.</p>
+      <div class="sop-meta">
+        <div class="sop-meta-item"><strong>Structure</strong><span>LLC + S-Corp election</span></div>
+        <div class="sop-meta-item"><strong>State</strong><span>${v.stateName}</span></div>
+        <div class="sop-meta-item"><strong>Time</strong><span>2–4 weeks</span></div>
+        <div class="sop-meta-item"><strong>Cost</strong><span>${v.filingFee} + payroll ($40–$80/mo)</span></div>
+      </div>
+    </div>
+
+    <div class="sop">
+      <h3 class="sop-h2">Purpose</h3>
+      <p>With profit in the <strong>${v.profitRange}</strong> range, an S-Corp election can save you significantly on self-employment tax — typically $5,000–$15,000+ per year for someone at your profit level.</p>
+
+      <h3 class="sop-h2">Before you start</h3>
+      <ul class="sop-check">
+        <li>A name for your LLC (must include "LLC")</li>
+        <li>${v.filingFee} for the state LLC filing</li>
+        <li>A plan for what your "reasonable salary" will be (we'll cover this in Step 3)</li>
+        <li>Willingness to run actual payroll (this is non-negotiable for S-Corps)</li>
+      </ul>
+
+      <div class="sop-step">
+        <div class="sop-step-num">1</div>
+        <div class="sop-step-title">Form your LLC first</div>
+        <span class="sop-step-action">Action — Complete the LLC formation steps in ${v.stateName}</span>
+        <p>You need a legally formed LLC before you can elect S-Corp status. Quick recap of the 10-step LLC path:</p>
+        <ul class="sop-check">
+          <li>Check name availability at ${linkOrText(v.nameSearchUrl)}</li>
+          <li>Appoint a registered agent</li>
+          <li>File Articles of Organization at ${linkOrText(v.sosUrl)} (${v.filingFee})</li>
+          <li>Create an Operating Agreement</li>
+          <li>Get an EIN from the IRS</li>
+          <li>Open a business bank account</li>
+          <li>Register for state taxes</li>
+          <li>Get required licenses</li>
+          <li>File initial state report — ${v.annualReport}</li>
+          <li>Set up bookkeeping</li>
+        </ul>
+        <div class="sop-warning"><strong>You must complete this before moving to Step 2.</strong></div>
+      </div>
+
+      <div class="sop-step">
+        <div class="sop-step-num">2</div>
+        <div class="sop-step-title">File IRS Form 2553 — the S-Corp election</div>
+        <span class="sop-step-action">Action — Elect S-Corp tax treatment by filing Form 2553 with the IRS</span>
+        <p>Download Form 2553: <a href="https://www.irs.gov/forms-pubs/about-form-2553" target="_blank" rel="noopener">irs.gov/forms-pubs/about-form-2553</a></p>
+        <div class="sop-warning"><strong>Critical deadline:</strong> File within <strong>75 days</strong> of LLC formation to have the election apply to your current tax year. Miss the window and the election applies the following year (you'll be taxed as a default LLC for the current year).</div>
+        <p><strong>The form requires:</strong></p>
+        <ul class="sop-check">
+          <li>Your LLC's legal name (must match Articles of Organization exactly)</li>
+          <li>EIN</li>
+          <li>Date of incorporation</li>
+          <li>Tax year selection (almost always "calendar year")</li>
+          <li>Names, addresses, SSNs of all shareholders/members</li>
+          <li>Signed consent from each shareholder/member</li>
+        </ul>
+        <p><strong>Submit via:</strong></p>
+        <ul class="sop-check">
+          <li><strong>Fax (fastest):</strong> IRS Service Center fax number based on your state — listed in Form 2553 instructions</li>
+          <li><strong>Mail (slower):</strong> IRS Service Center address based on your state</li>
+        </ul>
+        <p>Expect IRS confirmation (Form CP261) in 4–8 weeks.</p>
+        <div class="sop-callout"><strong>Pro tip:</strong> Many CPAs file Form 2553 alongside the LLC formation. If you're doing this yourself, fax it within the first 30 days to give yourself buffer.</div>
+      </div>
+
+      <div class="sop-step">
+        <div class="sop-step-num">3</div>
+        <div class="sop-step-title">Determine your "reasonable salary"</div>
+        <span class="sop-step-action">Action — Establish what salary you'll pay yourself as an S-Corp employee</span>
+        <p>The IRS requires S-Corp owner-employees to pay themselves a "reasonable salary" — what someone in your role at your industry would earn. This salary is subject to payroll taxes. Profits above the salary are distributions that escape self-employment tax.</p>
+        <p><strong>How to determine reasonable:</strong></p>
+        <ul class="sop-check">
+          <li>Search <strong>Glassdoor</strong> or <strong>PayScale</strong> for your role and industry in ${v.stateName}</li>
+          <li>For your profit range (${v.profitRange}), reasonable salary typically falls between $40,000–$80,000 depending on industry</li>
+          <li>Service providers usually need higher salaries (60–70% of profit)</li>
+          <li>Capital-intensive businesses can justify lower salaries (30–40% of profit)</li>
+        </ul>
+        <div class="sop-callout"><strong>What the IRS looks for:</strong> A salary that matches market rate for your role, region, and hours worked. Too low and you're a target for audit. Too high and you're overpaying payroll taxes.<br/><br/><strong>Document your reasoning:</strong> Save the Glassdoor/PayScale screenshots and a one-page memo on how you determined the salary. If audited, this documentation matters.</div>
+      </div>
+
+      <div class="sop-step">
+        <div class="sop-step-num">4</div>
+        <div class="sop-step-title">Set up payroll</div>
+        <span class="sop-step-action">Action — Set up a payroll system to run your salary</span>
+        <p>You'll be both employer and employee. Recommended payroll platforms:</p>
+        <ul class="sop-check">
+          <li><strong>Gusto</strong> — most popular for S-Corps, $40–$80/mo, handles federal + state filings automatically</li>
+          <li><strong>QuickBooks Payroll</strong> — integrates with QuickBooks Online bookkeeping (this is what MRG uses)</li>
+          <li><strong>OnPay</strong> — affordable alternative, ~$40/mo</li>
+        </ul>
+        <p><strong>Setup checklist:</strong></p>
+        <ul class="sop-check">
+          <li>Register as an employer with the IRS (you'll need your EIN)</li>
+          <li>Register with ${v.stateName} for state withholding and unemployment insurance (visit ${linkOrText(v.stateTaxUrl)})</li>
+          <li>Set up direct deposit for yourself</li>
+          <li>Configure salary schedule (typically monthly or bi-weekly)</li>
+          <li>Configure tax withholding (federal, state, FICA)</li>
+        </ul>
+        <div class="sop-callout"><strong>Reality check:</strong> Running payroll for yourself feels strange the first time. It's just moving money from your business account to your personal account, with payroll taxes withheld and forwarded to the IRS.</div>
+      </div>
+
+      <div class="sop-step">
+        <div class="sop-step-num">5</div>
+        <div class="sop-step-title">Take distributions for profit above your salary</div>
+        <span class="sop-step-action">Action — Distribute remaining profits to yourself as owner distributions, not salary</span>
+        <ul class="sop-check">
+          <li>Salary runs through payroll (subject to payroll tax)</li>
+          <li>Distributions are simple bank transfers from business to personal (NOT subject to self-employment tax)</li>
+          <li>Record each distribution in QuickBooks as an "Owner Distribution" or "Member Draw"</li>
+        </ul>
+        <div class="sop-callout"><strong>The math:</strong> At ${v.profitRange} profit, the SE tax savings on the distribution portion is significant — often $5,000–$15,000+ per year. This is the main reason S-Corp election exists.</div>
+      </div>
+
+      <div class="sop-step">
+        <div class="sop-step-num">6</div>
+        <div class="sop-step-title">File quarterly and annual filings</div>
+        <span class="sop-step-action">Action — Stay current on the additional filings S-Corps require</span>
+        <table class="sop-table">
+          <thead><tr><th>Frequency</th><th>Form</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td>Quarterly</td><td>Form 941</td><td>Report employer payroll taxes (your payroll provider handles this)</td></tr>
+            <tr><td>Quarterly</td><td>State payroll forms</td><td>Your payroll provider handles this too</td></tr>
+            <tr><td>Annually</td><td>Form 1120-S</td><td>S-Corp tax return — due March 15</td></tr>
+            <tr><td>Annually</td><td>Schedule K-1</td><td>Pass-through income statement issued to you personally</td></tr>
+            <tr><td>Annually</td><td>W-2 to yourself</td><td>Reflects your salary</td></tr>
+            <tr><td>Annually</td><td>${v.stateName} state report</td><td>${v.annualReport}</td></tr>
+          </tbody>
+        </table>
+        <div class="sop-warning"><strong>Critical date:</strong> Form 1120-S is due <strong>March 15</strong> (not April 15 like personal returns). Missing this date costs $200/month per shareholder in penalties.</div>
+      </div>
+
+      <div class="sop-step">
+        <div class="sop-step-num">7</div>
+        <div class="sop-step-title">Set up bookkeeping that distinguishes salary from distributions</div>
+        <span class="sop-step-action">Action — Configure your chart of accounts to clearly separate the two</span>
+        <ul class="sop-check">
+          <li>Salary expenses run through Payroll Expenses</li>
+          <li>Distributions run through Owner Draw / Member Distribution</li>
+          <li>Never mix them — this is what makes S-Corp filing clean at year-end</li>
+        </ul>
+        <div class="sop-callout"><strong>Why this matters:</strong> At tax time, your CPA needs to know exactly what was salary (W-2 reported) versus distribution (K-1 reported). Sloppy bookkeeping turns a clean S-Corp return into a $1,500 cleanup project.</div>
+      </div>
+
+      <h3 class="sop-h2">Final step — verify your S-Corp is operational</h3>
+      <ul class="sop-check">
+        <li>LLC formed in ${v.stateName}</li>
+        <li>IRS Form 2553 filed and S-Corp election confirmed (CP261)</li>
+        <li>Reasonable salary determined and documented</li>
+        <li>Payroll system configured and first paycheck run</li>
+        <li>Bank accounts for business and personal kept fully separate</li>
+        <li>Bookkeeping system distinguishing salary from distributions</li>
+        <li>Calendar reminders for quarterly filings and March 15 annual return</li>
+      </ul>
+
+      <h3 class="sop-h2">Troubleshooting</h3>
+      <table class="sop-table">
+        <thead><tr><th>Problem</th><th>Likely cause</th><th>Fix</th></tr></thead>
+        <tbody>
+          <tr><td>Form 2553 rejected</td><td>Filed past the 75-day window</td><td>File Form 2553 with Late Election Relief request — usually granted under Rev Proc 2013-30</td></tr>
+          <tr><td>IRS questioning my salary</td><td>"Reasonable salary" too low</td><td>Increase salary going forward and document industry comparisons</td></tr>
+          <tr><td>Confused on what's distribution vs salary</td><td>Bookkeeping not separating them</td><td>Hire a bookkeeper familiar with S-Corps (MRG specializes in this)</td></tr>
+          <tr><td>Missed March 15 deadline</td><td>Calendar oversight</td><td>File immediately + extension if needed. Penalty is steep — $200/month/shareholder</td></tr>
+        </tbody>
+      </table>
+
+      <div class="sop-friction">
+        <h3>Where most owners hit <em>friction</em> &mdash; and where MRG steps in</h3>
+        <p>S-Corps work brilliantly when run correctly and become a nightmare when run sloppily. The most common DIY failures:</p>
+        <ul>
+          <li>Missing the 75-day Form 2553 deadline (most common mistake)</li>
+          <li>Paying yourself an unreasonably low salary and triggering audit</li>
+          <li>Forgetting Form 1120-S is due March 15 (not April 15)</li>
+          <li>Mixing salary and distributions in bookkeeping</li>
+          <li>Not registering for state employer taxes in ${v.stateName}</li>
+        </ul>
+        <p><strong>MRG's S-Corp package handles:</strong></p>
+        <ul>
+          <li>Form 2553 election filing</li>
+          <li>Reasonable salary determination with audit-proof documentation</li>
+          <li>Payroll setup, processing, and all quarterly filings</li>
+          <li>Year-end Form 1120-S preparation and K-1 issuance</li>
+          <li>Quarterly strategy calls to optimize compensation mix</li>
+        </ul>
+        <p>This is the entity MRG most often recommends and most often runs end-to-end for clients.</p>
+        <a class="friction-cta" href="contact.html#consult">Book your free consultation <span class="arrow">→</span></a>
+      </div>
+
+      <div class="sop-footer">Generated for ${v.firstName} &middot; ${v.timestamp} &middot; MRG Accounting Service</div>
+    </div>
+  `,
+
+  'C-Corp': (v) => `
+    <div class="sop-mast">
+      <span class="sop-eyebrow"><span class="dot"></span>Filing Playbook</span>
+      <div class="sop-title">${v.firstName}'s playbook<br/>C-Corporation in ${v.stateName}</div>
+      <p class="sop-sub">Your answers — ${v.growthKey === 'D' ? 'plans to raise venture capital' : v.compKey === 'D' ? 'a compensation mix that includes equity grants and dividends' : v.ownerCount === 'Solo now, planning equity grants / acquisition' ? 'a solo structure built for future equity grants and acquisition' : 'aggressive scaling with reinvested profit'} — put you firmly in C-Corp territory. This is the structure required for raising venture capital, issuing multiple classes of stock, granting employee equity, or planning toward acquisition or IPO.</p>
+      <div class="sop-meta">
+        <div class="sop-meta-item"><strong>Structure</strong><span>C-Corporation</span></div>
+        <div class="sop-meta-item"><strong>State</strong><span>${v.stateName}</span></div>
+        <div class="sop-meta-item"><strong>Time</strong><span>2–6 weeks</span></div>
+        <div class="sop-meta-item"><strong>Cost</strong><span>$200–$500+ in filings</span></div>
+      </div>
+    </div>
+
+    <div class="sop">
+      <h3 class="sop-h2">Important decision before starting</h3>
+      <p><strong>Should you form in ${v.stateName} or Delaware?</strong></p>
+      <ul class="sop-check">
+        <li><strong>Delaware</strong> is the default for venture-backed startups. Mature case law, business-friendly courts, expected by investors.</li>
+        <li><strong>${v.stateName}</strong> is appropriate if you're not raising outside capital, want to stay local, and don't need the prestige of a Delaware Inc.</li>
+      </ul>
+      ${v.stateCode === 'DE' ? `<div class="sop-callout">✓ You've already selected Delaware. Smart choice for a C-Corp.</div>` : ''}
+      ${(v.stateCode !== 'DE' && v.growthKey === 'D') ? `<div class="sop-warning"><strong>Strong recommendation:</strong> If you're raising VC, form in Delaware regardless of where you live. Most institutional investors require it. You can register to do business in ${v.stateName} as a "foreign entity" afterward.</div>` : ''}
+      <p>For this playbook, we'll assume you're filing in ${v.stateName}. If you choose Delaware, the steps are nearly identical — just use <a href="https://corp.delaware.gov" target="_blank" rel="noopener">corp.delaware.gov</a> as your Secretary of State.</p>
+
+      <h3 class="sop-h2">Before you start</h3>
+      <ul class="sop-check">
+        <li>A name for your corporation (must include "Inc.", "Corp.", "Corporation", or similar)</li>
+        <li>A clear plan for stock structure (single class for now, or multiple classes if raising)</li>
+        <li>Names of initial directors and officers</li>
+        <li>$200–$500 in formation fees + ongoing annual fees</li>
+      </ul>
+
+      <div class="sop-step">
+        <div class="sop-step-num">1</div>
+        <div class="sop-step-title">Choose and check your corporation name</div>
+        <span class="sop-step-action">Action — Pick a name and verify availability</span>
+        <p>Go to: ${linkOrText(v.nameSearchUrl)}</p>
+        <p><strong>Naming rules in ${v.stateName}:</strong></p>
+        <ul class="sop-check">
+          <li>Must include a corporate identifier: "Inc.", "Corp.", "Corporation", "Incorporated"</li>
+          <li>Must be distinguishable from other registered businesses</li>
+          <li>Cannot include restricted terms ("bank", "trust", etc.) without permission</li>
+        </ul>
+        <div class="sop-callout"><strong>Pro tip:</strong> Reserve the name if you're not ready to file immediately — most states offer 30–90 day name reservation for $10–$50.</div>
+      </div>
+
+      <div class="sop-step">
+        <div class="sop-step-num">2</div>
+        <div class="sop-step-title">Appoint a registered agent</div>
+        <span class="sop-step-action">Action — Designate someone to receive legal process for the corporation</span>
+        <ul class="sop-check">
+          <li>Yourself (free, but address becomes public)</li>
+          <li>Registered agent service (~$100–$300/year — recommended for C-Corps)</li>
+          <li>Friend, family member, or attorney at a ${v.stateName} address</li>
+        </ul>
+        <div class="sop-callout"><strong>Why this matters more for C-Corps:</strong> Corporations face more legal complexity than LLCs. A professional registered agent service catches subpoenas, lawsuits, and government notices that you'd want handled promptly.</div>
+      </div>
+
+      <div class="sop-step">
+        <div class="sop-step-num">3</div>
+        <div class="sop-step-title">File Articles of Incorporation</div>
+        <span class="sop-step-action">Action — Submit the legal formation document</span>
+        <p>Go to: ${linkOrText(v.sosUrl)}</p>
+        <p>Look for "Form a Corporation" or "File Articles of Incorporation." You'll provide:</p>
+        <ul class="sop-check">
+          <li>Corporation name</li>
+          <li>Registered agent name and ${v.stateName} address</li>
+          <li>Principal office address</li>
+          <li>Number and type of authorized shares (start with 10,000,000 common stock at $0.0001 par value — standard for startups)</li>
+          <li>Names and addresses of initial directors (minimum 1, can be you)</li>
+          <li>Incorporator's name and signature</li>
+        </ul>
+        <p>Pay the filing fee: <strong>${v.filingFee}</strong></p>
+        <div class="sop-callout"><strong>What you'll see after filing:</strong> A confirmation page with your file number. Stamped Articles of Incorporation arrive via email within ${v.processingTime}.<br/><br/><strong>Authorized shares note:</strong> Authorizing 10M shares now (vs 1,000) costs the same but gives you room to issue shares to investors and employees later without filing amendments. Standard startup practice.</div>
+      </div>
+
+      <div class="sop-step">
+        <div class="sop-step-num">4</div>
+        <div class="sop-step-title">Create corporate bylaws</div>
+        <span class="sop-step-action">Action — Draft bylaws — the internal rules governing how your corporation operates</span>
+        <p>Bylaws cover:</p>
+        <ul class="sop-check">
+          <li>Board of directors structure and election process</li>
+          <li>Officer roles and responsibilities (CEO, CFO, Secretary, etc.)</li>
+          <li>Shareholder meeting procedures</li>
+          <li>Voting requirements</li>
+          <li>Stock issuance procedures</li>
+          <li>Amendment procedures</li>
+          <li>Indemnification of directors and officers</li>
+        </ul>
+        <p>Free templates available at <a href="https://www.legalzoom.com/articles/corporate-bylaws-template" target="_blank" rel="noopener">LegalZoom</a> and <a href="https://www.nolo.com" target="_blank" rel="noopener">Nolo</a>.</p>
+        <div class="sop-warning"><strong>Why this matters:</strong> Unlike LLCs, corporations are required to maintain formal corporate governance. Skipping bylaws is one of the fastest ways to lose your liability shield in court.</div>
+      </div>
+
+      <div class="sop-step">
+        <div class="sop-step-num">5</div>
+        <div class="sop-step-title">Hold the organizational meeting</div>
+        <span class="sop-step-action">Action — Hold the first meeting of incorporators or directors</span>
+        <p><strong>Meeting agenda:</strong></p>
+        <ul class="sop-check">
+          <li>Adopt the bylaws</li>
+          <li>Elect initial directors (if not named in Articles)</li>
+          <li>Appoint corporate officers (CEO, CFO, Secretary at minimum)</li>
+          <li>Authorize issuance of initial shares</li>
+          <li>Authorize opening of corporate bank account</li>
+          <li>Set fiscal year</li>
+          <li>Adopt corporate seal (optional in most states)</li>
+        </ul>
+        <p>Document everything in meeting minutes. Sign and store with corporate records.</p>
+        <div class="sop-callout"><strong>What this looks like:</strong> If you're a solo founder, this meeting is you sitting at your desk, going through the agenda, and signing minutes you wrote yourself. Sounds silly. Still required.</div>
+      </div>
+
+      <div class="sop-step">
+        <div class="sop-step-num">6</div>
+        <div class="sop-step-title">Issue stock to founders</div>
+        <span class="sop-step-action">Action — Issue stock certificates to yourself and any co-founders</span>
+        <ul class="sop-check">
+          <li>Determine equity split (100% to you if solo, or split among co-founders)</li>
+          <li>Decide on vesting schedule for co-founders (standard: 4 years with 1-year cliff)</li>
+          <li>Issue physical or electronic stock certificates</li>
+          <li>Record issuance in the corporate stock ledger</li>
+          <li>Have each shareholder sign a Stock Purchase Agreement</li>
+          <li><strong>CRITICAL:</strong> File 83(b) election with the IRS within <strong>30 days</strong> of stock issuance if stock is subject to vesting</li>
+        </ul>
+        <div class="sop-warning"><strong>The 83(b) election is the most-missed step in C-Corp formation.</strong> Missing the 30-day window can cost founders hundreds of thousands of dollars in unnecessary taxes as the company grows in value. <strong>Strongly recommend hiring an attorney for this step</strong> if you have co-founders or any vesting. Templates exist, but the stakes are high enough to justify legal review.</div>
+      </div>
+
+      <div class="sop-step">
+        <div class="sop-step-num">7</div>
+        <div class="sop-step-title">Get an EIN from the IRS</div>
+        <span class="sop-step-action">Action — Apply for a free Employer Identification Number</span>
+        <p>Go to: <a href="https://www.irs.gov/businesses/small-businesses-self-employed/apply-for-an-employer-identification-number-ein-online" target="_blank" rel="noopener">irs.gov/businesses (EIN Online)</a></p>
+        <ul class="sop-check">
+          <li>Click <strong>Apply Online Now</strong></li>
+          <li>Select <strong>Corporation</strong>, then <strong>C-Corporation</strong></li>
+          <li>Complete the application (~10 minutes)</li>
+          <li>Save the EIN confirmation PDF</li>
+        </ul>
+      </div>
+
+      <div class="sop-step">
+        <div class="sop-step-num">8</div>
+        <div class="sop-step-title">Register for state taxes</div>
+        <span class="sop-step-action">Action — Register with ${v.stateName} for required state taxes</span>
+        <p>Visit: ${linkOrText(v.stateTaxUrl)}</p>
+        <p>C-Corps in ${v.stateName} typically need to register for:</p>
+        <ul class="sop-check">
+          <li>State corporate income tax</li>
+          <li>Employer withholding (once you hire)</li>
+          <li>Sales tax permit (if applicable)</li>
+          <li>${v.franchiseTax}</li>
+        </ul>
+      </div>
+
+      <div class="sop-step">
+        <div class="sop-step-num">9</div>
+        <div class="sop-step-title">Open a business bank account</div>
+        <span class="sop-step-action">Action — Open a corporate checking account</span>
+        <p><strong>Required documents:</strong></p>
+        <ul class="sop-check">
+          <li>Stamped Articles of Incorporation</li>
+          <li>EIN confirmation</li>
+          <li>Corporate bylaws</li>
+          <li>Board resolution authorizing account opening</li>
+          <li>IDs for all signers</li>
+        </ul>
+        <p><strong>Recommended banks for C-Corps:</strong></p>
+        <ul class="sop-check">
+          <li><strong>Mercury</strong> — built for venture-backed startups</li>
+          <li><strong>Brex</strong> — strong choice for funded companies</li>
+          <li><strong>SVB / First Republic</strong> — traditional VC-banking relationships</li>
+          <li><strong>JPMorgan Chase</strong> — when you need traditional banking infrastructure</li>
+        </ul>
+        <div class="sop-callout"><strong>For VC-bound companies:</strong> Mercury and Brex have become standard. Set up early — investors will ask.</div>
+      </div>
+
+      <div class="sop-step">
+        <div class="sop-step-num">10</div>
+        <div class="sop-step-title">Set up a corporate compliance calendar</div>
+        <span class="sop-step-action">Action — Schedule the recurring obligations that keep your corporate status valid</span>
+        <ul class="sop-check">
+          <li><strong>Annual shareholder meeting</strong> (with minutes filed in corporate records)</li>
+          <li><strong>Annual board meeting</strong> (with minutes)</li>
+          <li><strong>Annual report to ${v.stateName}</strong> — ${v.annualReport}</li>
+          <li><strong>Form 1120 (federal corporate tax return)</strong> — due April 15 (or 15th day of 4th month after fiscal year-end)</li>
+          <li><strong>Quarterly estimated tax payments</strong> if profitable</li>
+          <li><strong>State franchise tax filings</strong></li>
+        </ul>
+        <div class="sop-warning"><strong>Why this matters:</strong> Skipping these formalities is how courts "pierce the corporate veil." Your liability protection depends on maintaining the formalities.</div>
+      </div>
+
+      <div class="sop-step">
+        <div class="sop-step-num">11</div>
+        <div class="sop-step-title">Set up equity management software</div>
+        <span class="sop-step-action">Action — Use a cap table management tool from day one</span>
+        <ul class="sop-check">
+          <li><strong>Carta</strong> — industry standard for venture-backed companies</li>
+          <li><strong>Pulley</strong> — great for early-stage startups</li>
+          <li><strong>AngelList Stack</strong> — solid free option for early stage</li>
+        </ul>
+        <div class="sop-callout"><strong>Why now matters:</strong> Cap table cleanup at Series A is brutal. Tracking equity in a spreadsheet falls apart fast. Set this up before you issue your second stock grant.</div>
+      </div>
+
+      <div class="sop-step">
+        <div class="sop-step-num">12</div>
+        <div class="sop-step-title">Plan for payroll setup (before first hire)</div>
+        <span class="sop-step-action">Action — When you're ready to hire, set up payroll</span>
+        <p>Same platforms as S-Corp setup:</p>
+        <ul class="sop-check">
+          <li>Gusto</li>
+          <li>QuickBooks Payroll</li>
+          <li>Justworks (good for HR + benefits + payroll bundle)</li>
+        </ul>
+        <p>C-Corp founders typically also pay themselves through payroll once the company has revenue. Unlike S-Corps, there's no "reasonable salary" requirement, but salary is the standard mechanism for owner compensation in a C-Corp.</p>
+      </div>
+
+      <h3 class="sop-h2">Final step — verify you're operational</h3>
+      <ul class="sop-check">
+        <li>Stamped Articles of Incorporation</li>
+        <li>Corporate bylaws adopted and signed</li>
+        <li>Organizational meeting minutes recorded</li>
+        <li>Initial shares issued and recorded in stock ledger</li>
+        <li>83(b) elections filed (if applicable) within 30 days</li>
+        <li>EIN from the IRS</li>
+        <li>Corporate bank account opened</li>
+        <li>State tax registrations completed</li>
+        <li>Annual compliance calendar set up</li>
+        <li>Cap table software in place</li>
+        <li>Quarterly estimated tax reminders scheduled</li>
+      </ul>
+
+      <h3 class="sop-h2">Troubleshooting</h3>
+      <table class="sop-table">
+        <thead><tr><th>Problem</th><th>Likely cause</th><th>Fix</th></tr></thead>
+        <tbody>
+          <tr><td>Articles rejected</td><td>Name issue or formatting error</td><td>Re-check name availability, fix and refile</td></tr>
+          <tr><td>Missed 83(b) election deadline</td><td>Didn't know about the 30-day rule</td><td>Limited options — sometimes attorneys can file late with IRS forgiveness. Don't miss it.</td></tr>
+          <tr><td>Investors asking why you're not in Delaware</td><td>Formed in ${v.stateName}</td><td>You can convert to a Delaware C-Corp later — process is called "redomestication" or "conversion"</td></tr>
+          <tr><td>Confused about corporate formalities</td><td>C-Corps require more discipline than LLCs</td><td>Hire a fractional CFO or law firm to manage compliance</td></tr>
+        </tbody>
+      </table>
+
+      <div class="sop-friction">
+        <h3>Where most owners hit <em>friction</em> &mdash; and where MRG steps in</h3>
+        <p>C-Corps are powerful but unforgiving. The expensive mistakes:</p>
+        <ul>
+          <li>Missing the 83(b) election window (irreversible)</li>
+          <li>Failing to maintain corporate formalities (loses liability shield)</li>
+          <li>Sloppy cap table management (kills fundraising deals)</li>
+          <li>Miscategorizing compensation between salary, bonus, and equity</li>
+          <li>Missing Form 1120 deadlines (steep penalties)</li>
+          <li>Double-taxation surprises at year-end</li>
+        </ul>
+        <p><strong>MRG's C-Corp package handles:</strong></p>
+        <ul>
+          <li>Form 1120 preparation and filing</li>
+          <li>Quarterly estimated tax calculations</li>
+          <li>Payroll, including officer compensation strategy</li>
+          <li>Compliance calendar management</li>
+          <li>Coordination with your law firm on equity and stock issuances</li>
+          <li>Pre-investment financial readiness (data rooms, board reporting)</li>
+        </ul>
+        <p>For C-Corps especially, having an experienced CFO-level partner is the difference between a clean fundraise and a deal that falls apart in diligence.</p>
+        <a class="friction-cta" href="contact.html#consult">Book your free consultation <span class="arrow">→</span></a>
+      </div>
+
+      <div class="sop-footer">Generated for ${v.firstName} &middot; ${v.timestamp} &middot; MRG Accounting Service</div>
+    </div>
+  `
+};
+
 // ---------- Render result page ----------
 function renderResult() {
   const entity = state.recommendation;
@@ -1276,7 +2561,22 @@ function renderResult() {
       ${buildMath(entity, a.q2)}
     </div>
 
-    <div class="section-header"><h3>Your <em>next steps</em></h3><span class="h-num">§ 03</span></div>
+    <div class="section-header"><h3>Your personalized <em>filing playbook</em></h3><span class="h-num">§ 03</span></div>
+    <div class="sop-section" id="sop-section">
+      <div class="sop-actions">
+        <button class="sop-action-btn primary" id="sop-download" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download as PDF
+        </button>
+        <button class="sop-action-btn" id="sop-print" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          Print
+        </button>
+      </div>
+      ${SOPS[entity](buildSopVars())}
+    </div>
+
+    <div class="section-header"><h3>Your <em>next steps</em></h3><span class="h-num">§ 04</span></div>
     <div class="next-steps">
       <ul class="ns-list">
         <li>
@@ -1333,6 +2633,17 @@ function renderResult() {
 
   document.getElementById('result-content').innerHTML = html;
   wireShareButtons();
+  wireSopActions();
+}
+
+function wireSopActions() {
+  const dl = document.getElementById('sop-download');
+  const pr = document.getElementById('sop-print');
+  // Both buttons trigger the browser's print dialog. From there the user can
+  // pick "Save as PDF" as the destination — our @media print rules already
+  // hide everything except the result + SOP and render it as a clean document.
+  if (dl) dl.addEventListener('click', () => window.print());
+  if (pr) pr.addEventListener('click', () => window.print());
 }
 
 function wireShareButtons() {

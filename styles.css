@@ -881,6 +881,15 @@ footer{padding:100px 0 50px;border-top:1px solid var(--line);position:relative;z
   .img-frame--hero img{aspect-ratio:4/3;object-position:30% center}
   .img-frame--portrait img{aspect-ratio:4/5;object-position:center top}
   .img-frame--square img{aspect-ratio:1/1;object-position:30% center}
+
+  /* Editorial visual cards (used on service pages: bookkeeping, taxes,
+     payroll, admin, business-consultant). Locked 5/6 ratio is too tall
+     on phones and the ~62px display text wraps awkwardly. Relax the
+     aspect ratio and downsize the headline. */
+  .editorial-visual{aspect-ratio:auto!important;padding:36px 28px!important;min-height:auto!important}
+  .ev-big{font-size:clamp(44px,11vw,64px)!important;line-height:.98!important}
+  .ev-row{font-size:13px!important;gap:14px}
+  .ev-row strong{text-align:right}
   .img-split{grid-template-columns:1fr!important;gap:32px!important}
 
   /* FAQ */
