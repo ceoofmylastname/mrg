@@ -1,71 +1,72 @@
 {
   "model": "nano-banana-2",
   "size": "2k",
+  "_brand_notes": "Modern contemporary editorial lifestyle. Diverse real small business owners, families, professionals. Warm natural California daylight. Modern minimalist interiors with warm cream palette, indoor plants, natural wood accents, soft sage/neutral accents. Shot on Canon R5 (modern, not vintage). Genuine candid moments — no stiff stock-photo poses. Every prompt forbids vintage/cartoon/illustration/stock-photo cliché to keep results current.",
   "images": [
     {
       "filename": "home-atmosphere.webp",
       "aspect": "21:9",
-      "prompt": "Cinematic editorial widescreen photograph, an empty modernist San Diego office with floor-to-ceiling windows overlooking palm trees at golden hour, a single leather chair pulled up to a polished walnut conference table with a fresh leather portfolio, soft warm light pouring through the windows, monochromatic warm tones of charcoal black cream and ivory with subtle gold highlights, calm sophisticated mood, ultra-detailed 8K photography shot on Hasselblad medium format, shallow depth of field, NOT cartoon, NOT illustration, NOT stock photo"
+      "prompt": "Modern editorial widescreen lifestyle photograph, a bright contemporary San Diego office with floor-to-ceiling windows overlooking palm trees and ocean at sunny midday, modern minimalist workspace featuring a sleek silver laptop a steaming ceramic coffee cup and a small monstera plant, warm natural California daylight streaming in, contemporary color palette of soft white cream and accents of sage green and natural wood, calm sophisticated current mood, ultra-detailed magazine editorial photography shot on Canon R5, shallow depth of field, NOT cartoon, NOT illustration, NOT vintage, NOT old-fashioned, NOT stock photo cliché, NOT brass, NOT leather-bound"
     },
     {
       "filename": "bookkeeping-hero.webp",
       "aspect": "16:9",
-      "prompt": "Cinematic editorial photograph, neatly stacked vintage leather-bound accounting ledgers next to a brass fountain pen and a porcelain coffee cup, on a polished dark walnut desk with soft window light from the left, monochromatic warm tones of charcoal black cream and ivory, calm disciplined mood, ultra-detailed 4K photography shot on Hasselblad medium format, shallow depth of field, generous negative space, NOT cartoon, NOT illustration, NOT clipart, NOT bright colors, NOT stock photo"
+      "prompt": "Modern editorial lifestyle photograph, a confident smiling Black female small business owner in her thirties wearing a soft cream sweater working at a bright contemporary desk with a sleek modern laptop displaying clean financial dashboard charts, indoor plants and a ceramic coffee cup nearby, soft natural daylight streaming through a large window, modern minimalist office with warm cream tones and natural wood accents, fresh genuine contemporary mood, ultra-detailed magazine editorial photography shot on Canon R5, shallow depth of field, NOT cartoon, NOT illustration, NOT vintage, NOT stock photo cliché"
     },
     {
       "filename": "bookkeeping-detail.webp",
       "aspect": "4:5",
-      "prompt": "Editorial overhead photograph, hands of a Black woman in a tailored cream blazer carefully writing in a leather notebook with a fountain pen, surrounded by neatly organized receipts and a vintage calculator, soft natural window light, monochromatic palette of charcoal black warm cream and ivory, intentional and focused mood, ultra-detailed 4K shot on Hasselblad, shallow depth of field, NOT cartoon, NOT illustration, NOT stock photo"
+      "prompt": "Modern editorial close-up lifestyle photograph, hands of a young professional reviewing a clean financial dashboard on a sleek modern tablet, a minimalist desk with a small succulent plant and a ceramic coffee cup, soft natural daylight, contemporary color palette of soft white cream and warm neutrals with sage accents, focused intentional current mood, ultra-detailed magazine editorial photography shot on Canon R5, shallow depth of field, NOT cartoon, NOT illustration, NOT vintage, NOT brass, NOT leather notebook, NOT stock photo cliché"
     },
     {
       "filename": "taxes-hero.webp",
       "aspect": "16:9",
-      "prompt": "Cinematic editorial photograph, a quiet desk scene with an open tax planning binder beside a brass magnifying glass and a black fountain pen, dramatic soft window light casting long shadows, monochromatic warm tones of charcoal black cream and ivory, contemplative strategic mood, ultra-detailed 4K photography shot on Hasselblad medium format, shallow depth of field, generous negative space, NOT cartoon, NOT illustration, NOT stock photo"
+      "prompt": "Modern editorial lifestyle photograph, a smiling diverse couple a Latina woman and her Asian husband reviewing their taxes on a laptop together at a bright contemporary kitchen island, expressions of warm confidence and relief, soft natural California daylight through large windows, modern minimalist home interior with warm cream tones natural wood and a hanging plant, candid genuine intimate moment, ultra-detailed magazine editorial photography shot on Canon R5, shallow depth of field, NOT cartoon, NOT illustration, NOT vintage, NOT stock photo cliché"
     },
     {
       "filename": "taxes-strategy.webp",
       "aspect": "16:9",
-      "prompt": "Editorial close-up photograph, a hand holding a black fountain pen over a printed tax projection spreadsheet with handwritten notes in the margins, soft directional light from the upper left, monochromatic warm tones of charcoal black cream and ivory, focused strategic mood, ultra-detailed 4K shot on Hasselblad medium format, shallow depth of field, NOT cartoon, NOT illustration, NOT stock photo"
+      "prompt": "Modern editorial lifestyle photograph, a confident Black female financial advisor in a crisp cream blazer pointing to a tax planning chart on a sleek modern tablet while her smiling Latino male client in a soft sweater nods in agreement, both seated at a clean modern light wood table in a bright contemporary office with indoor plants, soft natural daylight, warm cream and sage palette with natural textures, collaborative authentic professional mood, ultra-detailed magazine editorial photography shot on Canon R5, shallow depth of field, NOT cartoon, NOT illustration, NOT vintage, NOT stock photo cliché"
     },
     {
       "filename": "payroll-hero.webp",
       "aspect": "16:9",
-      "prompt": "Cinematic editorial photograph, a stack of neatly folded paychecks tied with brown twine beside a vintage stamp marked PAID and a brass desk clock, on a polished dark wood surface, soft window light from the left, monochromatic warm tones of charcoal black cream and ivory, calm reliable mood, ultra-detailed 4K photography shot on Hasselblad medium format, shallow depth of field, NOT cartoon, NOT illustration, NOT stock photo"
+      "prompt": "Modern editorial lifestyle photograph, a smiling diverse small team of four employees of mixed ethnicities and genders in a bright contemporary modern office casually dressed in cream and soft neutrals gathered around a laptop sharing a relaxed genuine moment of confidence, soft natural daylight through large windows, modern interior with warm cream tones indoor plants and natural wood furniture, candid authentic workplace moment, ultra-detailed magazine editorial photography shot on Canon R5, shallow depth of field, NOT cartoon, NOT illustration, NOT vintage, NOT staged corporate, NOT stock photo cliché"
     },
     {
       "filename": "payroll-multistate.webp",
       "aspect": "16:9",
-      "prompt": "Editorial overhead photograph, a vintage paper map of the United States with several state outlines highlighted in warm cream ink, beside a brass compass and stack of folded payroll documents, soft natural light, monochromatic warm tones of charcoal black cream and ivory, considered geographic mood, ultra-detailed 4K shot on Hasselblad, shallow depth of field, generous negative space, NOT cartoon, NOT illustration, NOT stock photo"
+      "prompt": "Modern editorial photograph, a clean stylized digital map of the continental United States softly glowing on a large modern monitor with subtle data visualizations and warm cream accent dots marking multiple state locations, soft natural office lighting from a window, modern minimalist workspace with a small monstera plant and a ceramic coffee cup nearby, contemporary tech aesthetic with warm cream and soft sage palette and natural wood, sophisticated current mood, ultra-detailed magazine editorial photography shot on Canon R5, shallow depth of field, NOT cartoon, NOT illustration, NOT vintage paper map, NOT brass compass, NOT stock photo cliché"
     },
     {
       "filename": "launch-hero.webp",
       "aspect": "16:9",
-      "prompt": "Cinematic editorial photograph, an empty leather chair pulled up to a polished walnut desk with a fresh leather portfolio and a brass fountain pen waiting, morning window light from the left, monochromatic warm tones of charcoal black cream and ivory, anticipatory beginning mood, ultra-detailed 4K photography shot on Hasselblad medium format, shallow depth of field, generous negative space, NOT cartoon, NOT illustration, NOT stock photo"
+      "prompt": "Modern editorial widescreen lifestyle photograph, a fresh sleek open laptop displaying a clean modern business plan dashboard on a minimalist light wood desk, a steaming ceramic coffee cup a small monstera plant and a few neatly stacked notebooks nearby, soft natural California morning daylight streaming through large floor-to-ceiling windows, modern minimalist office interior with warm cream tones and natural wood accents and indoor plants in the background, hopeful new beginning mood of day one of a business, ultra-detailed magazine editorial photography shot on Canon R5, shallow depth of field, NOT cartoon, NOT illustration, NOT vintage, NOT brass, NOT leather chair, NOT people, NOT person, NOT human, NOT face, NOT hands, NOT stock photo cliché"
     },
     {
       "filename": "launch-entity.webp",
       "aspect": "4:5",
-      "prompt": "Editorial close-up photograph, freshly stamped Articles of Organization documents in a leather folder beside a wax seal and a black fountain pen, soft directional window light, monochromatic warm tones of charcoal black cream and ivory, ceremonial intentional mood, ultra-detailed 4K shot on Hasselblad, shallow depth of field, NOT cartoon, NOT illustration, NOT stock photo"
+      "prompt": "Modern editorial lifestyle photograph, a proud Black male small business owner in his thirties wearing a soft cream button-down shirt holding up his newly received LLC formation certificate with a confident genuine smile, bright contemporary modern home office in the background with a sleek laptop indoor plants and natural wood shelving, soft natural daylight, warm cream tones with natural wood accents and a hanging plant, candid authentic milestone moment, ultra-detailed magazine editorial photography shot on Canon R5, shallow depth of field, NOT cartoon, NOT illustration, NOT vintage, NOT wax seal, NOT brass, NOT stock photo cliché"
     },
     {
       "filename": "admin-hero.webp",
       "aspect": "16:9",
-      "prompt": "Cinematic editorial photograph, a perfectly organized vintage filing cabinet drawer open to reveal alphabetized cream manila folders, beside a brass desk lamp casting warm light, monochromatic warm tones of charcoal black cream and ivory, orderly meticulous mood, ultra-detailed 4K photography shot on Hasselblad medium format, shallow depth of field, NOT cartoon, NOT illustration, NOT stock photo"
+      "prompt": "Modern editorial lifestyle photograph, a smiling Asian female administrative professional in her late twenties wearing a soft cream blouse organizing a clean modern desk featuring a sleek silver laptop a neatly stacked tablet and an open digital workflow on screen, bright contemporary office with large windows, soft natural daylight, warm cream and sage palette with natural wood accents and a small monstera plant, calm confident current mood, ultra-detailed magazine editorial photography shot on Canon R5, shallow depth of field, NOT cartoon, NOT illustration, NOT vintage filing cabinet, NOT brass desk lamp, NOT stock photo cliché"
     },
     {
       "filename": "admin-calendar.webp",
       "aspect": "16:9",
-      "prompt": "Editorial overhead photograph, a leather-bound calendar planner open to a month view with handwritten appointments in cream ink, beside a brass fountain pen and a tortoiseshell reading glasses, soft window light, monochromatic warm tones of charcoal black cream and ivory, considered intentional mood, ultra-detailed 4K shot on Hasselblad, shallow depth of field, NOT cartoon, NOT illustration, NOT stock photo"
+      "prompt": "Modern editorial lifestyle photograph, a confident smiling diverse female professional in her thirties wearing a soft cream cardigan reviewing her week on a sleek modern tablet showing a clean minimalist calendar app, bright contemporary office with floor-to-ceiling windows, soft natural California daylight, modern minimalist interior with warm cream tones a small succulent on the desk and a hanging plant, organized intentional current mood, ultra-detailed magazine editorial photography shot on Canon R5, shallow depth of field, NOT cartoon, NOT illustration, NOT vintage planner, NOT tortoiseshell glasses, NOT stock photo cliché"
     },
     {
       "filename": "resources-hero.webp",
       "aspect": "16:9",
-      "prompt": "Cinematic editorial photograph, an organized library shelf with leather-bound tax code books and reference manuals, a brass library lamp casting warm focused light, vintage card catalog drawer slightly open in the foreground, monochromatic warm tones of charcoal black cream and ivory, scholarly authoritative mood, ultra-detailed 4K photography shot on Hasselblad medium format, shallow depth of field, NOT cartoon, NOT illustration, NOT stock photo"
+      "prompt": "Modern editorial lifestyle photograph, a focused diverse young entrepreneur of South Asian descent in his late twenties wearing a soft cream sweater seated at a sleek modern desk reviewing tax resources on a large laptop screen, indoor plants a small succulent and a ceramic mug of coffee nearby, bright contemporary office with large windows and warm natural California daylight, modern minimalist interior with warm cream tones and natural wood, studious confident current mood, ultra-detailed magazine editorial photography shot on Canon R5, shallow depth of field, NOT cartoon, NOT illustration, NOT vintage library, NOT leather books, NOT brass lamp, NOT stock photo cliché"
     },
     {
       "filename": "founder-story.webp",
       "aspect": "16:9",
-      "prompt": "Cinematic editorial photograph, a Black woman in her early forties wearing a crisp cream blazer and black-framed glasses, viewed from behind walking through a sunlit San Diego high-rise office hallway holding a leather portfolio, soft natural light, monochromatic warm tones of charcoal black cream and ivory, deliberate purposeful mood, ultra-detailed 4K photography shot on Hasselblad medium format, shallow depth of field, NOT cartoon, NOT illustration, NOT stock photo"
+      "prompt": "Modern editorial portrait photograph, a confident Black woman business owner in her early forties wearing a crisp cream blazer and black-framed glasses with long dark hair, warm genuine smile while seated at a sleek modern desk in a bright contemporary San Diego office overlooking palm trees and ocean through floor-to-ceiling windows, soft natural daylight, modern minimalist interior with warm cream tones natural wood and a monstera plant, authoritative warm authentic professional mood, ultra-detailed magazine editorial photography shot on Canon R5, shallow depth of field, NOT cartoon, NOT illustration, NOT vintage, NOT walking from behind, NOT leather portfolio, NOT stock photo cliché"
     }
   ]
 }
